@@ -6,7 +6,7 @@ weight: 2
 ## About Me
 
 My name is Nicholas VanCise, and puzzles are my favorite pastime!  
-Currently I am working on my masters at the University of Nevada Las Vegas, as well as pursuing my dreams as a software engineer. 
+Currently I'm working on my masters at the University of Nevada Las Vegas, as well as pursuing my dreams as a software engineer. 
 
 In addition to this, in my own time I dabble in iOS development, webscraping, data visualization, and infrastructure programming.
 
