@@ -1,0 +1,16 @@
+baseURL = "http://example.com/"
+languageCode = "en-us"
+title = "Nicholas VanCise"
+theme = "grayscale"
+#googleAnalytics = ""
+disableKinds = ["taxonomy", "taxonomyTerm"]
+
+[params]
+    description = "The home of my personal website"
+
+[Author]
+    name = "Nicholas VanCise"
+    email = "nvancise@unlv.nevada.edu"
+
+[Social]
+    twitter = "stream_running"
