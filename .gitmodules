@@ -1,3 +1,4 @@
 [submodule "themes/grayscale"]
 	path = themes/grayscale
 	url = https://github.com/runningstream/hugograyscale.git
+	ignore = dirty
