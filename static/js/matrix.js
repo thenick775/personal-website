@@ -6,14 +6,14 @@ function genMatrix(){
   //characters - taken from the unicode charset
   var matrix = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789诶比西迪伊艾弗吉艾尺艾杰开艾勒艾马艾娜哦屁吉吾艾儿艾一，@#$%^&*()*&^%+-/~{[|`]}".split("");;
   var font_size = 12;
-  var columns = c.width/font_size; //number of columns for the rain
+  var columns = c.width/font_size; //number of columns
   var rows = c.height/font_size;
   var columns_old = columns;
   //an array of drops - one per column
   var drops = [];
   //x below is the x coordinate
   for(var x = 0; x < columns; x++)
-      drops[x] = Math.floor((Math.random()*5)+1);//random starting place within screen rows
+      drops[x] = Math.floor((Math.random()*rows)+1);//random starting place within screen rows
 
   //drawing the characters
   function drawmatrix()
@@ -42,7 +42,7 @@ function genMatrix(){
       ctx.fillStyle = 'hsl(' + 360 * Math.random() + ', 90%, 50%)';//multi color saturated text
       ctx.font = font_size + "px arial";
       //looping over drops
-      for(var i = 0; i < drops.length; i++)
+      for(var i = 0; i < columns; i++)
       {
           //a random chinese character to print
           var text = matrix[Math.floor(Math.random()*matrix.length)];

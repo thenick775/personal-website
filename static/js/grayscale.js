@@ -52,3 +52,41 @@ function isScrolledIntoView(el) {
     isVisible = elemTop < window.innerHeight && elemBottom >= 0;
     return isVisible;
 }
+
+//used for non canvas elements
+function isElementInViewport (el) {
+    var rect = el[0].getBoundingClientRect();
+    var elemTop = rect.top;
+    var elemBottom = rect.bottom;
+
+    // Only completely visible elements return true:
+    var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+    // Partially visible elements return true:
+    //isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+    return isVisible;
+}
+// Check if it's time to start the animation
+function checkAnimation() {
+    var $elem = $('#skills-list');
+
+    // If the animation has already been started
+    if ($elem.hasClass('faded')) return;
+
+    if (isElementInViewport($elem)) {
+        // Start the animation
+        console.log("in viewport")
+        $elem.addClass('faded')
+        //$elem.addClass('fadeIn');
+        var basetime = 500;
+        var vartime = 1700;
+
+        $elem.children().each((index, child) => {
+            setTimeout( function(){ $(child).addClass('fadeIn');}, basetime+index*50)
+        });
+    }
+}
+
+// Capture scroll events
+$(window).scroll(function(){
+    checkAnimation();
+});

@@ -12,5 +12,7 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
     name = "Nicholas VanCise"
     email = "nvancise@unlv.nevada.edu"
 
-[Social]
-    twitter = "stream_running"
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
