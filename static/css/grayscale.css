@@ -395,6 +395,36 @@ img::selection {
   -webkit-transition-duration: 1s;
   transition-duration: 1s;
   margin: 20px auto;
+
+  width:80%;
+  height: 43px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.tile .logo2{
+  -moz-transition-property: background-image;
+  -o-transition-property: background-image;
+  -webkit-transition-property: background-image;
+  transition-property: background-image;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  margin-top: 20px;
+  margin-left: 40px;
+
+  width:30%;
+  height: 43px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.tile .logo2 > p{
+  font-size: 25px;
+  padding-left: 86px;
 }
 
 .info .responsive:before, .info .netsuite:before, .info .js:before {
@@ -539,13 +569,6 @@ img::selection {
   opacity: 1;
 }
 
-.tile .logo{
-  width:80%;
-  height: 43px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
 @media (min-width: 480px) {
   .tile.logo {
     margin-top: 40px;

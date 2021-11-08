@@ -1,5 +1,11 @@
-<div class='tile {{ .Get "tileclass" }}'>
-  <div class="logo" style="background-image: url('{{ .Get "backgroundimage" }}');"></div>
+<div class='tile'>
+    {{- if .Get "logohastext" }}
+    <div class="logo2" style="background-image: url('{{ .Get "backgroundimage" }}');">
+      <p>{{ .Get "logodescrip" }}</p>
+    </div>
+    {{ else }}
+      <div class="logo" style="background-image: url('{{ .Get "backgroundimage" }}');"></div>
+    {{ end }}
   <div class="info">
     <p class="responsive">{{ .Get "label1" }}</p>
     <p class="netsuite">{{ .Get "label2" }}</p>
