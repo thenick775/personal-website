@@ -376,6 +376,7 @@ img::selection {
     padding-inline-start: 5px;
     padding-inline-end: 5px;
     margin: 0 auto;
+    column-gap: 8px;
 }
 
 @media (max-width: 767px) {
