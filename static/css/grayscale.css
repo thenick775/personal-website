@@ -202,11 +202,16 @@ header p {
 
 .section-2 {
   color: white;
-  background: url("../img/lake-superior-2093792_1280.jpg") no-repeat center center scroll;
+  background: url("../img/IMG_1615.jpg") no-repeat center center scroll;
   background-color: black;
   background-size: cover;
   padding-top: 150px;
   padding-bottom: 150px;
+}
+
+.section-3{
+  padding-top: 40px !important;
+  padding-bottom: 90px !important;
 }
 
 #sec-ind-2 > div > div > div > div {
@@ -340,3 +345,213 @@ footer p {
 img::selection {
   background: transparent;
 }
+
+
+
+
+
+
+
+
+
+.projects-list{
+/*    background-color: rgba(255, 0, 255, 0.2);*/
+    top: 10px;
+    max-width: 650px;
+    min-width: 650px;
+    height: auto;
+    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-inline-start: 5px;
+    margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .projects-list{
+    max-width: 325px;
+    min-width: 325px;
+  }
+}
+
+.tile .logo {
+  -moz-transition-property: background-image;
+  -o-transition-property: background-image;
+  -webkit-transition-property: background-image;
+  transition-property: background-image;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  margin: 20px auto;
+}
+
+.info .responsive:before, .info .netsuite:before, .info .js:before {
+  font-family: FontAwesome;
+  -webkit-font-smoothing: antialiased;
+  margin-right: 5px;
+  content: '\f109';
+}
+
+.tile {
+  margin: 10px;
+  position: relative;
+  width: 32%;
+  height: 240px;
+  min-width: 300px;
+  background-size: cover;
+  font-family: 'Open Sans', sans-serif;
+  background-color: gray;
+  display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.info {
+  opacity: 0;
+  color: white;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+  margin-top: 30px;
+}
+.info p {
+  -moz-transition-property: background-color;
+  -o-transition-property: background-color;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 4px 8px;
+  margin: 2px 0;
+  font-size: 0.9em;
+}
+.info p:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.more {
+  opacity: 0;
+  color: black;
+  margin-top: 15px;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  text-align: center;
+}
+.more a {
+  display: inline-block;
+  color: white;
+  font-weight: 500;
+  font-size: 1.1em;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  padding: 4px 8px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+.more a:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  background: white;
+  height: 2px;
+  -moz-transition-property: left, right;
+  -o-transition-property: left, right;
+  -webkit-transition-property: left, right;
+  transition-property: left, right;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.more a:hover:before {
+  left: 10%;
+  right: 10%;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  -moz-transition-property: background;
+  -o-transition-property: background;
+  -webkit-transition-property: background;
+  transition-property: background;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  position: absolute;
+  top: 0;
+  z-index: -10;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.tile:hover .overlay{
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.tile:hover .info {
+  opacity: 1;
+}
+
+.tile:hover .more {
+  opacity: 1;
+}
+
+.tile .logo{
+  width: 140px;
+  height: 43px;
+}
+
+.kitandace .logo {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/235825/kitandace-color.png");
+}
+
+@media (min-width: 480px) {
+  .tile.logo {
+    margin-top: 40px;
+  }
+}
+
+.niner .logo {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/235825/Niner-logo-color.png");
+}
+
+
+.redfin .logo {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/235825/redfin-color.jpg");
+ }
+
+
+

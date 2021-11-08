@@ -3,12 +3,93 @@ title: "Projects"
 weight: 4
 ---
 
-## Contact Start Bootstrap
+## Projects
+<ul class="projects-list">
+<div class="tile kitandace">
+  <div class="logo"></div>
+  <div class="info">
+    <p class="responsive">SuiteCommerce</p>
+    <p class="netsuite">Responsive</p>
+    <p class="js">JS</p>
+  </div>
+  <div class="more"><a href="#">View Project</a></div>
+  <div class="overlay"></div>
+</div>
 
-Feel free to leave us a comment on the [Grayscale template Github page](https://github.com/runningstream/hugograyscale/) to give some feedback about this theme!
+<div class="tile niner">
+  <div class="logo"></div>
+  <div class="info">
+    <p class="responsive">SuiteCommerce</p>
+    <p class="netsuite">Responsive</p>
+    <p class="js">JS</p>
+  </div>
+  <div class="more"><a href="#">View Project</a></div>
+  <div class="overlay"></div>
+</div>
 
-{{< socialhandles >}}
-    {{< linkedin user="nicholas-vancise-65381619b" >}}
-    {{< github user="thenick775" >}}
-    {{< email email="vancise@unlv.nevada.edu" >}}
-{{< /socialhandles >}}
+<div class="tile redfin">
+  <div class="logo"></div>
+  <div class="info">
+    <p class="responsive">SuiteCommerce</p>
+    <p class="netsuite">Responsive</p>
+    <p class="js">JS</p>
+  </div>
+  <div class="more"><a href="#">View Project</a></div>
+  <div class="overlay"></div>
+</div>
+
+<div class="tile niner">
+  <div class="logo"></div>
+  <div class="info">
+    <p class="responsive">SuiteCommerce</p>
+    <p class="netsuite">Responsive</p>
+    <p class="js">JS</p>
+  </div>
+  <div class="more"><a href="#">View Project</a></div>
+  <div class="overlay"></div>
+</div>
+
+<div class="tile redfin">
+  <div class="logo"></div>
+  <div class="info">
+    <p class="responsive">SuiteCommerce</p>
+    <p class="netsuite">Responsive</p>
+    <p class="js">JS</p>
+  </div>
+  <div class="more"><a href="#">View Project</a></div>
+  <div class="overlay"></div>
+</div>
+
+<div class="tile redfin">
+  <div class="logo"></div>
+  <div class="info">
+    <p class="responsive">SuiteCommerce</p>
+    <p class="netsuite">Responsive</p>
+    <p class="js">JS</p>
+  </div>
+  <div class="more"><a href="#">View Project</a></div>
+  <div class="overlay"></div>
+</div>
+
+<div class="tile niner">
+  <div class="logo"></div>
+  <div class="info">
+    <p class="responsive">SuiteCommerce</p>
+    <p class="netsuite">Responsive</p>
+    <p class="js">JS</p>
+  </div>
+  <div class="more"><a href="#">View Project</a></div>
+  <div class="overlay"></div>
+</div>
+
+<div class="tile redfin">
+  <div class="logo"></div>
+  <div class="info">
+    <p class="responsive">SuiteCommerce</p>
+    <p class="netsuite">Responsive</p>
+    <p class="js">JS</p>
+  </div>
+  <div class="more"><a href="#">View Project</a></div>
+  <div class="overlay"></div>
+</div>
+</ul>
