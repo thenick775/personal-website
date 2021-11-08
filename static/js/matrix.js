@@ -1,9 +1,8 @@
 function genMatrix(){
-  // geting canvas (skeleton by Boujjou Achraf)
+  //(base skeleton by Boujjou Achraf)
   var c = document.getElementById("c");
   var ctx = c.getContext("2d");
 
-  //characters - taken from the unicode charset
   var matrix = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789诶比西迪伊艾弗吉艾尺艾杰开艾勒艾马艾娜哦屁吉吾艾儿艾一，@#$%^&*()*&^%+-/~{[|`]}".split("");;
   var font_size = 12;
   var columns = c.width/font_size; //number of columns
@@ -11,11 +10,11 @@ function genMatrix(){
   var columns_old = columns;
   //an array of drops - one per column
   var drops = [];
-  //x below is the x coordinate
+  //x coordinate
   for(var x = 0; x < columns; x++)
       drops[x] = Math.floor((Math.random()*rows)+1);//random starting place within screen rows
 
-  //drawing the characters
+  //draw the characters
   function drawmatrix()
   {
       if(!isScrolledIntoView(c)) {return;} //lazy render
@@ -41,10 +40,9 @@ function genMatrix(){
 
       ctx.fillStyle = 'hsl(' + 360 * Math.random() + ', 90%, 50%)';//multi color saturated text
       ctx.font = font_size + "px arial";
-      //looping over drops
+
       for(var i = 0; i < columns; i++)
       {
-          //a random chinese character to print
           var text = matrix[Math.floor(Math.random()*matrix.length)];
           //x = i*font_size, y = value of drops[i]*font_size
           ctx.fillText(text, i*font_size, drops[i]*font_size);

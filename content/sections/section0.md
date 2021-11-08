@@ -5,5 +5,5 @@ improvecontrast: true
 ---
 
 
-### I'm a full stack developer, with a bias towards back end distributed computing.
+### I'm a full stack developer, with a bias towards back-end distributed computing.
 

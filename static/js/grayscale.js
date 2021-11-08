@@ -90,3 +90,36 @@ function checkAnimation() {
 $(window).scroll(function(){
     checkAnimation();
 });
+
+//add button to section 3 for projects
+$(".section-3 > .container > .row > .col-lg-8").append('<a id="projbutton-r" class="btn btn-circle js-scroll-trigger" aria-label="more projects" ><i class="fa fa-angle-double-right animated"></i></a>')
+$(".section-3 > .container > .row > .col-lg-8").append('<a id="projbutton-l" class="btn btn-circle js-scroll-trigger" aria-label="more projects" ><i class="fa fa-angle-double-left animated"></i></a>')
+
+var scrolled = 0;
+$("#projbutton-l").on("click" ,function(){
+    console.log("left clicked")
+    scrolled=scrolled-($(".tile").width()+25);
+    console.log(scrolled)
+    if(scrolled==0){
+      $(".section-3 > .container > .row > .col-lg-8 > #projbutton-l").fadeOut()
+    }
+
+    $(".projects-list").animate({
+        scrollLeft:  scrolled
+    });
+});
+
+$("#projbutton-r").on("click" ,function(){
+  console.log("right clicked")
+  console.log($(".section-3 > .container > .row > .col-lg-8 > #projbutton-l").is(":hidden"))
+
+  if($(".section-3 > .container > .row > .col-lg-8 > #projbutton-l").is(":hidden")){
+    console.log("showing")
+    $(".section-3 > .container > .row > .col-lg-8 > #projbutton-l").fadeIn()
+  }
+    scrolled=scrolled+$(".tile").width()+25;
+    $(".projects-list").animate({
+        scrollLeft:  scrolled
+    });
+});
+

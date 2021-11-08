@@ -214,6 +214,23 @@ header p {
   padding-bottom: 90px !important;
 }
 
+#projbutton-r{
+  position: absolute;
+  padding-right: 10px;
+  right: 0px;
+  top: 48%;
+  line-height:1.5;
+}
+
+#projbutton-l{
+  position: absolute;
+  padding-left: 10px;
+  left: 0px;
+  top: 48%;
+  line-height:1.5;
+  display: none;
+}
+
 #sec-ind-2 > div > div > div > div {
   max-width: 610px;
   margin-left: auto;
@@ -228,6 +245,7 @@ header p {
   opacity: 0;
 }
 
+/*fade in skillls list*/
 .fadeIn {
 
   animation-name: fadeIn;
@@ -328,7 +346,8 @@ ul.banner-social-buttons {
 }
 
 footer {
-  padding: 65px 0;
+  padding-top: 65px;
+  padding-bottom: 10px;
 }
 
 footer p {
@@ -346,24 +365,16 @@ img::selection {
   background: transparent;
 }
 
-
-
-
-
-
-
-
-
+/*projects list css*/
 .projects-list{
-/*    background-color: rgba(255, 0, 255, 0.2);*/
     top: 10px;
     max-width: 650px;
     min-width: 650px;
     height: auto;
     overflow-x: auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
     padding-inline-start: 5px;
+    padding-inline-end: 5px;
     margin: 0 auto;
 }
 
@@ -401,14 +412,14 @@ img::selection {
   min-width: 300px;
   background-size: cover;
   font-family: 'Open Sans', sans-serif;
-  background-color: gray;
+  background-color: #404040;
   display: inline-block;
   border-radius: 10px;
   overflow: hidden;
+  border: 2px solid #42DCA3;
 }
 
 .info {
-  opacity: 0;
   color: white;
   -moz-transition-property: opacity;
   -o-transition-property: opacity;
@@ -443,7 +454,6 @@ img::selection {
 }
 
 .more {
-  opacity: 0;
   color: black;
   margin-top: 15px;
   -moz-transition-property: opacity;
@@ -530,28 +540,29 @@ img::selection {
 }
 
 .tile .logo{
-  width: 140px;
+  width:80%;
   height: 43px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
-
-.kitandace .logo {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/235825/kitandace-color.png");
-}
-
 @media (min-width: 480px) {
   .tile.logo {
     margin-top: 40px;
   }
 }
 
-.niner .logo {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/235825/Niner-logo-color.png");
+.tile:hover{
+  background-color: darkgray;
+  -moz-transition-property: background;
+  -o-transition-property: background;
+  -webkit-transition-property: background;
+  transition-property: background;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
 }
-
-
-.redfin .logo {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/235825/redfin-color.jpg");
- }
 
 
 

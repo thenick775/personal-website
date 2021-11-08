@@ -1,0 +1,12 @@
+<div class='tile {{ .Get "tileclass" }}'>
+  <div class="logo" style="background-image: url('{{ .Get "backgroundimage" }}');"></div>
+  <div class="info">
+    <p class="responsive">{{ .Get "label1" }}</p>
+    <p class="netsuite">{{ .Get "label2" }}</p>
+    <p class="js">{{ .Get "label3" }}</p>
+  </div>
+  {{- if .Get "personal" }}
+  <div class="more"><a href='{{ .Get "pjhref" }}'>View Project</a></div>
+  {{ end }}
+  <div class="overlay"></div>
+</div>
