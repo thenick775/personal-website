@@ -91,10 +91,6 @@ $(window).scroll(function(){
     checkAnimation();
 });
 
-//add button to section 3 for projects
-$(".section-3 > .container > .row > .col-lg-8").append('<a id="projbutton-r" class="btn btn-circle js-scroll-trigger" aria-label="more projects" ><i class="fa fa-angle-double-right animated"></i></a>')
-$(".section-3 > .container > .row > .col-lg-8").append('<a id="projbutton-l" class="btn btn-circle js-scroll-trigger" aria-label="more projects" ><i class="fa fa-angle-double-left animated"></i></a>')
-
 var scrolled = 0;
 $("#projbutton-l").on("click" ,function(){
     console.log("left clicked")

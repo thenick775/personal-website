@@ -1,6 +1,7 @@
 ---
 title: "Projects"
 weight: 4
+projbuttons: true
 ---
 
 ## Projects

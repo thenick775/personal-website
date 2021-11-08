@@ -371,7 +371,7 @@ img::selection {
     max-width: 650px;
     min-width: 650px;
     height: auto;
-    overflow-x: auto;
+    overflow-x: hidden;
     display: grid;
     padding-inline-start: 5px;
     padding-inline-end: 5px;
@@ -416,7 +416,7 @@ img::selection {
   display: inline-block;
   border-radius: 10px;
   overflow: hidden;
-  border: 2px solid #42DCA3;
+
 }
 
 .info {
