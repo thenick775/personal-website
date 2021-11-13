@@ -77,7 +77,7 @@ function checkAnimation() {
         console.log("in viewport")
         $elem.addClass('faded')
         //$elem.addClass('fadeIn');
-        var basetime = 500;
+        var basetime = 300;
         var vartime = 1700;
 
         $elem.children().each((index, child) => {
@@ -97,7 +97,7 @@ $("#projbutton-l").on("click" ,function(){
     scrolled=scrolled-($(".tile").width()+25);
     console.log(scrolled)
     if(scrolled==0){
-      $(".section-3 > .container > .row > .col-lg-8 > #projbutton-l").fadeOut()
+      $(".section-3 > .container > #projbutton-l").fadeOut()
     }
 
     $(".projects-list").animate({
@@ -107,15 +107,24 @@ $("#projbutton-l").on("click" ,function(){
 
 $("#projbutton-r").on("click" ,function(){
   console.log("right clicked")
-  console.log($(".section-3 > .container > .row > .col-lg-8 > #projbutton-l").is(":hidden"))
+  console.log($(".section-3 > .container > #projbutton-l").is(":hidden"))
 
-  if($(".section-3 > .container > .row > .col-lg-8 > #projbutton-l").is(":hidden")){
+  if($(".section-3 > .container > #projbutton-l").is(":hidden")){
     console.log("showing")
-    $(".section-3 > .container > .row > .col-lg-8 > #projbutton-l").fadeIn()
+    $(".section-3 > .container  > #projbutton-l").fadeIn()
   }
     scrolled=scrolled+$(".tile").width()+25;
     $(".projects-list").animate({
         scrollLeft:  scrolled
     });
 });
+
+function popup(mylink, windowname) {
+  if (!window.focus) return true;
+  var href;
+  if (typeof mylink == "string") href = mylink;
+  else href = mylink.href;
+  window.open(href, windowname, "width=800,height=800,scrollbars=yes");
+  return false;
+}
 

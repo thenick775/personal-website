@@ -3,8 +3,10 @@
     <div class="logo2" style="background-image: url('{{ .Get "backgroundimage" }}');">
       <p>{{ .Get "logodescrip" }}</p>
     </div>
-    {{ else }}
+    {{ else if .Get "backgroundimage" }}
       <div class="logo" style="background-image: url('{{ .Get "backgroundimage" }}');"></div>
+    {{ else }}
+        <p>{{ .Get "logodescrip" }}</p>
     {{ end }}
   <div class="info">
     <p class="responsive">{{ .Get "label1" }}</p>

@@ -218,17 +218,21 @@ header p {
   position: absolute;
   padding-right: 10px;
   right: 0px;
-  top: 48%;
+  top: 348%;
   line-height:1.5;
+  z-index: 500;
+  float: right;
 }
 
 #projbutton-l{
   position: absolute;
   padding-left: 10px;
   left: 0px;
-  top: 48%;
+  top: 348%;
   line-height:1.5;
   display: none;
+  z-index: 500;
+  float: left;
 }
 
 #sec-ind-2 > div > div > div > div {
@@ -368,10 +372,10 @@ img::selection {
 /*projects list css*/
 .projects-list{
     top: 10px;
-    max-width: 650px;
-    min-width: 650px;
+    max-width: 610px;
+    min-width: 610px;
     height: auto;
-    overflow-x: hidden;
+    overflow-x: scroll;
     display: grid;
     padding-inline-start: 5px;
     padding-inline-end: 5px;
@@ -379,10 +383,28 @@ img::selection {
     column-gap: 8px;
 }
 
+.projects-list::-webkit-scrollbar {
+    -webkit-appearance: none;
+    height: 15px;
+}
+
+
+.projects-list::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid white; /* should match background, can't be transparent */
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.projects-list::-webkit-scrollbar-track { 
+    background-color: #fff; 
+    border-radius: 8px; 
+} 
+
 @media (max-width: 767px) {
   .projects-list{
-    max-width: 325px;
-    min-width: 325px;
+    max-width: 300px;
+    min-width: 300px;
+    column-gap: 5px;
   }
 }
 
@@ -404,7 +426,7 @@ img::selection {
   background-size: contain;
 }
 
-.tile .logo2{
+.tile .logo2 {
   -moz-transition-property: background-image;
   -o-transition-property: background-image;
   -webkit-transition-property: background-image;
@@ -428,6 +450,32 @@ img::selection {
   padding-left: 86px;
 }
 
+.tile .logo3 {
+  -moz-transition-property: background-image;
+  -o-transition-property: background-image;
+  -webkit-transition-property: background-image;
+  transition-property: background-image;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  margin: 20px auto;
+
+  width:80%;
+  height: 43px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+
+.tile > p{
+  text-align: center;
+  font-size: 23px !important;
+  width: 100%;
+  padding-top: 25px;
+}
+
 .info .responsive:before, .info .netsuite:before, .info .js:before {
   font-family: FontAwesome;
   -webkit-font-smoothing: antialiased;
@@ -438,16 +486,15 @@ img::selection {
 .tile {
   margin: 10px;
   position: relative;
-  width: 32%;
-  height: 240px;
-  min-width: 300px;
+  width: 30%;
+  height: 220px;
+  min-width: 280px;
   background-size: cover;
   font-family: 'Open Sans', sans-serif;
-  background-color: #404040;
+  background-color: #808080;
   display: inline-block;
   border-radius: 10px;
   overflow: hidden;
-
 }
 
 .info {
