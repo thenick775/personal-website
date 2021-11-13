@@ -76,7 +76,6 @@ function checkAnimation() {
         // Start the animation
         console.log("in viewport")
         $elem.addClass('faded')
-        //$elem.addClass('fadeIn');
         var basetime = 300;
         var vartime = 1700;
 

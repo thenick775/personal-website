@@ -192,8 +192,8 @@ header p {
 }
 
 .content-section {
-  padding-top: 150px;
-  padding-bottom: 250px;
+  height: 100%;
+  width: 100%;
 }
 
 .section-1{
@@ -221,7 +221,6 @@ header p {
   top: 348%;
   line-height:1.5;
   z-index: 500;
-  float: right;
 }
 
 #projbutton-l{
@@ -232,7 +231,6 @@ header p {
   line-height:1.5;
   display: none;
   z-index: 500;
-  float: left;
 }
 
 #sec-ind-2 > div > div > div > div {
@@ -288,14 +286,15 @@ header p {
 }
 
 .section-4{
-  padding-bottom: 100px !important;
-  padding-top: 100px !important;
+  padding-bottom: 10% !important;
+  padding-top: 10% !important;
+  height: auto !important;
 }
 
 @media (min-width: 992px) {
   .content-section {
-    padding-top: 200px;
-    padding-bottom: 200px;
+    height: 100%;
+    width: 100%;
   }
 }
 
@@ -633,6 +632,14 @@ img::selection {
   -o-transition-duration: 1s;
   -webkit-transition-duration: 1s;
   transition-duration: 1s;
+}
+
+
+/*project logo classes*/
+.quorumlog {
+  font-size: 20px !important;
+  width: 190px !important;
+  padding-left: 70px !important;
 }
 
 
