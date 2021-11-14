@@ -96,7 +96,7 @@ $("#projbutton-l").on("click" ,function(){
     scrolled=scrolled-($(".tile").width()+25);
     console.log(scrolled)
     if(scrolled==0){
-      $(".section-3 > .container > #projbutton-l").fadeOut()
+      $(".section-3 > .container > .row > .col-lg-8 > #projbutton-l").fadeOut()
     }
 
     $(".projects-list").animate({

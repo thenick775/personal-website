@@ -198,7 +198,14 @@ header p {
 }
 
 .section-1{
-  padding-top: 150px !important;
+  padding-top: 60px !important;
+  min-height: 550px;
+}
+
+@media (min-height: 600px) {
+  .section-1{
+    padding-top: 150px !important;
+  }
 }
 
 .section-2 {
@@ -213,6 +220,7 @@ header p {
 .section-3{
   padding-top: 40px !important;
   padding-bottom: 90px !important;
+  height: auto;
 }
 
 #projbutton-r{
@@ -291,6 +299,7 @@ header p {
   padding-top: 10% !important;
   height: auto !important;
 }
+
 
 @media (min-width: 992px) {
   .content-section {
@@ -640,7 +649,7 @@ img::selection {
 }
 
 
-/*project logo classes*/
+/*project logo custom classes*/
 .quorumlog {
   font-size: 20px !important;
   width: 190px !important;
