@@ -662,7 +662,7 @@ img::selection {
   padding-left: 70px !important;
 }
 
-.tile > p.ingestionapi{
+.tile > .ingestionapi{
   font-size: 20px !important;
 }
 
