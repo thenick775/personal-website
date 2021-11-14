@@ -14,7 +14,7 @@
     <p class="js">{{ .Get "label3" }}</p>
   </div>
   {{- if .Get "personal" }}
-    <div class="more"><a href='{{ .Get "pjh" }}'>View Project</a></div>
+    <div class="more"><a target="_blank" href='{{ .Get "pjh" }}'>View Project</a></div>
   {{ else }}
     <div class="more"><a>Project Detail</a></div>
   {{ end }}
