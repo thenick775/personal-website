@@ -34,6 +34,7 @@ h6 {
 
 p {
   font-size: 16px;
+  /*font-size: 2.7vh;*/
   line-height: 1.5;
   margin: 0 0 25px;
 }
@@ -210,7 +211,7 @@ header p {
 
 @media (min-height: 800px) {
   .section-1{
-    padding-top: 180px !important;
+    padding-top: 150px !important;
   }
 }
 
@@ -227,6 +228,7 @@ header p {
   padding-top: 40px !important;
   padding-bottom: 90px !important;
   height: auto;
+  min-height: 600px;
 }
 
 #projbutton-r{
@@ -301,9 +303,17 @@ header p {
 }
 
 .section-4{
-  padding-bottom: 10% !important;
+  padding-bottom: 80px !important; /*??*/
   padding-top: 10% !important;
-  height: auto !important;
+  height: 50% !important;
+}
+
+@media (min-height: 930px) {
+  .section-4{
+    padding-bottom: 80px !important; /*??*/
+    padding-top: 9% !important;
+    height: 80% !important;
+  }
 }
 
 
