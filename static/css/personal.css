@@ -194,6 +194,7 @@ header p {
 .content-section {
   height: 100%;
   width: 100%;
+  min-height: 500px;
 }
 
 .section-1{
@@ -218,7 +219,7 @@ header p {
   position: absolute;
   padding-right: 10px;
   right: 0px;
-  top: 348%;
+  bottom: 10px;
   line-height:1.5;
   z-index: 500;
 }
@@ -227,7 +228,7 @@ header p {
   position: absolute;
   padding-left: 10px;
   left: 0px;
-  top: 348%;
+  bottom: 10px;
   line-height:1.5;
   display: none;
   z-index: 500;
@@ -586,6 +587,10 @@ img::selection {
   right: 10%;
 }
 
+.more a:not([href]):not([tabindex]) {
+  color: white;
+}
+
 .overlay {
   background: rgba(0, 0, 0, 0.5);
   -moz-transition-property: background;
@@ -640,6 +645,10 @@ img::selection {
   font-size: 20px !important;
   width: 190px !important;
   padding-left: 70px !important;
+}
+
+.tile > p.ingestionapi{
+  font-size: 20px !important;
 }
 
 

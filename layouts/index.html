@@ -28,26 +28,16 @@
 {{ range $ind, $elem := (sort $sections.Resources ".Params.weight") }}
  {{- if eq $ind 0 -}}<header><canvas id="c"></canvas><div id="intro-body">
  {{- else }}<section id="sec-ind-{{ $ind }}" class="section-{{ $ind }} content-section text-center">{{ end }}
- <div class="container"><div class="row">
-    {{- if $elem.Params.projbuttons }}
-        <div class="projbuttonholder">
-            <a id="projbutton-l" class="btn btn-circle js-scroll-trigger" aria-label="more projects" ><i class="fa fa-angle-double-left animated"></i></a>
-        </div>
-    {{ end }}   
-    <div class="col-lg-8 mx-auto">
+ <div class="container"><div class="row"><div class="col-lg-8 mx-auto">
   {{- if $elem.Params.improvecontrast }}<div class="improve-contrast-box">{{ end }}
   {{ default "" $elem.Content }}
   {{- if $elem.Params.improvecontrast }}</div>{{ end }}
   {{ if eq $ind 0 }}<a href="#sec-ind-1" class="btn btn-circle js-scroll-trigger" aria-label="Scroll to Next Section"><i class="fa fa-angle-double-down animated"></i></a>{{ end -}}
- </div>
- {{- if $elem.Params.projbuttons }}
-        <div class="projbuttonholder">
-            <a id="projbutton-r" class="btn btn-circle js-scroll-trigger" aria-label="more projects" ><i class="fa fa-angle-double-right animated"></i></a>
-        </div>
+   {{- if $elem.Params.projbuttons }}
+        <a id="projbutton-r" class="btn btn-circle js-scroll-trigger" aria-label="more projects" ><i class="fa fa-angle-double-right animated"></i></a>
+        <a id="projbutton-l" class="btn btn-circle js-scroll-trigger" aria-label="more projects" ><i class="fa fa-angle-double-left animated"></i></a>
     {{ end }}
-</div>
-
-</div>
+ </div></div></div>
 
  {{ if eq $ind 0 }}</div></header>
  {{- else -}}</section>{{- end }}

@@ -108,9 +108,9 @@ $("#projbutton-r").on("click" ,function(){
   console.log("right clicked")
   console.log($(".section-3 > .container > #projbutton-l").is(":hidden"))
 
-  if($(".section-3 > .container > #projbutton-l").is(":hidden")){
+  if($(".section-3 > .container > .row > .col-lg-8 > #projbutton-l").is(":hidden")){
     console.log("showing")
-    $(".section-3 > .container  > #projbutton-l").fadeIn()
+    $(".section-3 > .container  > .row > .col-lg-8 > #projbutton-l").fadeIn()
   }
     scrolled=scrolled+$(".tile").width()+25;
     $(".projects-list").animate({

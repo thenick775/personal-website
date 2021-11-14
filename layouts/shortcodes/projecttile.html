@@ -1,10 +1,10 @@
 <div class='tile'>
     {{- if .Get "logohastext" }}
-    <div class="logo2" style="background-image: url('{{ .Get "backgroundimage" }}');">
+    <div class="logo2" style="background-image: url('{{ .Get "bi" }}');">
       <p class="{{ .Get "pclass"}}">{{ .Get "logodescrip" }}</p>
     </div>
-    {{ else if .Get "backgroundimage" }}
-      <div class="logo" style="background-image: url('{{ .Get "backgroundimage" }}');"></div>
+    {{ else if .Get "bi" }}
+      <div class="logo" style="background-image: url('{{ .Get "bi" }}');"></div>
     {{ else }}
         <p class="{{ .Get "pclass"}}">{{ .Get "logodescrip" }}</p>
     {{ end }}
@@ -14,7 +14,9 @@
     <p class="js">{{ .Get "label3" }}</p>
   </div>
   {{- if .Get "personal" }}
-  <div class="more"><a href='{{ .Get "pjhref" }}'>View Project</a></div>
+    <div class="more"><a href='{{ .Get "pjh" }}'>View Project</a></div>
+  {{ else }}
+    <div class="more"><a>Project Detail</a></div>
   {{ end }}
   <div class="overlay"></div>
 </div>
