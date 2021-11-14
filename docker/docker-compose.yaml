@@ -1,0 +1,10 @@
+version: '2.1'
+services:
+    webserver:
+        image: nginx
+        build:
+            context: ..
+            dockerfile: ./docker/site/Dockerfile
+        ports:
+            - "80:80"
+            - "443:443"
