@@ -204,7 +204,13 @@ header p {
 
 @media (min-height: 600px) {
   .section-1{
-    padding-top: 150px !important;
+    padding-top: 80px !important;
+  }
+}
+
+@media (min-height: 800px) {
+  .section-1{
+    padding-top: 180px !important;
   }
 }
 
