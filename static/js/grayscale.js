@@ -43,8 +43,8 @@
 
 function isScrolledIntoView(el) {
     var rect = el.getBoundingClientRect();
-    var elemTop = rect.top;
-    var elemBottom = rect.bottom;
+    var elemTop = rect.top-49;
+    var elemBottom = rect.bottom-49;
 
     // Only completely visible elements return true:
     //var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
@@ -74,7 +74,6 @@ function checkAnimation() {
 
     if (isElementInViewport($elem)) {
         // Start the animation
-        console.log("in viewport")
         $elem.addClass('faded')
         var basetime = 300;
         var vartime = 1700;
