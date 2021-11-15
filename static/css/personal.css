@@ -501,7 +501,7 @@ img::selection {
   padding-top: 25px;
 }
 
-.info .responsive:before, .info .netsuite:before, .info .js:before {
+.info .infolabel:before {
   font-family: FontAwesome;
   -webkit-font-smoothing: antialiased;
   margin-right: 5px;
@@ -674,6 +674,27 @@ img::selection {
 
 .tile > .ingestionapi{
   font-size: 20px !important;
+}
+
+.globelogo{
+  font-size: 21px !important;
+  width: 181px !important;
+  padding-left: 72px !important;
+  text-align: left;
+}
+
+.iotvislogo{
+    font-size: 21px !important;
+    width: 181px !important;
+    padding-left: 72px !important;
+    text-align: left;
+}
+
+.ingcluster{
+    font-size: 20px !important;
+    width: 230px !important;
+    padding-left: 72px !important;
+    text-align: left;
 }
 
 

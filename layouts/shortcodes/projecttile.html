@@ -9,9 +9,9 @@
         <p class="{{ .Get "pclass"}}">{{ .Get "logodescrip" }}</p>
     {{ end }}
   <div class="info">
-    <p class="responsive">{{ .Get "label1" }}</p>
-    <p class="netsuite">{{ .Get "label2" }}</p>
-    <p class="js">{{ .Get "label3" }}</p>
+    <p class="infolabel">{{ .Get "l1" }}</p>
+    <p class="infolabel">{{ .Get "l2" }}</p>
+    <p class="infolabel">{{ .Get "l3" }}</p>
   </div>
   {{- if .Get "personal" }}
     <div class="more"><a target="_blank" href='{{ .Get "pjh" }}'>View Project</a></div>
