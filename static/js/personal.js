@@ -88,11 +88,13 @@ function popup(mylink, windowname) {
   return false;
 }
 
-function displayIndustryDescription(){
+function displayIndustryDescription(elem){
   console.log("displaying industry descrip")
   $(".popup-overlay, .popup-content").fadeIn();
   $('body').css('overflow','hidden')
-  $('.popup-content > p').text(industryprojects['airflow-ingestion']);
+  console.log($(elem).attr('arraylink'))
+  $('.popup-content > p').text(industryprojects[$(elem).attr('arraylink')]);
+  $('.popup-content > h2').text($(elem).attr('arraylink'));
 }
 
 $(".close, .popup-overlay").on("click", function() {
@@ -101,5 +103,5 @@ $(".close, .popup-overlay").on("click", function() {
 });
 
 //click handlers
-$('.industrylink').click(function(){ displayIndustryDescription(); return false; });
+$('.industrylink').click(function(){ displayIndustryDescription($(this)); return false; });
 
