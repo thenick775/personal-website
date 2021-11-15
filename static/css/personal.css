@@ -672,8 +672,11 @@ img::selection {
   padding-left: 70px !important;
 }
 
-.tile > .ingestionapi{
+.tile > .logo2 > .ingestionapi{
   font-size: 20px !important;
+  width: 220px !important;
+  padding-left: 72px !important;
+  text-align: left;
 }
 
 .globelogo{
@@ -695,6 +698,36 @@ img::selection {
     width: 230px !important;
     padding-left: 72px !important;
     text-align: left;
+}
+
+.tile > .logo2 > .crawler{
+  font-size: 19px !important;
+  width: 250px !important;
+  padding-left: 72px !important;
+  text-align: left;
+}
+
+
+
+/*******************/
+.popup-overlay {
+  /*Hides pop-up when there is no "active" class*/
+  background: #ffffff;
+  border: 3px solid #666666;
+  border-radius: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  width: 80%;
+  height: 80%;
+  margin:  7% auto;
+}
+
+.popup-content > p , .popup-content > h2 {
+  color: black;
 }
 
 

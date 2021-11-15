@@ -90,7 +90,15 @@ function popup(mylink, windowname) {
 
 function displayIndustryDescription(){
   console.log("displaying industry descrip")
+  $(".popup-overlay, .popup-content").fadeIn();
+  $('body').css('overflow','hidden')
+  $('.popup-content > p').text(industryprojects['airflow-ingestion']);
 }
+
+$(".close, .popup-overlay").on("click", function() {
+  $(".popup-overlay, .popup-content").fadeOut();
+  $('body').css('overflow','auto')
+});
 
 //click handlers
 $('.industrylink').click(function(){ displayIndustryDescription(); return false; });
