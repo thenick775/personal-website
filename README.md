@@ -5,4 +5,4 @@ I chose to make this project with Hugo, as an exercise in learning something new
 # Link
 https://nicholas-vancise.dev
 
-![](website.gif)
+![](readme-graphics/website.gif)
