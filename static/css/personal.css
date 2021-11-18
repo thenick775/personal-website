@@ -239,7 +239,7 @@ header p {
 .section-3{
   padding-top: 40px !important;
   padding-bottom: 90px !important;
-  height: auto;
+  /*height: auto;*/
   min-height: 600px;
 }
 
@@ -460,6 +460,22 @@ img::selection {
     max-width: 300px;
     min-width: 300px;
     column-gap: 5px;
+  }
+}
+
+@media (min-height: 800px) and (min-width: 800px) {
+  .projects-list{
+    transform: scale(1.2);
+    padding-top: 10%;
+  }
+  .my-icb{
+    transform: scale(1.1);
+  }
+  #projbutton-r{
+    right: -55px;
+  }
+  #projbutton-l{
+    left: -55px;
   }
 }
 
