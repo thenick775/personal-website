@@ -199,13 +199,13 @@ header p {
 }
 
 .section-1{
-  padding-top: 60px !important;
+  padding-top: 40px !important;
   min-height: 550px;
 }
 
 @media (min-height: 600px) {
   .section-1{
-    padding-top: 80px !important;
+    padding-top: 60px !important;
   }
 }
 
