@@ -845,7 +845,7 @@ c0-10.683,1.393-16.719,6.502-7.896C343.26,216.322,367.871,239.543,367.871,239.54
   </svg>
   <a href="https://www.djangoproject.com">
     <img
-      src="../img/django.avif"
+      src="../img/django.png"
       alt="django logo"
       height="65"
       width="65"
