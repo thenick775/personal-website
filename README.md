@@ -4,6 +4,8 @@ I chose to make this project with Hugo, as an exercise in learning something new
 
 Major thanks to the [Hugo Grayscale](https://github.com/runningstream/hugograyscale) template creator for inspiration.
 
+This project is powered by Docker and NGINX, and is served from the cloud.
+
 # Link
 https://nicholas-vancise.dev
 
