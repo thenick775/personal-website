@@ -20,8 +20,24 @@
 
 <link href="{{ "vendor/bootstrap/css/bootstrap.min.css" | absURL }}" rel="stylesheet">
 <link href="{{ "vendor/font-awesome/css/font-awesome.min.css" | absURL }}" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-<link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+<!-- connect to domain of font files -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+
+<!-- optionally increase loading priority -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Cabin:700" type="text/css">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css">
+
+<!-- async CSS -->
+<link rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');" href="https://fonts.googleapis.com/css?family=Cabin:700">
+
+<link rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+<!-- no-JS fallback -->
+<noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+</noscript>
 
 <link href="{{ "css/personal.css" | absURL }}" rel="stylesheet">
 
