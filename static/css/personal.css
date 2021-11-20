@@ -34,7 +34,6 @@ h6 {
 
 p {
   font-size: 16px;
-  /*font-size: 2.7vh;*/
   line-height: 1.5;
   margin: 0 0 25px;
 }
@@ -490,31 +489,6 @@ img::selection {
     height: 70% !important;
   }
 }
-
-/*@media (min-height: 800px) {
-  .projects-list{
-    transform: scale(1.2);
-    padding-top: 10%;
-  }
-  #sec-ind-3{
-    min-height: 1.2*600px !important;
-  }
-  .my-icb{
-    transform: scale(1.1);
-  }
-  #projbutton-r{
-    right: -55px;
-  }
-  #projbutton-l{
-    left: -55px;
-  }
-  #about-me{
-    transform: scale(1.2);
-  }
-  .content-section > .container > .row > .col-lg-8 > p{
-    transform: scale(1.2);
-  }
-}*/
 
 .tile .logo {
   -moz-transition-property: background-image;
