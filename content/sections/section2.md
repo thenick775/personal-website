@@ -4,7 +4,7 @@ weight: 3
 improvecontrast: true
 ---
 
-Click For More Information
+Skills
 
 <ul id="skills-list">
   <svg viewbox="0 0 128 128" width="80" height="80">
@@ -860,3 +860,5 @@ c0-10.683,1.393-16.719,6.502-7.896C343.26,216.322,367.871,239.543,367.871,239.54
     />
   </a>
 </ul>
+
+(Click For More Information)
