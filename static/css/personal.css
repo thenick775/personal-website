@@ -485,6 +485,12 @@ img::selection {
   }
 }
 
+@media (min-height: 760px){
+  .section-4 {
+    height: 70% !important;
+  }
+}
+
 /*@media (min-height: 800px) {
   .projects-list{
     transform: scale(1.2);
