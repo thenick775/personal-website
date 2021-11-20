@@ -1,4 +1,6 @@
-This is the home of my personal website. Desktop and mobile friendly.
+This is the home of my personal website, desktop and mobile friendly.
+
+I thought after a few years and a few jobs, that my website needed a new look!
 
 I chose to make this project with Hugo, as an exercise in learning something new.
 
