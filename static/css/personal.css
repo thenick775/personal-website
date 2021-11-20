@@ -224,6 +224,12 @@ header p {
   padding-bottom: 150px;
 }
 
+@media (max-width: 325px) {
+  .section-2{
+    min-height: 700px !important;
+  }
+}
+
 @media (min-height: 600px) and (min-width: 400px) {
   .section-2{
     padding-top: 150px !important;
