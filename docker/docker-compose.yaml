@@ -2,9 +2,16 @@ version: '2.1'
 services:
     webserver:
         image: nginx
+        logging:
+            options:
+                max-size: '50m'
+                max-file: '5'
+            driver: json-file
         build:
             context: ..
             dockerfile: ./docker/site/Dockerfile
+        volumes:
+            - /etc/letsencrypt:/etc/letsencrypt
         ports:
             - "80:80"
             - "443:443"
