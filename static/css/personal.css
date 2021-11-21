@@ -820,5 +820,11 @@ img::selection {
   color: white;
 }
 
+@media (max-width: 678px){
+  .popup-overlay {
+    margin:  15% auto;
+  }
+}
+
 
 
