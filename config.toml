@@ -1,4 +1,4 @@
-baseURL = "http://localhost/"
+baseURL = "https://localhost/"
 languageCode = "en-us"
 title = "Nicholas VanCise"
 theme = "grayscale"
