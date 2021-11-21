@@ -782,6 +782,7 @@ img::selection {
   height: 80%;
   margin:  7% auto;
   z-index: 600;
+  overflow-y: auto;
 }
 
 .popup-content > p {
