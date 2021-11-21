@@ -10,8 +10,6 @@ services:
         build:
             context: ..
             dockerfile: ./docker/site/Dockerfile
-        volumes:
-            - /etc/letsencrypt:/etc/letsencrypt
         ports:
             - "80:80"
             - "443:443"
