@@ -90,11 +90,10 @@ function popup(mylink, windowname) {
 
 function displayIndustryDescription(elem){
   console.log("displaying industry descrip")
-  $(".popup-overlay, .popup-content").fadeIn();
-  $('body').css('overflow','hidden')
-  console.log($(elem).attr('arraylink'))
   $('.popup-content > p').text(industryprojects[$(elem).attr('arraylink')]);
   $('.popup-content > h2').text($(elem).attr('arraylink'));
+  $(".popup-overlay, .popup-content").fadeIn();
+  $('body').css('overflow','hidden')
 }
 
 $(".close, .popup-overlay").on("click", function() {
