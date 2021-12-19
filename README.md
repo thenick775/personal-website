@@ -8,10 +8,17 @@ Major thanks to the [Hugo Grayscale](https://github.com/runningstream/hugograysc
 
 This project is powered by Docker and NGINX, and is served from a cloud hosting provider.
 
+Fail2ban was added as, on most cloud providers, bots started mining for exploits.
+
 # Link
 https://nicholas-vancise.dev
 
 ![](readme-graphics/website.gif)
+
+# Technical details
+- This website's build pipeline is an example of a multi-stage docker build using Hugo
+- This website uses a basic custom nginx configuration
+- This website uses fail2ban to temporarily ban problematic IP addresses through firewall rules using the nginx logs
 
 # Credits
 - Some project icons provided by <a target="_blank" href="https://icons8.com">Icons8</a>
