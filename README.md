@@ -19,6 +19,7 @@ https://nicholas-vancise.dev
 - This website's build pipeline is an example of a multi-stage docker build using Hugo
 - This website uses a basic custom nginx configuration
 - This website uses fail2ban to temporarily ban problematic IP addresses through firewall rules using the nginx logs
+- Certbot certificates are in use, making for easy periodic renewal
 
 # Credits
 - Some project icons provided by <a target="_blank" href="https://icons8.com">Icons8</a>
