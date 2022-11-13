@@ -1,22 +1,24 @@
-<div class='tile'>
-    {{- if .Get "logohastext" }}
-    <div class="logo2" style="background-image: url('{{ .Get "bi" }}');">
-      <p class="{{ .Get "pclass"}}">{{ .Get "logodescrip" }}</p>
-    </div>
-    {{ else if .Get "bi" }}
-      <div class="logo" style="background-image: url('{{ .Get "bi" }}');"></div>
-    {{ else }}
+<li>
+  <div class='tile'>
+      {{- if .Get "logohastext" }}
+      <div class="logo2 {{ .Get "biclass" }}">
         <p class="{{ .Get "pclass"}}">{{ .Get "logodescrip" }}</p>
+      </div>
+      {{ else if .Get "biclass" }}
+        <div class="logo {{ .Get "biclass" }}"></div>
+      {{ else }}
+          <p class="{{ .Get "pclass"}}">{{ .Get "logodescrip" }}</p>
+      {{ end }}
+    <div class="info">
+      <p class="infolabel">{{ .Get "l1" }}</p>
+      <p class="infolabel">{{ .Get "l2" }}</p>
+      <p class="infolabel">{{ .Get "l3" }}</p>
+    </div>
+    {{- if .Get "personal" }}
+      <div class="more"><a rel= “noopener noreferrer” target="_blank" href='{{ .Get "pjh" }}'>View Project</a></div>
+    {{ else }}
+      <div class="more"><div arraylink="{{ .Get "logodescrip" }}" class="industrylink">Project Detail</div></div>
     {{ end }}
-  <div class="info">
-    <p class="infolabel">{{ .Get "l1" }}</p>
-    <p class="infolabel">{{ .Get "l2" }}</p>
-    <p class="infolabel">{{ .Get "l3" }}</p>
+    <div class="overlay"></div>
   </div>
-  {{- if .Get "personal" }}
-    <div class="more"><a rel= “noopener noreferrer” target="_blank" href='{{ .Get "pjh" }}'>View Project</a></div>
-  {{ else }}
-    <div class="more"><a arraylink="{{ .Get "logodescrip" }}" class="industrylink">Project Detail</a></div>
-  {{ end }}
-  <div class="overlay"></div>
-</div>
+</li>
