@@ -1,0 +1,9 @@
+<li>
+	<a aria-label="{{ .Get "label"}}" href="{{ .Get "href"}}">
+		{{- if .Get "svg" }}
+			{{ (.Get "svg" | printf "/assets/svg/%s" | readFile) | safeHTML}}
+		{{ else if .Get "img" }}
+			{{ (.Get "img" | printf "/assets/img/%s" | readFile) | safeHTML}}
+		{{ end }}
+	</a>
+</li>
