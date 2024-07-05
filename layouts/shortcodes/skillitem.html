@@ -1,5 +1,5 @@
 <li>
-	<a aria-label="{{ .Get "label"}}" href="{{ .Get "href"}}">
+	<a aria-label="{{ .Get "label"}}" href="{{ .Get "href"}}" target="_blank">
 		{{- if .Get "svg" }}
 			{{ (.Get "svg" | printf "/assets/svg/%s" | readFile) | safeHTML}}
 		{{ else if .Get "img" }}

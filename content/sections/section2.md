@@ -20,6 +20,7 @@ Skills
   {{< skillitem label="Objective-C" href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html" svg="objc.svg" >}}
   {{< skillitem label="Apache Airflow" href="https://airflow.apache.org" img="airflow.html" >}}
   {{< skillitem label="Amazon Web Services" href="https://aws.amazon.com" svg="aws.svg" >}}
+  {{< skillitem label="React" href="https://react.dev/" svg="react.svg" >}}
   {{< skillitem label="Javascript" href="https://www.javascript.com" svg="javascript.svg" >}}
   {{< skillitem label="D3 Js" href="https://d3js.org" svg="d3.svg" >}}
   {{< skillitem label="Django" href="https://www.djangoproject.com" img="django.html" >}}
