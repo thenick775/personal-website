@@ -11,17 +11,34 @@ This project is powered by Docker and NGINX, and is served from a cloud hosting 
 Fail2ban was added as, on most cloud providers, bots started mining for exploits.
 
 # Link
+
 https://nicholas-vancise.dev
 
 ![](readme-graphics/website.gif)
 
+# Getting started
+
+- navigate to the docker directory
+
+```
+cd ./docker;
+```
+
+- start the container
+
+```
+docker compose up;
+```
+
 # Technical details
+
 - This website's build pipeline is an example of a multi-stage docker build using Hugo
 - This website uses a basic custom nginx configuration
 - This website uses fail2ban to temporarily ban problematic IP addresses through firewall rules using the nginx logs
 - Certbot certificates are in use, making for easy periodic renewal
 
 # Credits
+
 - Some project icons provided by <a target="_blank" href="https://icons8.com">Icons8</a>
 - Some project icons provided by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
 - Some project icons provided by <a href="https://pixabay.com" title="Pixabay">Pixabay</a>
