@@ -323,7 +323,7 @@ header p {
   opacity: 0;
 }
 
-/*fade in skillls list*/
+/*fade in skills list*/
 .fadeIn {
   animation-name: fadeIn;
   -webkit-animation-name: fadeIn;
