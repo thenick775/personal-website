@@ -1,4 +1,3 @@
-baseURL = "https://nicholas-vancise.dev/"
 languageCode = "en-us"
 title = "Nicholas VanCise"
 theme = "grayscale"
@@ -7,6 +6,10 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [params]
     description = "The home of my personal website"
+    [params.production]
+      baseURL = "https://nicholas-vancise.dev/"
+    [params.development]
+      baseURL = "https://localhost"
 
 [Author]
     name = "Nicholas VanCise"
