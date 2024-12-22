@@ -2,9 +2,6 @@ FROM klakegg/hugo:latest AS builder
 WORKDIR /app
 COPY ./ ./
 
-ARG ENVIRONMENT
-ENV HUGO_ENVIRONMENT=${ENVIRONMENT}
-
 RUN hugo -D -d /build-complete
 
 FROM nginx:stable-alpine

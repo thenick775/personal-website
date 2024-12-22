@@ -9,8 +9,6 @@ services:
     build:
       context: .
       dockerfile: ./docker/site/Dockerfile
-      args:
-        environment: ${ENVIRONMENT:-development}
     environment:
       - CLIENT_HOST=${CLIENT_HOST}
     volumes:
