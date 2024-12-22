@@ -12,7 +12,8 @@ services:
     environment:
       - CLIENT_HOST=${CLIENT_HOST}
     volumes:
-      - ${CERT_DIR}:/certs
+      - ${CERT_LOC}:/certs/fullchain.pem
+      - ${KEY_LOC}:/certs/privkey.pem
     ports:
       - '80:80'
       - '443:443'
