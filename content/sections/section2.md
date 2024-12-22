@@ -8,12 +8,12 @@ Skills
 
 {{< skillslist >}}
   {{< skillitem label="Golang" href="https://golang.org" svg="golang.svg" >}}
+  {{< skillitem label="Elixir" href="https://elixir-lang.org/" svg="elixir.svg" >}}
   {{< skillitem label="PostgreSQL" href="https://www.postgresql.org" svg="postgresql.svg" >}}
   {{< skillitem label="Docker" href="https://www.docker.com/why-docker" svg="docker.svg" >}}
   {{< skillitem label="MariaDB" href="https://mariadb.com" svg="mariadb.svg" >}}
   {{< skillitem label="MySQL" href="https://www.mysql.com" svg="mysql.svg" >}}
   {{< skillitem label="Python" href="https://www.python.org" svg="python.svg" >}}
-  {{< skillitem label="Selenium" href="https://pypi.org/project/selenium/" svg="selenium.svg" >}}
   {{< skillitem label="Bash" href="https://www.gnu.org/software/bash/manual/bash.html#What-is-Bash_003f" img="bash.html" >}}
   {{< skillitem label="Git" href="https://git-scm.com" svg="git.svg" >}}
   {{< skillitem label="Java" href="https://www.java.com/" svg="java.svg" >}}
