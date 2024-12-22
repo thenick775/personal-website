@@ -1,11 +1,11 @@
-FROM klakegg/hugo:latest as builder
+FROM klakegg/hugo:latest AS builder
 WORKDIR /app
 COPY ./ ./
 
 RUN hugo -D -d /build-complete
 
 FROM nginx:stable-alpine
-COPY ./docker/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./docker/nginx/nginx.conf.template /etc/nginx/templates/nginx.conf.template
 COPY --from=builder /build-complete /var/www
 
 RUN apk add rsyslog fail2ban

@@ -1,0 +1,18 @@
+services:
+  webserver:
+    image: nginx
+    logging:
+      options:
+        max-size: '50m'
+        max-file: '5'
+      driver: json-file
+    build:
+      context: .
+      dockerfile: ./docker/site/Dockerfile
+    environment:
+      - CLIENT_HOST=${CLIENT_HOST}
+    volumes:
+      - ${CERT_DIR}:/certs
+    ports:
+      - '80:80'
+      - '443:443'
