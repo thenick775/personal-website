@@ -14,11 +14,11 @@ Skills
   {{< skillitem label="MariaDB" href="https://mariadb.com" svg="mariadb.svg" >}}
   {{< skillitem label="MySQL" href="https://www.mysql.com" svg="mysql.svg" >}}
   {{< skillitem label="Python" href="https://www.python.org" svg="python.svg" >}}
-  {{< skillitem label="Bash" href="https://www.gnu.org/software/bash/manual/bash.html#What-is-Bash_003f" img="bash.html" >}}
+  {{< skillitem label="Bash" href="https://www.gnu.org/software/bash/manual/bash.html#What-is-Bash_003f" svg="bash.svg" >}}
   {{< skillitem label="Git" href="https://git-scm.com" svg="git.svg" >}}
   {{< skillitem label="Java" href="https://www.java.com/" svg="java.svg" >}}
   {{< skillitem label="Objective-C" href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html" svg="objc.svg" >}}
-  {{< skillitem label="Apache Airflow" href="https://airflow.apache.org" img="airflow.html" >}}
+  {{< skillitem label="Apache Airflow" href="https://airflow.apache.org" svg="airflow.svg" >}}
   {{< skillitem label="Amazon Web Services" href="https://aws.amazon.com" svg="aws.svg" >}}
   {{< skillitem label="React" href="https://react.dev/" svg="react.svg" >}}
   {{< skillitem label="Javascript" href="https://www.javascript.com" svg="javascript.svg" >}}

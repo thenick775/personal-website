@@ -941,6 +941,82 @@ img::selection {
   margin-top: 5px;
 }
 
+.bash-logo .Drop_x0020_Shadow {
+  fill: none;
+}
+
+.bash-logo .Round_x0020_Corners_x0020_2_x0020_pt {
+  fill: #ffffff;
+  stroke: #1b1b1f;
+  stroke-miterlimit: 10;
+}
+
+.bash-logo .Live_x0020_Reflect_x0020_X {
+  fill: none;
+}
+
+.bash-logo .Bevel_x0020_Soft {
+  fill: url(#SVGID_1_);
+}
+
+.bash-logo .Dusk {
+  fill: #ffffff;
+}
+
+.bash-logo .Foliage_GS {
+  fill: #ffdc00;
+}
+
+.bash-logo .Pompadour_GS {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #58aee2;
+}
+
+.bash-logo .st0 {
+  fill: none;
+}
+
+.bash-logo .st1 {
+  fill: #ffffff;
+}
+
+.bash-logo .st2 {
+  fill: #283037;
+}
+
+.bash-logo .st3 {
+  fill: #4da825;
+}
+
+.bash_logo .stop-1 {
+  stop-color: #e6e6ea;
+}
+
+.bash_logo .stop-2 {
+  stop-color: #e2e2e6;
+}
+
+.bash_logo .stop-3 {
+  stop-color: #d7d6da;
+}
+
+.bash_logo .stop-4 {
+  stop-color: #c4c2c5;
+}
+
+.bash_logo .stop-5 {
+  stop-color: #a9a7a8;
+}
+
+.bash_logo .stop-6 {
+  stop-color: #878484;
+}
+
+.bash_logo .stop-7 {
+  stop-color: #6d6968;
+}
+
 /*projects logos*/
 
 .metroidvania-logo {
@@ -952,7 +1028,7 @@ img::selection {
 }
 
 .airflow-logo {
-  background-image: url('https://cdn.glitch.com/1c8b9dae-46f0-4399-b908-ed8e1e6203ac%2Fairflow.svg?v=1578179668475');
+  background-image: url('../img/airflow.svg');
 }
 
 .ingestion-api-logo {
