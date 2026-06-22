@@ -53,11 +53,13 @@
     color: var(--color-text);
     background: rgba(6, 10, 16, 0.98);
     border: 1px solid rgba(255, 255, 255, 0.12);
+    will-change: transform, opacity;
   }
 
   .project-dialog::backdrop {
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0);
+    transition: background 260ms cubic-bezier(.2,.9,.2,1), backdrop-filter 260ms cubic-bezier(.2,.9,.2,1);
   }
 
   .dialog-shell {
@@ -97,5 +99,89 @@
     white-space: pre-line;
     color: var(--color-text-muted);
     line-height: 1.8;
+  }
+
+  .project-dialog {
+    opacity: 0;
+    transform: translateY(20px) scale(0.986);
+    transform-origin: center center;
+    pointer-events: none;
+  }
+
+  .project-dialog[open] {
+    pointer-events: auto;
+    animation: dialog-in 260ms cubic-bezier(.16,.84,.52,1) both;
+  }
+
+  @keyframes dialog-in {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.986);
+      filter: blur(1px);
+    }
+    60% {
+      opacity: 1;
+      transform: translateY(-6px) scale(1.02);
+      filter: blur(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  .project-dialog[open]::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(12px);
+  }
+
+  .dialog-header,
+  .dialog-title,
+  .dialog-copy {
+    opacity: 0;
+    transform: translateY(6px);
+    will-change: transform, opacity;
+  }
+
+  .project-dialog[open] .dialog-header {
+    animation: content-fade 260ms ease both;
+    animation-delay: 90ms;
+  }
+
+  .project-dialog[open] .dialog-title {
+    animation: content-fade 260ms ease both;
+    animation-delay: 140ms;
+  }
+
+  .project-dialog[open] .dialog-copy {
+    animation: content-fade 320ms ease both;
+    animation-delay: 180ms;
+  }
+
+  @keyframes content-fade {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .project-dialog,
+    .project-dialog::backdrop,
+    .project-dialog[open],
+    .dialog-header,
+    .dialog-title,
+    .dialog-copy {
+      animation: none !important;
+      transition: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+      filter: none !important;
+    }
   }
 </style>

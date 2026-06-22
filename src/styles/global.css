@@ -61,7 +61,7 @@ canvas {
 }
 
 .viewport-section {
-  min-height: calc(100dvh - var(--nav-offset));
+  min-height: 100dvh;
 }
 
 @media (min-width: 768px) {

@@ -52,8 +52,7 @@ const navItems = [
       const target = document.querySelector(hash);
       if (!(target instanceof HTMLElement)) return;
 
-      const navHeight = syncNavOffset();
-      const top = target.offsetTop - navHeight;
+      const top = target.offsetTop;
       window.scrollTo({ top, behavior: 'smooth' });
     };
 
