@@ -11,8 +11,8 @@ export const site = {
     title: 'About Me',
     paragraphs: [
       'My name is Nicholas VanCise, and puzzles are my favorite pastime!',
-      "Currently I'm working on my masters at the University of Nevada Las Vegas, as well as pursuing my dreams as a software engineer.",
-      'In addition to this, in my own time I dabble in emulator development, webscraping, data visualization, and infrastructure programming.',
+      "Currently I'm working on honing my craft, and building software I love while pursuing my dreams as a software engineer.",
+      'In addition to this, in my own time I dabble in emulator development, functional languages, data visualization, and infrastructure programming.',
       "When I'm not studying or working on my personal projects I spend my time enjoying nature, reading science fiction, and working on classic vehicles!",
     ] as string[],
   },
