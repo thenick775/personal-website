@@ -1,34 +1,35 @@
-# Astro Starter Kit: Basics
+# Personal Website
 
-```sh
-npm create astro@latest -- --template basics
-```
+<div>
+  <a href="https://github.com/thenick775/personal-website-v3/releases">
+    <img alt="GitHub Release" src="https://img.shields.io/github/v/release/thenick775/personal-website-v3">
+  </a>
+  <a href="https://github.com/thenick775/personal-website-v3/actions">
+    <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/thenick775/personal-website-v3/build.yml">
+  </a>
+</div>
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+<br/>
 
-## 🚀 Project Structure
+This is the home of my personal website, desktop and mobile friendly.
 
-Inside of your Astro project, you'll see the following folders and files:
+I thought after a few years and a few more new jobs, that my website needed a new look!
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+I chose to make this project with Astro, as an exercise in learning something new.
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+This project is powered by Docker and NGINX, and is served from a cloud hosting provider.
 
-## 🧞 Commands
+Fail2ban was added as, on most cloud providers, bots started mining for exploits.
+
+# Link
+
+https://nicholas-vancise.dev
+
+# Getting started
+
+# Technical details
+
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -40,7 +41,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm run lint`            | Run eslint                                       |
+| `npm run lint:fix`        | Run eslint with auto fix                         |
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+# Credits
