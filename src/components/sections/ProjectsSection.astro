@@ -1,0 +1,44 @@
+---
+import type { Project } from '../../data/projects';
+import ProjectCard from '../projects/ProjectCard.astro';
+import ProjectDetailDialog from '../projects/ProjectDetailDialog.astro';
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+---
+
+<section id="projects" class="section-block viewport-section projects-section">
+  <div class="section-shell" data-scroll-anchor>
+    <p class="eyebrow">Projects</p>
+    <h2 class="section-heading">Selected work.</h2>
+    <div class="project-grid">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </div>
+  <ProjectDetailDialog />
+</section>
+
+<style>
+  .projects-section {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+  }
+
+  .project-grid {
+    display: grid;
+    gap: 1rem;
+    max-width: 39rem;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 700px) {
+    .project-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
+    }
+  }
+</style>

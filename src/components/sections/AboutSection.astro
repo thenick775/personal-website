@@ -1,0 +1,65 @@
+---
+interface Props {
+  title: string;
+  paragraphs: string[];
+}
+
+const { title, paragraphs } = Astro.props;
+---
+
+<section id="about" class="section-block viewport-section about-section">
+  <div class="section-shell about-grid" data-scroll-anchor>
+    <div>
+      <p class="eyebrow">About</p>
+      <h2 class="section-heading">{title}</h2>
+    </div>
+    <div class="surface-panel about-copy">
+      {paragraphs.map((paragraph) => (
+        <p class="section-copy">{paragraph}</p>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    display: flex;
+    align-items: center;
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.72)),
+      url('/images/IMG_1615_min.jpg') no-repeat center center / cover;
+  }
+
+  .about-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .about-grid > div:first-child {
+    align-self: start;
+  }
+
+  .about-copy {
+    padding: clamp(1.4rem, 3vw, 2rem);
+    background: rgba(0, 0, 0, 0.74);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.95);
+  }
+
+  .about-copy p + p {
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 900px) {
+    .about-grid {
+      grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .about-section {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,73 @@
+---
+import type { ContactLink } from '../../data/contact';
+
+interface Props {
+  title: string;
+  intro: string;
+  links: ContactLink[];
+}
+
+const { title, intro, links } = Astro.props;
+---
+
+<section id="contact" class="section-block viewport-section contact-section">
+  <div class="section-shell contact-grid" data-scroll-anchor>
+    <div>
+      <p class="eyebrow">Contact</p>
+      <h2 class="section-heading">{title}</h2>
+      <p class="section-copy">{intro}</p>
+    </div>
+
+    <ul class="contact-links">
+      {links.map((link) => (
+        <li>
+          <a
+            class="button-pill contact-pill"
+            href={link.href}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+  }
+
+  .contact-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .contact-links {
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .contact-pill {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (min-width: 900px) {
+    .contact-grid {
+      grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr);
+      align-items: start;
+    }
+
+    .contact-links {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

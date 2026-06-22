@@ -1,0 +1,101 @@
+---
+import type { Project } from '../../data/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="project-card surface-panel">
+  <div class="project-branding">
+    <p class:list={[ 'project-title', project.textClass ]}>{project.logoText ?? project.name}</p>
+  </div>
+
+  <ul class="project-tags" aria-label={`${project.name} technologies`}>
+    {project.labels.map((label) => <li>{label}</li>)}
+  </ul>
+
+  <div class="project-actions">
+    {project.personal && project.href ? (
+      <a class="button-pill project-action" href={project.href} target="_blank" rel="noopener noreferrer">
+        View project
+      </a>
+    ) : (
+      <button
+        class="button-pill project-action"
+        type="button"
+        data-project-detail
+        data-project-name={project.name}
+        data-project-description={project.detail ?? ''}
+      >
+        Project detail
+      </button>
+    )}
+  </div>
+</article>
+
+<style>
+  .project-card {
+    display: grid;
+    gap: 1.25rem;
+    min-height: 15.5rem;
+    padding: 1.4rem;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+      #2f3238;
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      background-color 180ms ease;
+  }
+
+  .project-card:hover,
+  .project-card:focus-within {
+    transform: translateY(-4px);
+    border-color: rgba(66, 220, 163, 0.45);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)),
+      #373c43;
+  }
+
+  .project-branding {
+    min-height: 3.75rem;
+  }
+
+  .project-title {
+    margin: 0;
+    font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+
+  .project-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .project-tags li {
+    display: inline-flex;
+    padding: 0.32rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.22);
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 0.82rem;
+    line-height: 1.2;
+  }
+
+  .project-actions {
+    margin-top: auto;
+  }
+
+  .project-action {
+    min-width: 10rem;
+  }
+</style>

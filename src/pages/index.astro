@@ -1,11 +1,83 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import TopNav from '../components/site/TopNav.astro';
+import HeroSection from '../components/hero/HeroSection.astro';
+import AboutSection from '../components/sections/AboutSection.astro';
+import SkillsSection from '../components/sections/SkillsSection.astro';
+import ProjectsSection from '../components/sections/ProjectsSection.astro';
+import ContactSection from '../components/sections/ContactSection.astro';
+import Footer from '../components/site/Footer.astro';
+import { site } from '../data/site';
+import { skills } from '../data/skills';
+import { projects } from '../data/projects';
+import { contactLinks } from '../data/contact';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const navItems = [
+  { id: 'about', label: 'About' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'contact', label: 'Contact' },
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<SiteLayout
+  title={site.title}
+  description={site.description}
+>
+  <TopNav items={navItems} title={site.title} />
+  <main>
+    <HeroSection eyebrow="Personal Website" heading={site.hero.heading} />
+    <AboutSection title={site.about.title} paragraphs={site.about.paragraphs} />
+    <SkillsSection skills={skills} />
+    <ProjectsSection projects={projects} />
+    <ContactSection
+      title={site.contact.title}
+      intro={site.contact.intro}
+      links={contactLinks}
+    />
+  </main>
+  <Footer />
+
+  <script is:inline>
+    const syncNavOffset = () => {
+      const nav = document.querySelector('[data-nav-root]');
+      if (!(nav instanceof HTMLElement)) return 48;
+
+      const navHeight = nav.offsetHeight;
+      document.documentElement.style.setProperty('--nav-offset', `${navHeight}px`);
+      return navHeight;
+    };
+
+    const scrollToHash = (hash) => {
+      const target = document.querySelector(hash);
+      if (!(target instanceof HTMLElement)) return;
+
+      const navHeight = syncNavOffset();
+      const top = target.offsetTop - navHeight;
+      window.scrollTo({ top, behavior: 'smooth' });
+    };
+
+    document.addEventListener('click', (event) => {
+      const link = event.target instanceof Element ? event.target.closest('a[href^="#"]') : null;
+      if (!(link instanceof HTMLAnchorElement)) return;
+
+      const hash = link.getAttribute('href');
+      if (!hash || hash === '#') return;
+
+      event.preventDefault();
+      history.replaceState(null, '', hash);
+      scrollToHash(hash);
+    });
+
+    window.addEventListener('resize', () => {
+      syncNavOffset();
+    });
+
+    window.addEventListener('load', () => {
+      syncNavOffset();
+      if (window.location.hash) {
+        requestAnimationFrame(() => scrollToHash(window.location.hash));
+      }
+    });
+  </script>
+</SiteLayout>

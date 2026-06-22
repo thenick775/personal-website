@@ -1,0 +1,158 @@
+---
+import type { Skill } from '../../data/skills';
+
+interface Props {
+  skills: Skill[];
+}
+
+const { skills } = Astro.props;
+---
+
+<section id="skills" class="section-block viewport-section skills-section">
+  <div class="section-shell skills-shell" data-scroll-anchor>
+    <div class="skills-copy">
+      <p class="eyebrow">Skills</p>
+      <h2 class="section-heading">Tools and technologies.</h2>
+      <p class="section-copy section-intro">
+        Click for more information.
+      </p>
+    </div>
+
+    <div class="skills-gallery surface-panel">
+      <ul class="skills-grid" aria-label="Skills list">
+        {skills.map((skill) => (
+          <li>
+            <a class="skill-pill" href={skill.href} target="_blank" rel="noopener noreferrer" aria-label={skill.label} title={skill.label}>
+              <img class="skill-icon" src={skill.icon} alt="" loading="lazy" width="72" height="72" />
+              <span class="visually-hidden">{skill.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-section {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+  }
+
+  .skills-shell {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .skills-copy {
+    max-width: 32rem;
+  }
+
+  .section-intro {
+    margin-bottom: 0;
+  }
+
+  .skills-gallery {
+    padding: clamp(1.1rem, 2.5vw, 1.75rem);
+    background: rgba(8, 12, 18, 0.88);
+  }
+
+  .skills-grid {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.95rem 1.15rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .skill-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 5.5rem;
+    height: 5.5rem;
+    padding: 0.4rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition:
+      transform 160ms ease,
+      filter 160ms ease,
+      border-color 160ms ease,
+      background-color 160ms ease;
+  }
+
+  .skill-pill:hover,
+  .skill-pill:focus-visible {
+    transform: translateY(-4px);
+    filter: brightness(1.06);
+    border-color: rgba(66, 220, 163, 0.4);
+    background: rgba(66, 220, 163, 0.06);
+    outline: none;
+  }
+
+  .skill-icon {
+    display: block;
+    width: 4.5rem;
+    height: 4.5rem;
+    object-fit: contain;
+  }
+
+  @media (min-width: 768px) {
+    .skills-shell {
+      gap: 2rem;
+    }
+
+    .skills-gallery {
+      padding: 1.75rem 2rem;
+    }
+
+    .skills-grid {
+      gap: 1rem 1.4rem;
+    }
+
+    .skill-pill {
+      width: 5.75rem;
+      height: 5.75rem;
+    }
+
+    .skill-icon {
+      width: 4.75rem;
+      height: 4.75rem;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .skills-grid li:nth-child(3n + 1) {
+      transform: translateY(-0.35rem);
+    }
+
+    .skills-grid li:nth-child(3n + 2) {
+      transform: translateY(0.3rem);
+    }
+
+    .skills-grid li:nth-child(3n + 3) {
+      transform: translateY(-0.15rem);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .skills-grid {
+      gap: 0.7rem 0.8rem;
+    }
+
+    .skill-pill {
+      width: 4.6rem;
+      height: 4.6rem;
+    }
+
+    .skill-icon {
+      width: 3.85rem;
+      height: 3.85rem;
+    }
+  }
+</style>
