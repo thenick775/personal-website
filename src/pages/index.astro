@@ -13,7 +13,7 @@ import { projects } from '../data/projects';
 import { contactLinks } from '../data/contact';
 
 const navItems = [
-  { id: "#", label: "Intro"},
+  { id: '#', label: 'Intro' },
   { id: '#about', label: 'About' },
   { id: '#skills', label: 'Skills' },
   { id: '#projects', label: 'Projects' },
@@ -21,10 +21,7 @@ const navItems = [
 ];
 ---
 
-<SiteLayout
-  title={site.title}
-  description={site.description}
->
+<SiteLayout title={site.title} description={site.description}>
   <TopNav items={navItems} title={site.title} />
   <main>
     <HeroSection eyebrow={site.hero.eyebrow} heading={site.hero.heading} />
@@ -45,7 +42,10 @@ const navItems = [
       if (!(nav instanceof HTMLElement)) return 48;
 
       const navHeight = nav.offsetHeight;
-      document.documentElement.style.setProperty('--nav-offset', `${navHeight}px`);
+      document.documentElement.style.setProperty(
+        '--nav-offset',
+        `${navHeight}px`,
+      );
       return navHeight;
     };
 
@@ -57,8 +57,75 @@ const navItems = [
       window.scrollTo({ top, behavior: 'smooth' });
     };
 
+    const setActiveNavLink = (hash) => {
+      document.querySelectorAll('[data-nav-link]').forEach((link) => {
+        if (!(link instanceof HTMLAnchorElement)) return;
+
+        const active = link.getAttribute('href') === hash;
+        link.toggleAttribute('data-active', active);
+
+        if (active) {
+          link.setAttribute('aria-current', 'page');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    };
+
+    const initActiveNavTracking = () => {
+      const nav = document.querySelector('[data-nav-root]');
+      if (!(nav instanceof HTMLElement)) return;
+
+      const sections = ['#about', '#skills', '#projects', '#contact']
+        .map((hash) => {
+          const element = document.querySelector(hash);
+          return element instanceof HTMLElement ? { hash, element } : null;
+        })
+        .filter(Boolean);
+
+      let frame = 0;
+
+      const updateActiveNav = () => {
+        const scrollMarker = window.scrollY + nav.offsetHeight + 24;
+        let currentHash = '#';
+
+        sections.forEach((section) => {
+          if (section.element.offsetTop <= scrollMarker) {
+            currentHash = section.hash;
+          }
+        });
+
+        setActiveNavLink(currentHash);
+      };
+
+      const scheduleUpdate = () => {
+        if (frame) return;
+
+        frame = window.requestAnimationFrame(() => {
+          frame = 0;
+          updateActiveNav();
+        });
+      };
+
+      updateActiveNav();
+      window.addEventListener('scroll', scheduleUpdate, { passive: true });
+      window.addEventListener('resize', scheduleUpdate);
+      window.addEventListener(
+        'pagehide',
+        () => {
+          if (frame) {
+            window.cancelAnimationFrame(frame);
+          }
+        },
+        { once: true },
+      );
+    };
+
     document.addEventListener('click', (event) => {
-      const link = event.target instanceof Element ? event.target.closest('a[href^="#"]') : null;
+      const link =
+        event.target instanceof Element
+          ? event.target.closest('a[href^="#"]')
+          : null;
       if (!(link instanceof HTMLAnchorElement)) return;
 
       const hash = link.getAttribute('href');
@@ -66,6 +133,7 @@ const navItems = [
 
       event.preventDefault();
       history.replaceState(null, '', hash);
+      setActiveNavLink(hash);
       scrollToHash(hash);
     });
 
@@ -75,6 +143,7 @@ const navItems = [
 
     window.addEventListener('load', () => {
       syncNavOffset();
+      initActiveNavTracking();
       if (window.location.hash) {
         requestAnimationFrame(() => scrollToHash(window.location.hash));
       }

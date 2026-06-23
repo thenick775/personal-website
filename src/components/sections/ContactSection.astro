@@ -19,18 +19,20 @@ const { title, intro, links } = Astro.props;
     </div>
 
     <ul class="contact-links">
-      {links.map((link) => (
-        <li>
-          <a
-            class="button-pill contact-pill"
-            href={link.href}
-            target={link.external ? '_blank' : undefined}
-            rel={link.external ? 'noopener noreferrer' : undefined}
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
+      {
+        links.map((link) => (
+          <li>
+            <a
+              class="button-pill contact-pill"
+              href={link.href}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </section>

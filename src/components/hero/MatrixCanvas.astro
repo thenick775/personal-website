@@ -4,11 +4,16 @@
   const canvas = document.querySelector('[data-matrix-canvas]');
 
   if (canvas instanceof HTMLCanvasElement) {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
     const context = canvas.getContext('2d');
 
     if (context && !reduceMotion) {
-      const glyphs = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789诶比西迪伊艾弗吉艾尺艾杰开艾勒艾马艾娜哦屁吉吾艾儿艾一，@#$%^&*()*&^%+-/~{[|`]}'.split('');
+      const glyphs =
+        'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789诶比西迪伊艾弗吉艾尺艾杰开艾勒艾马艾娜哦屁吉吾艾儿艾一，@#$%^&*()*&^%+-/~{[|`]}'.split(
+          '',
+        );
       const fontSize = 12;
       let columns = 0;
       let rows = 0;
@@ -62,7 +67,10 @@
           );
           const normalizedDrop = previousDrops[mappedIndex] / previousRows;
 
-          return Math.max(0, Math.min(nextRows + 1, Math.round(normalizedDrop * nextRows)));
+          return Math.max(
+            0,
+            Math.min(nextRows + 1, Math.round(normalizedDrop * nextRows)),
+          );
         });
 
         columns = nextColumns;
@@ -112,11 +120,15 @@
         }
       }, 1500);
 
-      window.addEventListener('pagehide', () => {
-        observer.disconnect();
-        window.clearInterval(widthPollId);
-        window.cancelAnimationFrame(rafId);
-      }, { once: true });
+      window.addEventListener(
+        'pagehide',
+        () => {
+          observer.disconnect();
+          window.clearInterval(widthPollId);
+          window.cancelAnimationFrame(rafId);
+        },
+        { once: true },
+      );
     }
   }
 </script>

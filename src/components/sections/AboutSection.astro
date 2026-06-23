@@ -14,9 +14,7 @@ const { title, paragraphs } = Astro.props;
       <h2 class="section-heading">{title}</h2>
     </div>
     <div class="surface-panel about-copy">
-      {paragraphs.map((paragraph) => (
-        <p class="section-copy">{paragraph}</p>
-      ))}
+      {paragraphs.map((paragraph) => <p class="section-copy">{paragraph}</p>)}
     </div>
   </div>
 </section>
@@ -27,7 +25,8 @@ const { title, paragraphs } = Astro.props;
     align-items: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background: url(/images/IMG_1615_min.jpg) center center / cover no-repeat scroll black;
+    background: url(/images/IMG_1615_min.jpg) center center / cover no-repeat
+      scroll black;
   }
 
   .about-grid {

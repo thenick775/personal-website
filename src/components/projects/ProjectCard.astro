@@ -10,7 +10,9 @@ const { project } = Astro.props;
 
 <article class="project-card surface-panel">
   <div class="project-branding">
-    <p class:list={[ 'project-title', project.textClass ]}>{project.logoText ?? project.name}</p>
+    <p class:list={['project-title', project.textClass]}>
+      {project.logoText ?? project.name}
+    </p>
   </div>
 
   <ul class="project-tags" aria-label={`${project.name} technologies`}>
@@ -18,21 +20,28 @@ const { project } = Astro.props;
   </ul>
 
   <div class="project-actions">
-    {project.personal && project.href ? (
-      <a class="button-pill project-action" href={project.href} target="_blank" rel="noopener noreferrer">
-        View project
-      </a>
-    ) : (
-      <button
-        class="button-pill project-action"
-        type="button"
-        data-project-detail
-        data-project-name={project.name}
-        data-project-description={project.detail ?? ''}
-      >
-        Project detail
-      </button>
-    )}
+    {
+      project.personal && project.href ? (
+        <a
+          class="button-pill project-action"
+          href={project.href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View project
+        </a>
+      ) : (
+        <button
+          class="button-pill project-action"
+          type="button"
+          data-project-detail
+          data-project-name={project.name}
+          data-project-description={project.detail ?? ''}
+        >
+          Project detail
+        </button>
+      )
+    }
   </div>
 </article>
 
@@ -43,7 +52,11 @@ const { project } = Astro.props;
     min-height: 15.5rem;
     padding: 1.4rem;
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.02)
+      ),
       #2f3238;
     transition:
       transform 180ms ease,
@@ -56,7 +69,11 @@ const { project } = Astro.props;
     transform: translateY(-4px);
     border-color: rgba(66, 220, 163, 0.45);
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)),
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.08),
+        rgba(255, 255, 255, 0.04)
+      ),
       #373c43;
   }
 

@@ -26,15 +26,23 @@ const { items, title } = Astro.props;
       <span class="menu-icon" aria-hidden="true">+</span>
     </button>
 
-    <div class="menu-panel" id="site-menu" data-menu-panel aria-hidden="true" data-open="false">
+    <div
+      class="menu-panel"
+      id="site-menu"
+      data-menu-panel
+      aria-hidden="true"
+      data-open="false"
+    >
       <ul class="menu-list">
-        {items.map((item) => (
-          <li>
-            <a href={item.id} data-menu-link>
-              {item.label}
-            </a>
-          </li>
-        ))}
+        {
+          items.map((item) => (
+            <li>
+              <a href={item.id} data-menu-link data-nav-link>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </div>
@@ -183,6 +191,10 @@ const { items, title } = Astro.props;
     text-transform: uppercase;
     color: var(--color-text-muted);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition:
+      color 160ms ease,
+      border-color 160ms ease,
+      background-color 160ms ease;
   }
 
   .menu-list li:last-child a {
@@ -190,6 +202,8 @@ const { items, title } = Astro.props;
   }
 
   .menu-list a:hover,
+  .menu-list a[data-active],
+  .menu-list a[aria-current='page'],
   .menu-list a:focus-visible {
     color: var(--color-text);
     outline: none;
@@ -234,6 +248,14 @@ const { items, title } = Astro.props;
 
     .menu-list a {
       padding: 0;
+      background: transparent;
+    }
+
+    .menu-list a:hover,
+    .menu-list a[data-active],
+    .menu-list a[aria-current='page'],
+    .menu-list a:focus-visible {
+      background: transparent;
     }
   }
 </style>

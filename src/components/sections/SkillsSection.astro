@@ -13,21 +13,35 @@ const { skills } = Astro.props;
     <div class="skills-copy">
       <p class="eyebrow">Skills</p>
       <h2 class="section-heading">Tools and technologies.</h2>
-      <p class="section-copy section-intro">
-        Click for more information.
-      </p>
+      <p class="section-copy section-intro">Click for more information.</p>
     </div>
 
     <div class="skills-gallery surface-panel">
       <ul class="skills-grid" aria-label="Skills list">
-        {skills.map((skill) => (
-          <li>
-            <a class="skill-pill" href={skill.href} target="_blank" rel="noopener noreferrer" aria-label={skill.label} title={skill.label}>
-              <img class="skill-icon" src={skill.icon} alt="" loading="lazy" width="72" height="72" />
-              <span class="visually-hidden">{skill.label}</span>
-            </a>
-          </li>
-        ))}
+        {
+          skills.map((skill) => (
+            <li>
+              <a
+                class="skill-pill"
+                href={skill.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={skill.label}
+                title={skill.label}
+              >
+                <img
+                  class="skill-icon"
+                  src={skill.icon}
+                  alt=""
+                  loading="lazy"
+                  width="72"
+                  height="72"
+                />
+                <span class="visually-hidden">{skill.label}</span>
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </div>
@@ -129,5 +143,4 @@ const { skills } = Astro.props;
       height: 4.75rem;
     }
   }
-
 </style>
