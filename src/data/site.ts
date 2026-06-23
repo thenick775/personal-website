@@ -3,7 +3,7 @@ export const site = {
   description: 'The home of my personal website',
   language: 'en-us',
   hero: {
-    eyebrow: 'personal website',
+    eyebrow: 'software is art',
     heading:
       "I'm a full stack developer, with a bias towards back-end distributed computing.",
   },
