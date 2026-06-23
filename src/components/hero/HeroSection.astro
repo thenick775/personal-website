@@ -60,58 +60,58 @@ const { eyebrow, heading } = Astro.props;
   }
 
   .hero-copy {
-    width: min(100%, 38rem);
-    padding: clamp(1rem, 3vw, 1.75rem);
+    width: min(100%, 29rem);
+    padding: 0.9rem 0;
     text-align: center;
   }
 
   h1 {
     margin: 0;
     font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: clamp(2rem, 3vw, 3.75rem);
-    line-height: 1.02;
+    font-size: clamp(1.55rem, 7vw, 2rem);
+    line-height: 0.96;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     text-wrap: balance;
   }
 
   .intro-copy {
-    margin: 1.35rem 0 0;
+    margin: 1rem 0 0;
     max-width: 31rem;
     margin-left: auto;
     margin-right: auto;
-    font-size: clamp(1rem, 1.45vw, 1.1rem);
-    line-height: 1.7;
+    font-size: 0.95rem;
+    line-height: 1.6;
     color: var(--color-text-muted);
   }
 
   .hero-cta {
-    margin-top: 1.65rem;
+    margin-top: 1.25rem;
   }
 
-  @media (max-width: 767px) {
+  @media (--tablet-and-up) {
     .hero-copy {
-      width: min(100%, 29rem);
-      padding: .9rem 0;
+      width: min(100%, 38rem);
+      padding: clamp(1rem, 3vw, 1.75rem);
     }
 
     h1 {
-      font-size: clamp(1.55rem, 7vw, 2rem);
-      line-height: 0.96;
+      font-size: clamp(2rem, 3vw, 3.75rem);
+      line-height: 1.02;
     }
 
     .intro-copy {
-      margin-top: 1rem;
-      font-size: 0.95rem;
-      line-height: 1.6;
+      margin-top: 1.35rem;
+      font-size: clamp(1rem, 1.45vw, 1.1rem);
+      line-height: 1.7;
     }
 
     .hero-cta {
-      margin-top: 1.25rem;
+      margin-top: 1.65rem;
     }
   }
 
-  @media (min-width: 960px) {
+  @media (--desktop-and-up) {
     .hero-copy {
       width: min(100%, 44rem);
       padding: 1.5rem 1.75rem;

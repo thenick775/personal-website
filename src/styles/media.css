@@ -1,0 +1,4 @@
+@custom-media --two-column-projects-and-up (min-width: 700px);
+@custom-media --tablet-and-up (min-width: 768px);
+@custom-media --split-content-and-up (min-width: 900px);
+@custom-media --desktop-and-up (min-width: 960px);

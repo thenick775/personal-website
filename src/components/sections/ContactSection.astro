@@ -60,7 +60,7 @@ const { title, intro, links } = Astro.props;
     justify-content: center;
   }
 
-  @media (min-width: 900px) {
+  @media (--split-content-and-up) {
     .contact-grid {
       grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr);
       align-items: start;

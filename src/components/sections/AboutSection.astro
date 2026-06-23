@@ -25,6 +25,8 @@ const { title, paragraphs } = Astro.props;
   .about-section {
     display: flex;
     align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     background: url(/images/IMG_1615_min.jpg) center center / cover no-repeat scroll black;
   }
 
@@ -47,17 +49,17 @@ const { title, paragraphs } = Astro.props;
     margin-top: 1rem;
   }
 
-  @media (min-width: 900px) {
-    .about-grid {
-      grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr);
-      align-items: start;
+  @media (--tablet-and-up) {
+    .about-section {
+      padding-top: var(--section-padding);
+      padding-bottom: var(--section-padding);
     }
   }
 
-  @media (max-width: 767px) {
-    .about-section {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+  @media (--split-content-and-up) {
+    .about-grid {
+      grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr);
+      align-items: start;
     }
   }
 </style>

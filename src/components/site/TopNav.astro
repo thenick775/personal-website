@@ -30,7 +30,7 @@ const { items, title } = Astro.props;
       <ul class="menu-list">
         {items.map((item) => (
           <li>
-            <a href={`#${item.id}`} data-menu-link>
+            <a href={item.id} data-menu-link>
               {item.label}
             </a>
           </li>
@@ -195,7 +195,7 @@ const { items, title } = Astro.props;
     outline: none;
   }
 
-  @media (min-width: 960px) {
+  @media (--desktop-and-up) {
     .nav-shell {
       grid-template-columns: auto 1fr;
       width: min(calc(100% - 3rem), 72rem);

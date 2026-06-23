@@ -35,7 +35,7 @@ const { projects } = Astro.props;
     margin: 0 auto;
   }
 
-  @media (min-width: 700px) {
+  @media (--two-column-projects-and-up) {
     .project-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       align-items: stretch;
