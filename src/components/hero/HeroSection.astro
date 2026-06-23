@@ -56,7 +56,7 @@ const { eyebrow, heading } = Astro.props;
   .hero-shell {
     display: flex;
     justify-content: center;
-    padding-bottom: 3rem;
+    padding-bottom: 5rem;
   }
 
   .hero-copy {
@@ -89,11 +89,29 @@ const { eyebrow, heading } = Astro.props;
     margin-top: 1.65rem;
   }
 
-  @media (min-width: 960px) {
-    .hero-shell {
-      padding-bottom: 4rem;
+  @media (max-width: 767px) {
+    .hero-copy {
+      width: min(100%, 29rem);
+      padding: .9rem 0;
     }
 
+    h1 {
+      font-size: clamp(1.55rem, 7vw, 2rem);
+      line-height: 0.96;
+    }
+
+    .intro-copy {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      margin-top: 1.25rem;
+    }
+  }
+
+  @media (min-width: 960px) {
     .hero-copy {
       width: min(100%, 44rem);
       padding: 1.5rem 1.75rem;

@@ -22,12 +22,25 @@
     title instanceof HTMLElement &&
     copy instanceof HTMLElement
   ) {
+    const setScrollLock = (locked) => {
+      document.body.classList.toggle('dialog-open', locked);
+    };
+
     triggers.forEach((trigger) => {
       trigger.addEventListener('click', () => {
         title.textContent = trigger.getAttribute('data-project-name') || 'Project detail';
         copy.textContent = trigger.getAttribute('data-project-description') || '';
+        setScrollLock(true);
         dialog.showModal();
       });
+    });
+
+    dialog.addEventListener('close', () => {
+      setScrollLock(false);
+    });
+
+    dialog.addEventListener('cancel', () => {
+      setScrollLock(false);
     });
 
     dialog.addEventListener('click', (event) => {
