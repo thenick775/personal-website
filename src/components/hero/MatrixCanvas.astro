@@ -16,21 +16,57 @@
       let rafId = 0;
       let lastFrame = 0;
       let visible = true;
+      let width = 0;
+      let height = 0;
+      let dpr = window.devicePixelRatio || 1;
+      let widthPollId = 0;
 
-      const setup = () => {
-        const dpr = window.devicePixelRatio || 1;
-        const width = window.innerWidth;
-        const height = window.innerHeight;
+      const setup = (force = false) => {
+        const nextDpr = window.devicePixelRatio || 1;
+        const nextWidth = window.innerWidth;
+        const nextHeight = window.innerHeight;
+
+        if (!nextWidth || !nextHeight) return;
+
+        const widthChanged = nextWidth !== width;
+        const dprChanged = nextDpr !== dpr;
+
+        // ignore iOS liquid-glass height churn during scroll only
+        // rebuild on actual width changes or DPR/orientation changes.
+        if (!force && width && !widthChanged && !dprChanged) return;
+
+        const previousColumns = columns;
+        const previousRows = rows;
+        const previousDrops = drops;
+
+        width = nextWidth;
+        height = nextHeight;
+        dpr = nextDpr;
 
         canvas.width = Math.floor(width * dpr);
         canvas.height = Math.floor(height * dpr);
-        canvas.style.width = `${width}px`;
-        canvas.style.height = `${height}px`;
         context.setTransform(dpr, 0, 0, dpr, 0, 0);
+        context.clearRect(0, 0, width, height);
 
-        columns = Math.max(1, Math.floor(width / fontSize));
-        rows = Math.max(1, Math.floor(height / fontSize));
-        drops = Array.from({ length: columns }, () => Math.floor(Math.random() * rows + 1));
+        const nextColumns = Math.max(1, Math.floor(width / fontSize));
+        const nextRows = Math.max(1, Math.floor(height / fontSize));
+
+        drops = Array.from({ length: nextColumns }, (_, index) => {
+          if (!previousColumns || !previousRows) {
+            return Math.floor(Math.random() * nextRows + 1);
+          }
+
+          const mappedIndex = Math.min(
+            previousColumns - 1,
+            Math.floor((index / nextColumns) * previousColumns),
+          );
+          const normalizedDrop = previousDrops[mappedIndex] / previousRows;
+
+          return Math.max(0, Math.min(nextRows + 1, Math.round(normalizedDrop * nextRows)));
+        });
+
+        columns = nextColumns;
+        rows = nextRows;
       };
 
       const draw = (timestamp) => {
@@ -42,7 +78,7 @@
         if (timestamp - lastFrame >= 75) {
           lastFrame = timestamp;
           context.fillStyle = 'rgba(0, 0, 0, 0.06)';
-          context.fillRect(0, 0, window.innerWidth, window.innerHeight);
+          context.fillRect(0, 0, width, height);
 
           context.fillStyle = `hsl(${Math.random() * 360}, 90%, 50%)`;
           context.font = `${fontSize}px Arial`;
@@ -51,7 +87,7 @@
             const glyph = glyphs[Math.floor(Math.random() * glyphs.length)];
             context.fillText(glyph, i * fontSize, drops[i] * fontSize);
 
-            if (drops[i] * fontSize > window.innerHeight && Math.random() > 0.977) {
+            if (drops[i] * fontSize > height && Math.random() > 0.977) {
               drops[i] = 0;
             }
 
@@ -66,12 +102,21 @@
         visible = Boolean(entries[0]?.isIntersecting);
       });
 
-      setup();
+      setup(true);
       observer.observe(canvas);
       rafId = window.requestAnimationFrame(draw);
 
-      window.addEventListener('resize', setup);
-      window.addEventListener('pagehide', () => window.cancelAnimationFrame(rafId), { once: true });
+      widthPollId = window.setInterval(() => {
+        if (window.innerWidth !== width) {
+          setup(true);
+        }
+      }, 1500);
+
+      window.addEventListener('pagehide', () => {
+        observer.disconnect();
+        window.clearInterval(widthPollId);
+        window.cancelAnimationFrame(rafId);
+      }, { once: true });
     }
   }
 </script>

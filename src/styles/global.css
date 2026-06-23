@@ -61,7 +61,7 @@ canvas {
 }
 
 .viewport-section {
-  min-height: 100dvh;
+  min-height: 100lvh;
 }
 
 @media (min-width: 768px) {
