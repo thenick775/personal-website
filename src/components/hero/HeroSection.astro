@@ -4,9 +4,10 @@ import MatrixCanvas from './MatrixCanvas.astro';
 interface Props {
   eyebrow: string;
   heading: string;
+  introCopy: string;
 }
 
-const { eyebrow, heading } = Astro.props;
+const { eyebrow, heading, introCopy } = Astro.props;
 ---
 
 <header class="hero-block">
@@ -17,8 +18,7 @@ const { eyebrow, heading } = Astro.props;
       <p class="eyebrow">{eyebrow}</p>
       <h1>{heading}</h1>
       <p class="intro-copy">
-        Building distributed systems, backend tooling, and odd little side
-        projects that turn into much larger ones.
+        {introCopy}
       </p>
       <a class="button-pill button-primary hero-cta" href="#about">
         Explore my site

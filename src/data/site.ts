@@ -6,6 +6,8 @@ export const site = {
     eyebrow: 'software is art',
     heading:
       "I'm a full stack developer, with a bias towards back-end distributed computing.",
+    introCopy:
+      'Building distributed systems, backend tooling, and odd little side projects that turn into much larger ones.',
   },
   about: {
     title: 'About Me',

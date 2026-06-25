@@ -24,7 +24,11 @@ const navItems = [
 <SiteLayout title={site.title} description={site.description}>
   <TopNav items={navItems} title={site.title} />
   <main>
-    <HeroSection eyebrow={site.hero.eyebrow} heading={site.hero.heading} />
+    <HeroSection
+      eyebrow={site.hero.eyebrow}
+      heading={site.hero.heading}
+      introCopy={site.hero.introCopy}
+    />
     <AboutSection title={site.about.title} paragraphs={site.about.paragraphs} />
     <SkillsSection skills={skills} />
     <ProjectsSection projects={projects} />
