@@ -1,4 +1,5 @@
 ---
+import SectionNextLink from '../site/SectionNextLink.astro';
 import type { Skill } from '../../data/skills';
 
 interface Props {
@@ -44,6 +45,9 @@ const { skills } = Astro.props;
         }
       </ul>
     </div>
+    <div class="section-next-wrap">
+      <SectionNextLink href="#projects" label="Scroll to projects section" />
+    </div>
   </div>
 </section>
 
@@ -57,6 +61,11 @@ const { skills } = Astro.props;
   .skills-shell {
     display: grid;
     gap: 1.5rem;
+  }
+
+  .section-next-wrap {
+    display: flex;
+    justify-content: center;
   }
 
   .skills-copy {
@@ -141,6 +150,10 @@ const { skills } = Astro.props;
     .skill-icon {
       width: 4.75rem;
       height: 4.75rem;
+    }
+
+    .section-next-wrap {
+      grid-column: 1 / -1;
     }
   }
 </style>

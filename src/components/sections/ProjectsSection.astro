@@ -2,6 +2,7 @@
 import type { Project } from '../../data/projects';
 import ProjectCard from '../projects/ProjectCard.astro';
 import ProjectDetailDialog from '../projects/ProjectDetailDialog.astro';
+import SectionNextLink from '../site/SectionNextLink.astro';
 
 interface Props {
   projects: Project[];
@@ -16,6 +17,9 @@ const { projects } = Astro.props;
     <h2 class="section-heading">Selected work.</h2>
     <div class="project-grid">
       {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+    <div class="section-next-wrap">
+      <SectionNextLink href="#contact" label="Scroll to contact section" />
     </div>
   </div>
   <ProjectDetailDialog />
@@ -33,6 +37,12 @@ const { projects } = Astro.props;
     gap: 1rem;
     max-width: 39rem;
     margin: 0 auto;
+  }
+
+  .section-next-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
   }
 
   @media (--two-column-projects-and-up) {

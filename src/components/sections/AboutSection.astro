@@ -1,4 +1,6 @@
 ---
+import SectionNextLink from '../site/SectionNextLink.astro';
+
 interface Props {
   title: string;
   paragraphs: string[];
@@ -16,6 +18,9 @@ const { title, paragraphs } = Astro.props;
     <div class="surface-panel about-copy">
       {paragraphs.map((paragraph) => <p class="section-copy">{paragraph}</p>)}
     </div>
+    <div class="section-next-wrap">
+      <SectionNextLink href="#skills" label="Scroll to skills section" />
+    </div>
   </div>
 </section>
 
@@ -32,6 +37,11 @@ const { title, paragraphs } = Astro.props;
   .about-grid {
     display: grid;
     gap: 1.5rem;
+  }
+
+  .section-next-wrap {
+    display: flex;
+    justify-content: center;
   }
 
   .about-grid > div:first-child {
@@ -59,6 +69,10 @@ const { title, paragraphs } = Astro.props;
     .about-grid {
       grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr);
       align-items: start;
+    }
+
+    .section-next-wrap {
+      grid-column: 2 / -1;
     }
   }
 </style>

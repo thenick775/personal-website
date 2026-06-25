@@ -1,0 +1,63 @@
+---
+interface Props {
+  href: string;
+  label?: string;
+}
+
+const { href, label = 'Scroll to next section' } = Astro.props;
+---
+
+<a class="section-next-link" href={href} aria-label={label}>
+  <span class="section-next-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" focusable="false">
+      <path d="m6 8 6 6 6-6"></path>
+      <path d="m6 13 6 6 6-6"></path>
+    </svg>
+  </span>
+</a>
+
+<style>
+  .section-next-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    background: rgba(8, 12, 18, 0.42);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(3px);
+    color: rgba(245, 247, 251, 0.84);
+    transition:
+      transform 180ms ease,
+      color 180ms ease,
+      border-color 180ms ease,
+      background-color 180ms ease;
+  }
+
+  .section-next-link:hover,
+  .section-next-link:focus-visible {
+    transform: translateY(-1px);
+    color: var(--color-accent);
+    border-color: rgba(66, 220, 163, 0.5);
+    background: rgba(66, 220, 163, 0.08);
+    outline: none;
+  }
+
+  .section-next-icon {
+    display: inline-flex;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .section-next-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+</style>
