@@ -52,6 +52,7 @@ const { items, title } = Astro.props;
   const toggle = document.querySelector('[data-menu-toggle]');
   const panel = document.querySelector('[data-menu-panel]');
   const links = document.querySelectorAll('[data-menu-link]');
+  const navRoot = document.querySelector('[data-nav-root]');
 
   if (toggle instanceof HTMLButtonElement && panel instanceof HTMLElement) {
     const setOpen = (open) => {
@@ -78,16 +79,31 @@ const { items, title } = Astro.props;
       }
     });
   }
+
+  if (navRoot instanceof HTMLElement) {
+    const setShrunk = () => {
+      navRoot.dataset.shrunk = String(window.scrollY > 100);
+    };
+
+    setShrunk();
+    window.addEventListener('scroll', setShrunk, { passive: true });
+  }
 </script>
 
 <style>
   .top-nav {
-    position: sticky;
+    position: fixed;
     top: 0;
+    right: 0;
+    left: 0;
     z-index: 20;
-    backdrop-filter: blur(16px);
-    background: rgba(2, 4, 7, 0.72);
+    backdrop-filter: blur(3px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .top-nav[data-shrunk='true'] {
+    background: rgba(2, 4, 7, 0.72);
+    backdrop-filter: blur(16px);
   }
 
   .nav-shell {
@@ -95,7 +111,7 @@ const { items, title } = Astro.props;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: 1rem;
-    min-height: 4.75rem;
+    min-height: 4rem;
     width: min(calc(100% - 1.5rem), 72rem);
     position: relative;
   }
@@ -210,9 +226,31 @@ const { items, title } = Astro.props;
   }
 
   @media (--desktop-and-up) {
+    .top-nav {
+      border-bottom-color: transparent;
+      background: transparent;
+      backdrop-filter: none;
+      transition:
+        background-color 260ms ease,
+        border-bottom-color 260ms ease,
+        backdrop-filter 260ms ease;
+    }
+
     .nav-shell {
       grid-template-columns: auto 1fr;
       width: min(calc(100% - 3rem), 72rem);
+      min-height: 5.6rem;
+      transition: min-height 260ms ease;
+    }
+
+    .top-nav[data-shrunk='true'] {
+      border-bottom-color: rgba(255, 255, 255, 0.1);
+      background: rgba(8, 12, 18, 0.62);
+      backdrop-filter: blur(16px);
+    }
+
+    .top-nav[data-shrunk='true'] .nav-shell {
+      min-height: 4rem;
     }
 
     .menu-toggle {
@@ -229,6 +267,7 @@ const { items, title } = Astro.props;
       border-radius: 0;
       background: transparent;
       box-shadow: none;
+      backdrop-filter: none;
       justify-self: end;
     }
 
@@ -247,8 +286,39 @@ const { items, title } = Astro.props;
     }
 
     .menu-list a {
-      padding: 0;
+      position: relative;
+      isolation: isolate;
+      padding: 0.38rem 0.72rem;
       background: transparent;
+      border-bottom: 0;
+    }
+
+    .brand {
+      position: relative;
+      isolation: isolate;
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.45rem;
+      padding: 0.38rem 0.72rem;
+      color: var(--color-text);
+    }
+
+    .top-nav:not([data-shrunk='true']) .menu-list a::before,
+    .top-nav:not([data-shrunk='true']) .brand::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: 999px;
+      background: var(--color-panel);
+      box-shadow: var(--shadow-elevated);
+      backdrop-filter: blur(3px);
+      pointer-events: none;
+    }
+
+    .top-nav[data-shrunk='true'] .menu-list a,
+    .top-nav[data-shrunk='true'] .brand {
+      box-shadow: none;
     }
 
     .menu-list a:hover,
