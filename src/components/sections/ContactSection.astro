@@ -66,10 +66,12 @@ const contactIcons: Record<ContactLink['icon'], string> = {
   }
 
   .contact-pill {
+    display: grid;
+    grid-template-columns: 1.5rem 8ch;
     align-items: center;
-    gap: 0.55rem;
-    width: 100%;
     justify-content: center;
+    column-gap: 0.55rem;
+    width: 100%;
   }
 
   .contact-icon {
@@ -85,6 +87,7 @@ const contactIcons: Record<ContactLink['icon'], string> = {
   .contact-label {
     display: inline-block;
     line-height: 1;
+    text-align: center;
   }
 
   .contact-icon :global(svg) {
@@ -97,9 +100,13 @@ const contactIcons: Record<ContactLink['icon'], string> = {
   }
 
   @media (--tablet-and-up) {
+    .contact-label {
+      text-align: left;
+    }
+
     .contact-pill {
       min-height: 3rem;
-      gap: 0.65rem;
+      column-gap: 0.65rem;
     }
   }
 
