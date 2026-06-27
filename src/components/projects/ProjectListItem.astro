@@ -1,0 +1,84 @@
+---
+interface Props {
+  projectName: string;
+  projectMeta: string;
+  panelId: string;
+  index: number;
+  active: boolean;
+}
+
+const { projectName, projectMeta, panelId, index, active } = Astro.props;
+---
+
+<button
+  class:list={['project-list-item', active && 'is-active']}
+  type="button"
+  role="tab"
+  aria-selected={active ? 'true' : 'false'}
+  aria-controls={panelId}
+  tabindex={active ? '0' : '-1'}
+  data-project-preview-trigger
+  data-project-preview-target={panelId}
+>
+  <span class="project-list-item-index">
+    {String(index + 1).padStart(2, '0')}
+  </span>
+  <span class="project-list-item-body">
+    <span class="project-list-item-meta">{projectMeta}</span>
+    <span class="project-list-item-name">{projectName}</span>
+  </span>
+</button>
+
+<style>
+  .project-list-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.9rem;
+    align-items: start;
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--color-text);
+    text-align: left;
+    transition:
+      border-color 180ms ease,
+      background-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .project-list-item:hover,
+  .project-list-item:focus-visible,
+  .project-list-item.is-active {
+    border-color: rgba(66, 220, 163, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    outline: none;
+  }
+
+  .project-list-item-index {
+    font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.84rem;
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
+  }
+
+  .project-list-item-body,
+  .project-list-item-meta,
+  .project-list-item-name {
+    display: block;
+  }
+
+  .project-list-item-meta {
+    margin-bottom: 0.25rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .project-list-item-name {
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+</style>

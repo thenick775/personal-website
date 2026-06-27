@@ -43,5 +43,6 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 | `npm run lint`            | Run eslint                                       |
 | `npm run lint:fix`        | Run eslint with auto fix                         |
+| `npm run knip`            | Find unused code                                 |
 
 # Credits

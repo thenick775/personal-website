@@ -1,6 +1,10 @@
 ---
 import type { Project } from '../../data/projects';
 import ProjectDetailDialog from '../projects/ProjectDetailDialog.astro';
+import ProjectListItem from '../projects/ProjectListItem.astro';
+import ProjectPreviewPanel from '../projects/ProjectPreviewPanel.astro';
+import ProjectRailCard from '../projects/ProjectRailCard.astro';
+import ScrollArea from '../projects/ScrollArea.astro';
 import SectionNextLink from '../site/SectionNextLink.astro';
 
 interface Props {
@@ -31,7 +35,7 @@ const initialProject = projects[0];
 <section id="projects" class="section-block viewport-section projects-section">
   <div class="section-shell projects-shell" data-scroll-anchor>
     <div class="projects-heading-row">
-      <div class="projects-copy-block">
+      <div>
         <p class="eyebrow">Projects</p>
         <h2 class="section-heading">Selected projects.</h2>
         <p class="section-copy projects-copy">
@@ -50,7 +54,7 @@ const initialProject = projects[0];
                 <p class="projects-list-label">Project index</p>
                 <div class="projects-list-nav" aria-label="Project navigation">
                   <button
-                    class="projects-list-nav-button projects-list-nav-button-up"
+                    class="projects-list-nav-button"
                     type="button"
                     aria-label="Previous project"
                     data-project-nav="prev"
@@ -60,7 +64,7 @@ const initialProject = projects[0];
                     </svg>
                   </button>
                   <button
-                    class="projects-list-nav-button projects-list-nav-button-down"
+                    class="projects-list-nav-button"
                     type="button"
                     aria-label="Next project"
                     data-project-nav="next"
@@ -71,119 +75,36 @@ const initialProject = projects[0];
                   </button>
                 </div>
               </div>
-              <div class="projects-list-shell">
-                <div
-                  class="projects-list"
-                  role="tablist"
-                  aria-label="Projects"
-                  data-projects-list
-                >
+              <ScrollArea
+                class="projects-list-shell"
+                viewportClass="projects-list"
+                label="Projects"
+              >
+                <div role="tablist" aria-label="Projects" data-projects-list>
                   {projects.map((project, index) => (
-                    <button
-                      class:list={[
-                        'project-list-item',
-                        index === 0 && 'is-active',
-                      ]}
-                      type="button"
-                      role="tab"
-                      aria-selected={index === 0 ? 'true' : 'false'}
-                      aria-controls={getProjectPanelId(index)}
-                      tabindex={index === 0 ? '0' : '-1'}
-                      data-project-preview-trigger
-                      data-project-preview-target={getProjectPanelId(index)}
-                    >
-                      <span class="project-list-item-index">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <span class="project-list-item-body">
-                        <span class="project-list-item-meta">
-                          {getMeta(project)}
-                        </span>
-                        <span class="project-list-item-name">
-                          {project.name}
-                        </span>
-                      </span>
-                    </button>
+                    <ProjectListItem
+                      projectName={project.name}
+                      projectMeta={getMeta(project)}
+                      panelId={getProjectPanelId(index)}
+                      index={index}
+                      active={index === 0}
+                    />
                   ))}
                 </div>
-                <div
-                  class="projects-scrollbar"
-                  aria-hidden="true"
-                  data-projects-scrollbar
-                >
-                  <div
-                    class="projects-scrollbar-thumb"
-                    data-projects-scrollbar-thumb
-                  />
-                </div>
-              </div>
+              </ScrollArea>
             </div>
 
             <div class="project-preview-stack" aria-live="polite">
               {projects.map((project, index) => {
-                const image = getProjectImage(project);
-                const summary = getSummary(project);
-
                 return (
-                  <article
-                    id={getProjectPanelId(index)}
-                    class:list={[
-                      'project-preview-panel',
-                      index === 0 && 'is-active',
-                      index !== 0 && 'is-hidden',
-                    ]}
-                    aria-hidden={index === 0 ? 'false' : 'true'}
-                    data-project-preview-panel
-                  >
-                    <div class="project-preview-media">
-                      <img
-                        src={image}
-                        alt={`${project.name} preview image`}
-                        loading={index === 0 ? 'eager' : 'lazy'}
-                        decoding="async"
-                      />
-                      <div class="project-preview-overlay" />
-                    </div>
-
-                    <div class="project-preview-content">
-                      <div>
-                        <h3 class="project-preview-title">{project.name}</h3>
-                        <p class="project-preview-summary">{summary}</p>
-                      </div>
-
-                      <ul
-                        class="project-preview-tags"
-                        aria-label={`${project.name} technologies`}
-                      >
-                        {project.labels.map((label) => (
-                          <li>{label}</li>
-                        ))}
-                      </ul>
-
-                      <div class="project-preview-actions">
-                        {project.personal && project.href ? (
-                          <a
-                            class="button-pill button-primary"
-                            href={project.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            View project
-                          </a>
-                        ) : (
-                          <button
-                            class="button-pill button-primary"
-                            type="button"
-                            data-project-detail
-                            data-project-name={project.name}
-                            data-project-description={project.detail ?? ''}
-                          >
-                            Project detail
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  </article>
+                  <ProjectPreviewPanel
+                    project={project}
+                    panelId={getProjectPanelId(index)}
+                    image={getProjectImage(project)}
+                    summary={getSummary(project)}
+                    meta={getMeta(project)}
+                    active={index === 0}
+                  />
                 );
               })}
             </div>
@@ -191,57 +112,13 @@ const initialProject = projects[0];
 
           <div class="project-rail" aria-label="Project gallery">
             {projects.map((project) => {
-              const image = getProjectImage(project);
-              const summary = getSummary(project);
-
               return (
-                <article class="project-rail-card surface-panel">
-                  <div class="project-rail-media">
-                    <img
-                      src={image}
-                      alt={`${project.name} preview image`}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div class="project-rail-overlay" />
-                  </div>
-
-                  <div class="project-rail-content">
-                    <p class="project-rail-meta">{getMeta(project)}</p>
-                    <h3>{project.name}</h3>
-                    <p>{summary}</p>
-
-                    <ul
-                      class="project-rail-tags"
-                      aria-label={`${project.name} technologies`}
-                    >
-                      {project.labels.map((label) => (
-                        <li>{label}</li>
-                      ))}
-                    </ul>
-
-                    {project.personal && project.href ? (
-                      <a
-                        class="button-pill button-primary"
-                        href={project.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        View project
-                      </a>
-                    ) : (
-                      <button
-                        class="button-pill button-primary"
-                        type="button"
-                        data-project-detail
-                        data-project-name={project.name}
-                        data-project-description={project.detail ?? ''}
-                      >
-                        Project detail
-                      </button>
-                    )}
-                  </div>
-                </article>
+                <ProjectRailCard
+                  project={project}
+                  image={getProjectImage(project)}
+                  summary={getSummary(project)}
+                  meta={getMeta(project)}
+                />
               );
             })}
           </div>
@@ -258,155 +135,6 @@ const initialProject = projects[0];
 
 <script is:inline>
   const previewRoot = document.querySelector('.projects-spotlight');
-  const projectsListWrap = document.querySelector('[data-projects-list-wrap]');
-  const projectsList = document.querySelector('[data-projects-list]');
-  const projectsScrollbar = document.querySelector('[data-projects-scrollbar]');
-  const projectsScrollbarThumb = document.querySelector(
-    '[data-projects-scrollbar-thumb]',
-  );
-
-  const syncProjectsOverflow = () => {
-    if (
-      !(projectsListWrap instanceof HTMLElement) ||
-      !(projectsList instanceof HTMLElement) ||
-      !(projectsScrollbar instanceof HTMLElement) ||
-      !(projectsScrollbarThumb instanceof HTMLElement)
-    ) {
-      return;
-    }
-
-    const scrollHeight = projectsList.scrollHeight;
-    const clientHeight = projectsList.clientHeight;
-    const maxScrollTop = scrollHeight - clientHeight;
-    const overflowing = maxScrollTop > 1;
-
-    projectsListWrap.toggleAttribute('data-overflowing', overflowing);
-
-    if (!overflowing) {
-      projectsScrollbarThumb.style.height = '';
-      projectsScrollbarThumb.style.transform = '';
-      return;
-    }
-
-    syncProjectsScrollbarThumb();
-  };
-
-  const syncProjectsScrollbarThumb = () => {
-    if (
-      !(projectsListWrap instanceof HTMLElement) ||
-      !(projectsList instanceof HTMLElement) ||
-      !(projectsScrollbar instanceof HTMLElement) ||
-      !(projectsScrollbarThumb instanceof HTMLElement) ||
-      !projectsListWrap.hasAttribute('data-overflowing')
-    ) {
-      return;
-    }
-
-    const scrollHeight = projectsList.scrollHeight;
-    const clientHeight = projectsList.clientHeight;
-    const maxScrollTop = scrollHeight - clientHeight;
-
-    if (maxScrollTop <= 1) {
-      projectsScrollbarThumb.style.height = '';
-      projectsScrollbarThumb.style.transform = '';
-      return;
-    }
-
-    const railHeight = projectsScrollbar.clientHeight;
-    const thumbHeight = Math.max(
-      (clientHeight / scrollHeight) * railHeight,
-      48,
-    );
-    const travel = railHeight - thumbHeight;
-    const progress =
-      maxScrollTop > 0 ? projectsList.scrollTop / maxScrollTop : 0;
-
-    projectsScrollbarThumb.style.height = `${thumbHeight}px`;
-    projectsScrollbarThumb.style.transform = `translateY(${travel * progress}px)`;
-  };
-
-  if (
-    projectsListWrap instanceof HTMLElement &&
-    projectsList instanceof HTMLElement &&
-    projectsScrollbar instanceof HTMLElement &&
-    projectsScrollbarThumb instanceof HTMLElement
-  ) {
-    let dragState = null;
-    let resizeTimer = 0;
-
-    const startDrag = (event) => {
-      const pointerEvent = event;
-      const thumbRect = projectsScrollbarThumb.getBoundingClientRect();
-      dragState = {
-        pointerId: pointerEvent.pointerId,
-        offsetY: pointerEvent.clientY - thumbRect.top,
-      };
-
-      projectsScrollbarThumb.setPointerCapture(pointerEvent.pointerId);
-      projectsScrollbarThumb.classList.add('is-dragging');
-      event.preventDefault();
-    };
-
-    const stopDrag = () => {
-      dragState = null;
-      projectsScrollbarThumb.classList.remove('is-dragging');
-    };
-
-    const updateScrollFromPointer = (clientY, centerThumb = false) => {
-      const railRect = projectsScrollbar.getBoundingClientRect();
-      const thumbRect = projectsScrollbarThumb.getBoundingClientRect();
-      const thumbHeight = thumbRect.height;
-      const maxScrollTop =
-        projectsList.scrollHeight - projectsList.clientHeight;
-      const travel = railRect.height - thumbHeight;
-
-      if (maxScrollTop <= 0 || travel <= 0) return;
-
-      const offset = centerThumb
-        ? thumbHeight / 2
-        : (dragState?.offsetY ?? thumbHeight / 2);
-      const nextTop = Math.min(
-        Math.max(clientY - railRect.top - offset, 0),
-        travel,
-      );
-      const progress = nextTop / travel;
-
-      projectsList.scrollTop = progress * maxScrollTop;
-    };
-
-    projectsList.addEventListener('scroll', syncProjectsScrollbarThumb, {
-      passive: true,
-    });
-    window.addEventListener('resize', () => {
-      window.clearTimeout(resizeTimer);
-      resizeTimer = window.setTimeout(() => {
-        syncProjectsOverflow();
-      }, 120);
-    });
-    window.addEventListener('load', syncProjectsOverflow, { once: true });
-
-    if (document.fonts?.ready) {
-      document.fonts.ready.then(() => {
-        syncProjectsOverflow();
-      });
-    }
-
-    projectsScrollbarThumb.addEventListener('pointerdown', startDrag);
-    projectsScrollbarThumb.addEventListener('pointermove', (event) => {
-      if (!dragState || event.pointerId !== dragState.pointerId) return;
-      updateScrollFromPointer(event.clientY);
-    });
-    projectsScrollbarThumb.addEventListener('pointerup', stopDrag);
-    projectsScrollbarThumb.addEventListener('pointercancel', stopDrag);
-
-    projectsScrollbar.addEventListener('pointerdown', (event) => {
-      if (event.target === projectsScrollbarThumb) return;
-      updateScrollFromPointer(event.clientY, true);
-    });
-
-    syncProjectsOverflow();
-  }
-
   if (previewRoot instanceof HTMLElement) {
     const triggers = Array.from(
       previewRoot.querySelectorAll('[data-project-preview-trigger]'),
@@ -518,12 +246,6 @@ const initialProject = projects[0];
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .projects-list-shell {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    min-height: 0;
-  }
-
   .projects-list-header {
     display: flex;
     align-items: center;
@@ -580,189 +302,25 @@ const initialProject = projects[0];
     outline: none;
   }
 
-  .projects-list {
-    display: grid;
-    gap: 0.35rem;
+  :global(.projects-list) {
     padding: 1rem;
+    height: 100%;
     min-height: 0;
   }
 
-  .projects-scrollbar {
-    display: none;
-  }
-
-  .projects-scrollbar-thumb {
-    width: 100%;
-    border-radius: 999px;
-    background: linear-gradient(
-      180deg,
-      rgba(66, 220, 163, 0.9),
-      rgba(47, 169, 129, 0.9)
-    );
-    box-shadow: 0 0 0 1px rgba(66, 220, 163, 0.08);
-    transition:
-      background-color 160ms ease,
-      transform 40ms linear;
-  }
-
-  .projects-scrollbar-thumb.is-dragging,
-  .projects-scrollbar-thumb:hover {
-    background: linear-gradient(
-      180deg,
-      rgba(82, 236, 179, 0.95),
-      rgba(52, 184, 140, 0.95)
-    );
-  }
-
-  .project-list-item {
+  [data-projects-list] {
     display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.9rem;
-    align-items: start;
-    width: 100%;
-    padding: 0.9rem 1rem;
-    border: 1px solid transparent;
-    border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.02);
-    color: var(--color-text);
-    text-align: left;
-    transition:
-      border-color 180ms ease,
-      background-color 180ms ease,
-      transform 180ms ease;
-  }
-
-  .project-list-item:hover,
-  .project-list-item:focus-visible,
-  .project-list-item.is-active {
-    border-color: rgba(66, 220, 163, 0.3);
-    background: rgba(255, 255, 255, 0.05);
-    outline: none;
-  }
-
-  .project-list-item-index {
-    font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 0.84rem;
-    letter-spacing: 0.14em;
-    color: var(--color-accent);
-  }
-
-  .project-list-item-body,
-  .project-list-item-meta,
-  .project-list-item-name {
-    display: block;
-  }
-
-  .project-list-item-meta {
-    margin-bottom: 0.25rem;
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-  }
-
-  .project-list-item-name {
-    font-size: 1rem;
-    line-height: 1.35;
+    gap: 0.5rem;
   }
 
   .project-preview-stack {
-    min-height: 0;
-  }
-
-  .project-preview-panel {
-    display: grid;
-    min-height: 0;
-  }
-
-  .project-preview-panel.is-hidden {
-    display: none;
-  }
-
-  .project-preview-media,
-  .project-rail-media {
-    position: relative;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.03);
-  }
-
-  .project-preview-media img,
-  .project-rail-media img {
-    width: 100%;
     height: 100%;
-    object-fit: cover;
+    min-height: 0;
   }
 
-  .project-preview-media {
-    min-height: 18rem;
-  }
-
-  .project-preview-overlay,
-  .project-rail-overlay {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg, rgba(2, 3, 5, 0.05), rgba(2, 3, 5, 0.68)),
-      linear-gradient(120deg, rgba(2, 3, 5, 0.2), transparent 45%);
-  }
-
-  .project-preview-content {
-    display: grid;
-    gap: 1rem;
-    padding: 1.2rem;
-    align-content: start;
-  }
-
-  .project-preview-title,
-  .project-rail-content h3 {
-    margin: 0;
-    font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: clamp(1.45rem, 2.8vw, 2.4rem);
-    line-height: 1;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  .project-preview-summary,
-  .project-rail-content p {
-    margin: 0.8rem 0 0;
-    color: var(--color-text-muted);
-    line-height: 1.7;
-  }
-
-  .project-preview-tags,
-  .project-rail-tags {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 0;
-    padding: 0;
-  }
-
-  .project-preview-tags li,
-  .project-rail-tags li {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.38rem 0.68rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.05);
-    color: rgba(245, 247, 251, 0.92);
-    font-size: 0.82rem;
-    letter-spacing: 0.03em;
-    line-height: 1.2;
-    white-space: nowrap;
-  }
-
-  .project-preview-actions,
   .section-next-wrap {
     display: flex;
     justify-content: center;
-  }
-
-  .project-preview-actions {
-    justify-content: flex-start;
   }
 
   .project-rail {
@@ -775,33 +333,6 @@ const initialProject = projects[0];
     padding-bottom: 0.5rem;
     scroll-snap-type: x mandatory;
     scrollbar-width: thin;
-  }
-
-  .project-rail-card {
-    align-self: start;
-    overflow: hidden;
-    scroll-snap-align: start;
-    background:
-      radial-gradient(
-        circle at top right,
-        rgba(66, 220, 163, 0.16),
-        transparent 28%
-      ),
-      rgba(8, 12, 18, 0.92);
-  }
-
-  .project-rail-content {
-    display: grid;
-    gap: 1rem;
-    padding: 1.1rem;
-  }
-
-  .project-rail-meta {
-    margin: 0;
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-accent);
   }
 
   .section-next-wrap {
@@ -820,10 +351,6 @@ const initialProject = projects[0];
     .project-rail {
       grid-auto-columns: minmax(32rem, 1fr);
     }
-
-    .project-rail-media {
-      min-height: 18rem;
-    }
   }
 
   @media (--split-content-and-up) {
@@ -834,69 +361,20 @@ const initialProject = projects[0];
       min-height: 33rem;
     }
 
+    .projects-spotlight > * {
+      min-height: 0;
+    }
+
     .projects-list-wrap {
       border-right: 1px solid rgba(255, 255, 255, 0.08);
       border-bottom: 0;
-      min-height: 0;
-    }
-
-    .projects-list {
-      overflow-y: auto;
-      padding-top: 0;
-      padding-bottom: 0.8rem;
-      padding-right: 0.3rem;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      overscroll-behavior: contain;
-    }
-
-    .projects-list::-webkit-scrollbar {
-      width: 0;
-      height: 0;
-    }
-
-    .projects-list-shell {
-      grid-template-columns: minmax(0, 1fr) 0.42rem;
-      column-gap: 0.55rem;
-    }
-
-    .projects-scrollbar {
-      display: flex;
-      align-items: flex-start;
-      padding: 0.35rem 0;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .projects-list-wrap[data-overflowing] .projects-scrollbar {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .projects-scrollbar-thumb {
-      display: block;
-      cursor: pointer;
-      touch-action: none;
-    }
-
-    .project-preview-stack {
-      min-height: 0;
-    }
-
-    .project-preview-panel {
-      grid-template-rows: minmax(15rem, 1fr) auto;
       height: 100%;
-    }
-
-    .project-preview-media {
       min-height: 0;
     }
 
-    .project-preview-content {
-      gap: 0.85rem;
-      padding: 1rem 1.1rem 1.1rem;
-      overflow-y: auto;
-      min-height: 0;
+    :global(.projects-list) {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
     }
 
     .project-rail {

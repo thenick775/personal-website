@@ -25,7 +25,8 @@
     copy instanceof HTMLElement
   ) {
     const projectsRoot = document.querySelector('#projects');
-    const triggers = projectsRoot?.querySelectorAll('[data-project-detail]') ?? [];
+    const triggers =
+      projectsRoot?.querySelectorAll('[data-project-detail]') ?? [];
 
     const setScrollLock = (locked) => {
       document.body.classList.toggle('dialog-open', locked);

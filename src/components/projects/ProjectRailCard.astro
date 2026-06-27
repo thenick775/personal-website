@@ -1,0 +1,151 @@
+---
+import type { Project } from '../../data/projects';
+
+interface Props {
+  project: Project;
+  image: string;
+  summary: string;
+  meta: string;
+}
+
+const { project, image, summary, meta } = Astro.props;
+---
+
+<article class="project-rail-card surface-panel">
+  <div class="project-rail-media">
+    <img
+      src={image}
+      alt={`${project.name} preview image`}
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="project-rail-overlay"></div>
+  </div>
+
+  <div class="project-rail-content">
+    <p class="project-rail-meta">{meta}</p>
+    <h3>{project.name}</h3>
+    <p>{summary}</p>
+
+    <ul class="project-rail-tags" aria-label={`${project.name} technologies`}>
+      {project.labels.map((label) => <li>{label}</li>)}
+    </ul>
+
+    {
+      project.personal && project.href ? (
+        <a
+          class="button-pill button-primary"
+          href={project.href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View project
+        </a>
+      ) : (
+        <button
+          class="button-pill button-primary"
+          type="button"
+          data-project-detail
+          data-project-name={project.name}
+          data-project-description={project.detail ?? ''}
+        >
+          Project detail
+        </button>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  .project-rail-card {
+    align-self: start;
+    overflow: hidden;
+    scroll-snap-align: start;
+    background:
+      radial-gradient(
+        circle at top right,
+        rgba(66, 220, 163, 0.16),
+        transparent 28%
+      ),
+      rgba(8, 12, 18, 0.92);
+  }
+
+  .project-rail-media {
+    position: relative;
+    overflow: hidden;
+    min-height: 15rem;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .project-rail-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .project-rail-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(2, 3, 5, 0.05), rgba(2, 3, 5, 0.68)),
+      linear-gradient(120deg, rgba(2, 3, 5, 0.2), transparent 45%);
+  }
+
+  .project-rail-content {
+    display: grid;
+    gap: 1rem;
+    padding: 1.1rem;
+  }
+
+  .project-rail-meta {
+    margin: 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .project-rail-content h3 {
+    margin: 0;
+    font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: clamp(1.45rem, 2.8vw, 2.4rem);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .project-rail-content p {
+    margin: 0.8rem 0 0;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+
+  .project-rail-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .project-rail-tags li {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.38rem 0.68rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(245, 247, 251, 0.92);
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  @media (--tablet-and-up) {
+    .project-rail-media {
+      min-height: 18rem;
+    }
+  }
+</style>

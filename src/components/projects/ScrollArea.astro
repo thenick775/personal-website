@@ -1,0 +1,228 @@
+---
+interface Props {
+  class?: string;
+  viewportClass?: string;
+  label?: string;
+}
+
+const { class: className = '', viewportClass = '', label } = Astro.props;
+---
+
+<div class:list={['scroll-area-root', className]} data-scroll-area-root>
+  <div
+    class:list={['scroll-area-viewport', viewportClass]}
+    data-scroll-area-viewport
+    aria-label={label}
+  >
+    <slot />
+  </div>
+  <div class="scroll-area-rail" aria-hidden="true" data-scroll-area-rail>
+    <div class="scroll-area-thumb" data-scroll-area-thumb></div>
+  </div>
+</div>
+
+<script is:inline>
+  const scrollAreaRoots = document.querySelectorAll('[data-scroll-area-root]');
+
+  scrollAreaRoots.forEach((root) => {
+    if (!(root instanceof HTMLElement)) return;
+
+    const viewport = root.querySelector('[data-scroll-area-viewport]');
+    const rail = root.querySelector('[data-scroll-area-rail]');
+    const thumb = root.querySelector('[data-scroll-area-thumb]');
+
+    if (
+      !(viewport instanceof HTMLElement) ||
+      !(rail instanceof HTMLElement) ||
+      !(thumb instanceof HTMLElement)
+    ) {
+      return;
+    }
+
+    let dragState = null;
+    let resizeTimer = 0;
+
+    const syncThumb = () => {
+      if (!root.hasAttribute('data-overflowing')) return;
+
+      const scrollHeight = viewport.scrollHeight;
+      const clientHeight = viewport.clientHeight;
+      const maxScrollTop = scrollHeight - clientHeight;
+
+      if (maxScrollTop <= 1) {
+        thumb.style.height = '';
+        thumb.style.transform = '';
+        return;
+      }
+
+      const railHeight = rail.clientHeight;
+      const thumbHeight = Math.max(
+        (clientHeight / scrollHeight) * railHeight,
+        48,
+      );
+      const travel = railHeight - thumbHeight;
+      const progress = maxScrollTop > 0 ? viewport.scrollTop / maxScrollTop : 0;
+
+      thumb.style.height = `${thumbHeight}px`;
+      thumb.style.transform = `translateY(${travel * progress}px)`;
+    };
+
+    const syncOverflow = () => {
+      const scrollHeight = viewport.scrollHeight;
+      const clientHeight = viewport.clientHeight;
+      const maxScrollTop = scrollHeight - clientHeight;
+      const overflowing = maxScrollTop > 1;
+
+      root.toggleAttribute('data-overflowing', overflowing);
+
+      if (!overflowing) {
+        thumb.style.height = '';
+        thumb.style.transform = '';
+        return;
+      }
+
+      syncThumb();
+    };
+
+    const updateScrollFromPointer = (clientY, centerThumb = false) => {
+      const railRect = rail.getBoundingClientRect();
+      const thumbRect = thumb.getBoundingClientRect();
+      const thumbHeight = thumbRect.height;
+      const maxScrollTop = viewport.scrollHeight - viewport.clientHeight;
+      const travel = railRect.height - thumbHeight;
+
+      if (maxScrollTop <= 0 || travel <= 0) return;
+
+      const offset = centerThumb
+        ? thumbHeight / 2
+        : (dragState?.offsetY ?? thumbHeight / 2);
+      const nextTop = Math.min(
+        Math.max(clientY - railRect.top - offset, 0),
+        travel,
+      );
+      const progress = nextTop / travel;
+
+      viewport.scrollTop = progress * maxScrollTop;
+    };
+
+    const startDrag = (event) => {
+      const pointerEvent = event;
+      const thumbRect = thumb.getBoundingClientRect();
+      dragState = {
+        pointerId: pointerEvent.pointerId,
+        offsetY: pointerEvent.clientY - thumbRect.top,
+      };
+
+      thumb.setPointerCapture(pointerEvent.pointerId);
+      thumb.classList.add('is-dragging');
+      event.preventDefault();
+    };
+
+    const stopDrag = () => {
+      dragState = null;
+      thumb.classList.remove('is-dragging');
+    };
+
+    viewport.addEventListener('scroll', syncThumb, { passive: true });
+    window.addEventListener('resize', () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        syncOverflow();
+      }, 120);
+    });
+    window.addEventListener('load', syncOverflow, { once: true });
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(() => {
+        syncOverflow();
+      });
+    }
+
+    if ('ResizeObserver' in window) {
+      const resizeObserver = new ResizeObserver(() => {
+        syncOverflow();
+      });
+      resizeObserver.observe(viewport);
+      resizeObserver.observe(root);
+    }
+
+    thumb.addEventListener('pointerdown', startDrag);
+    thumb.addEventListener('pointermove', (event) => {
+      if (!dragState || event.pointerId !== dragState.pointerId) return;
+      updateScrollFromPointer(event.clientY);
+    });
+    thumb.addEventListener('pointerup', stopDrag);
+    thumb.addEventListener('pointercancel', stopDrag);
+
+    rail.addEventListener('pointerdown', (event) => {
+      if (event.target === thumb) return;
+      updateScrollFromPointer(event.clientY, true);
+    });
+
+    syncOverflow();
+  });
+</script>
+
+<style>
+  .scroll-area-root {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 0.42rem;
+    column-gap: 0.55rem;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .scroll-area-viewport {
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 0.3rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overscroll-behavior: contain;
+  }
+
+  .scroll-area-viewport::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  .scroll-area-rail {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.35rem 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .scroll-area-root[data-overflowing] .scroll-area-rail {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .scroll-area-thumb {
+    display: block;
+    width: 100%;
+    border-radius: 999px;
+    background: linear-gradient(
+      180deg,
+      rgba(66, 220, 163, 0.9),
+      rgba(47, 169, 129, 0.9)
+    );
+    box-shadow: 0 0 0 1px rgba(66, 220, 163, 0.08);
+    cursor: pointer;
+    touch-action: none;
+    transition:
+      background-color 160ms ease,
+      transform 40ms linear;
+  }
+
+  .scroll-area-thumb.is-dragging,
+  .scroll-area-thumb:hover {
+    background: linear-gradient(
+      180deg,
+      rgba(82, 236, 179, 0.95),
+      rgba(52, 184, 140, 0.95)
+    );
+  }
+</style>
