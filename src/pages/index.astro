@@ -41,6 +41,11 @@ const navItems = [
   <Footer />
 
   <script is:inline>
+    const scrollAnimation = { frame: 0 };
+    const reducedMotionQuery = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    );
+
     const syncNavOffset = () => {
       const nav = document.querySelector('[data-nav-root]');
       if (!(nav instanceof HTMLElement)) return 65;
@@ -53,12 +58,63 @@ const navItems = [
       return navHeight;
     };
 
+    const animateWindowScroll = (top) => {
+      if (scrollAnimation.frame) {
+        window.cancelAnimationFrame(scrollAnimation.frame);
+        scrollAnimation.frame = 0;
+      }
+
+      if (reducedMotionQuery.matches) {
+        window.scrollTo({ top, behavior: 'auto' });
+        return;
+      }
+
+      const startTop = window.scrollY;
+      const distance = top - startTop;
+
+      if (Math.abs(distance) < 1) {
+        window.scrollTo({ top, behavior: 'auto' });
+        return;
+      }
+
+      const duration = Math.min(720, Math.max(360, Math.abs(distance) * 0.55));
+      const startTime = window.performance.now();
+
+      const step = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress =
+          progress < 0.5
+            ? 4 * progress * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+        window.scrollTo({
+          top: startTop + distance * easedProgress,
+          behavior: 'auto',
+        });
+
+        if (progress < 1) {
+          scrollAnimation.frame = window.requestAnimationFrame(step);
+          return;
+        }
+
+        scrollAnimation.frame = 0;
+      };
+
+      scrollAnimation.frame = window.requestAnimationFrame(step);
+    };
+
     const scrollToHash = (hash) => {
+      if (hash === '#') {
+        animateWindowScroll(0);
+        return;
+      }
+
       const target = document.querySelector(hash);
       if (!(target instanceof HTMLElement)) return;
 
       const top = target.offsetTop;
-      window.scrollTo({ top, behavior: 'smooth' });
+      animateWindowScroll(top);
     };
 
     const setActiveNavLink = (hash) => {
@@ -87,26 +143,22 @@ const navItems = [
         })
         .filter(Boolean);
 
-      let frame = 0;
+      const activeNavFrame = { id: 0 };
 
       const updateActiveNav = () => {
         const scrollMarker = window.scrollY + nav.offsetHeight + 24;
-        let currentHash = '#';
+        const currentSection = sections.findLast(
+          (section) => section.element.offsetTop <= scrollMarker,
+        );
 
-        sections.forEach((section) => {
-          if (section.element.offsetTop <= scrollMarker) {
-            currentHash = section.hash;
-          }
-        });
-
-        setActiveNavLink(currentHash);
+        setActiveNavLink(currentSection?.hash ?? '#');
       };
 
       const scheduleUpdate = () => {
-        if (frame) return;
+        if (activeNavFrame.id) return;
 
-        frame = window.requestAnimationFrame(() => {
-          frame = 0;
+        activeNavFrame.id = window.requestAnimationFrame(() => {
+          activeNavFrame.id = 0;
           updateActiveNav();
         });
       };
@@ -117,8 +169,12 @@ const navItems = [
       window.addEventListener(
         'pagehide',
         () => {
-          if (frame) {
-            window.cancelAnimationFrame(frame);
+          if (activeNavFrame.id) {
+            window.cancelAnimationFrame(activeNavFrame.id);
+          }
+
+          if (scrollAnimation.frame) {
+            window.cancelAnimationFrame(scrollAnimation.frame);
           }
         },
         { once: true },
@@ -133,7 +189,7 @@ const navItems = [
       if (!(link instanceof HTMLAnchorElement)) return;
 
       const hash = link.getAttribute('href');
-      if (!hash || hash === '#') return;
+      if (!hash) return;
 
       event.preventDefault();
       history.replaceState(null, '', hash);

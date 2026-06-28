@@ -19,10 +19,6 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   background:
     radial-gradient(circle at top, rgba(66, 220, 163, 0.1), transparent 30%),
@@ -146,10 +142,6 @@ canvas {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {
