@@ -56,6 +56,10 @@ const { items, title } = Astro.props;
 
   if (toggle instanceof HTMLButtonElement && panel instanceof HTMLElement) {
     const setOpen = (open) => {
+      if (!open && panel.contains(document.activeElement)) {
+        toggle.focus();
+      }
+
       toggle.setAttribute('aria-expanded', String(open));
       panel.dataset.open = String(open);
       panel.setAttribute('aria-hidden', String(!open));

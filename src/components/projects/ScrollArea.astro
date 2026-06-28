@@ -41,6 +41,16 @@ const { class: className = '', viewportClass = '', label } = Astro.props;
 
     let dragState = null;
     let resizeTimer = 0;
+    let resizeFrame = 0;
+
+    const scheduleOverflowSync = () => {
+      if (resizeFrame) return;
+
+      resizeFrame = window.requestAnimationFrame(() => {
+        resizeFrame = 0;
+        syncOverflow();
+      });
+    };
 
     const syncThumb = () => {
       if (!root.hasAttribute('data-overflowing')) return;
@@ -134,13 +144,13 @@ const { class: className = '', viewportClass = '', label } = Astro.props;
 
     if (document.fonts?.ready) {
       document.fonts.ready.then(() => {
-        syncOverflow();
+        scheduleOverflowSync();
       });
     }
 
     if ('ResizeObserver' in window) {
       const resizeObserver = new ResizeObserver(() => {
-        syncOverflow();
+        scheduleOverflowSync();
       });
       resizeObserver.observe(viewport);
       resizeObserver.observe(root);
