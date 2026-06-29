@@ -65,7 +65,7 @@ export const projects: Project[] = [
   },
   {
     name: 'Terbine World Map',
-    labels: ['label 1', 'label 2', 'label 3'],
+    labels: ['Python', 'Selenium', 'R'],
     logoClass: 'terbine-map-logo',
     logoText: 'Terbine World Map',
     textClass: 'globelogo',
