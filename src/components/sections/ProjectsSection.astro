@@ -1,5 +1,7 @@
 ---
 import type { Project } from '../../data/projects';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
 import ProjectDetailDialog from '../projects/ProjectDetailDialog.astro';
 import ProjectListItem from '../projects/ProjectListItem.astro';
 import ProjectPreviewPanel from '../projects/ProjectPreviewPanel.astro';
@@ -33,7 +35,7 @@ const initialProject = projects[0];
 ---
 
 <section id="projects" class="section-block viewport-section projects-section">
-  <div class="section-shell projects-shell" data-scroll-anchor>
+  <div class="section-shell" data-scroll-anchor>
     <div class="projects-heading-row">
       <div>
         <p class="eyebrow">Projects</p>
@@ -110,17 +112,25 @@ const initialProject = projects[0];
             </div>
           </div>
 
-          <div class="project-rail" aria-label="Project gallery">
-            {projects.map((project) => {
-              return (
-                <ProjectRailCard
-                  project={project}
-                  image={getProjectImage(project)}
-                  summary={getSummary(project)}
-                  meta={getMeta(project)}
-                />
-              );
-            })}
+          <div
+            class="project-rail swiper"
+            aria-label="Project gallery"
+            data-project-rail
+          >
+            <div class="swiper-wrapper">
+              {projects.map((project) => {
+                return (
+                  <div class="swiper-slide">
+                    <ProjectRailCard
+                      project={project}
+                      image={getProjectImage(project)}
+                      summary={getSummary(project)}
+                      meta={getMeta(project)}
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </>
       )
@@ -133,7 +143,27 @@ const initialProject = projects[0];
   <ProjectDetailDialog />
 </section>
 
-<script is:inline>
+<script>
+  import Swiper from 'swiper';
+  import { EffectCards } from 'swiper/modules';
+
+  const rail = document.querySelector('[data-project-rail]');
+  if (rail instanceof HTMLElement) {
+    new Swiper(rail, {
+      modules: [EffectCards],
+      effect: 'cards',
+      grabCursor: true,
+      autoHeight: true,
+      slidesPerView: 1,
+      cardsEffect: {
+        perSlideOffset: 7,
+        perSlideRotate: 1,
+        rotate: true,
+        slideShadows: false,
+      },
+    });
+  }
+
   const previewRoot = document.querySelector('.projects-spotlight');
   if (previewRoot instanceof HTMLElement) {
     const triggers = Array.from(
@@ -145,7 +175,7 @@ const initialProject = projects[0];
     const prevButton = previewRoot.querySelector('[data-project-nav="prev"]');
     const nextButton = previewRoot.querySelector('[data-project-nav="next"]');
 
-    const syncPreview = (trigger) => {
+    const syncPreview = (trigger: HTMLElement) => {
       if (!(trigger instanceof HTMLButtonElement)) return;
 
       const targetId = trigger.dataset.projectPreviewTarget;
@@ -177,7 +207,7 @@ const initialProject = projects[0];
           item.classList.contains('is-active'),
       );
 
-    const selectByOffset = (offset) => {
+    const selectByOffset = (offset: number) => {
       const activeIndex = getActiveIndex();
       if (activeIndex < 0 || triggers.length === 0) return;
 
@@ -212,11 +242,7 @@ const initialProject = projects[0];
   .projects-section {
     display: flex;
     align-items: center;
-  }
-
-  .projects-shell {
-    display: grid;
-    gap: 1.5rem;
+    overflow: hidden;
   }
 
   .projects-heading-row {
@@ -323,15 +349,25 @@ const initialProject = projects[0];
   }
 
   .project-rail {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(84%, 1fr);
-    align-items: start;
-    gap: 1rem;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
+    width: min(calc(100% - 2rem), 22rem);
+    margin: 0 auto;
+    padding: 1rem 0 0.75rem;
+  }
+
+  .project-rail :global(.swiper-wrapper) {
+    align-items: stretch;
+  }
+
+  .project-rail :global(.swiper-slide) {
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
+    padding: 0.35rem 0.75rem 0.75rem;
+  }
+
+  .project-rail :global(.swiper-slide) > * {
+    width: 100%;
+    height: 100%;
   }
 
   .section-next-wrap {
@@ -345,10 +381,6 @@ const initialProject = projects[0];
 
     .projects-copy {
       max-width: 100%;
-    }
-
-    .project-rail {
-      grid-auto-columns: minmax(32rem, 1fr);
     }
   }
 

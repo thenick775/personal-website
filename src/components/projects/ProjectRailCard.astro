@@ -58,7 +58,10 @@ const { project, image, summary, meta } = Astro.props;
 
 <style>
   .project-rail-card {
+    display: grid;
+    grid-template-rows: minmax(14rem, 18rem) auto;
     align-self: start;
+    height: 100%;
     overflow: hidden;
     scroll-snap-align: start;
     background:
@@ -71,6 +74,7 @@ const { project, image, summary, meta } = Astro.props;
   }
 
   .project-rail-media {
+    min-height: 14rem;
     position: relative;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.03);
@@ -93,7 +97,7 @@ const { project, image, summary, meta } = Astro.props;
   .project-rail-content {
     display: grid;
     gap: 1rem;
-    padding: 1.1rem;
+    padding: 0.5rem 1.1rem 1.1rem;
   }
 
   .project-rail-meta {
@@ -114,9 +118,16 @@ const { project, image, summary, meta } = Astro.props;
   }
 
   .project-rail-content p {
-    margin: 0.8rem 0 0;
+    margin: 0;
     color: var(--color-text-muted);
     line-height: 1.7;
+  }
+
+  .project-rail-content > p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
   }
 
   .project-rail-tags {
