@@ -15,8 +15,8 @@ interface Props {
 
 const { projects } = Astro.props;
 
-const getProjectImage = (project: Project) =>
-  `https://picsum.photos/seed/${encodeURIComponent(project.name.toLowerCase().replace(/\s+/g, '-'))}/1440/900`;
+const getProjectImage = (project: Project, width = 1440, height = 900) =>
+  `https://picsum.photos/seed/${encodeURIComponent(project.name.toLowerCase().replace(/\s+/g, '-'))}/${width}/${height}`;
 
 const getSummary = (project: Project) => {
   if (project.detail) {
@@ -123,7 +123,7 @@ const initialProject = projects[0];
                   <div class="swiper-slide">
                     <ProjectRailCard
                       project={project}
-                      image={getProjectImage(project)}
+                      image={getProjectImage(project, 720, 900)}
                       summary={getSummary(project)}
                       meta={getMeta(project)}
                     />
@@ -161,6 +161,9 @@ const initialProject = projects[0];
         rotate: true,
         slideShadows: false,
       },
+      longSwipesMs: 180,
+      longSwipesRatio: 0.2,
+      speed: 400,
     });
   }
 
