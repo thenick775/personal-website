@@ -1,7 +1,7 @@
 export interface ContactLink {
   label: string;
   href: string;
-  icon: string;
+  icon: 'linkedin' | 'email' | 'github' | 'resume';
   external?: boolean;
 }
 
