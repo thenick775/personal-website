@@ -9,7 +9,7 @@
   --color-accent-strong: #27b988;
   --shadow-elevated: 0 24px 80px rgba(0, 0, 0, 0.42);
   --site-max-width: 56rem;
-  --section-padding: clamp(3.5rem, 8vw, 6.5rem);
+  --section-padding: clamp(4.5rem, 8vw, 6.5rem);
   --nav-offset: 4rem;
   --radius-lg: 1.5rem;
   --radius-md: 1rem;
