@@ -29,6 +29,7 @@
     "jiti": "^2.7.0",
     "knip": "^6.21.0",
     "postcss-custom-media": "^12.0.1",
+    "rollup-plugin-visualizer": "^7.0.1",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.62.0"
   }
