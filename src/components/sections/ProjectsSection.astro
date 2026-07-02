@@ -99,7 +99,8 @@ const initialProject = projects[0];
                     panelId={getProjectPanelId(index)}
                     image={getProjectImage(project)}
                     meta={getShortMeta(project)}
-                    summary={project.summary}
+                    summary={project.shortSummary}
+                    detail={project.summary}
                     active={index === 0}
                   />
                 );
