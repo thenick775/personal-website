@@ -49,28 +49,16 @@ const { project, panelId, image, summary, meta, active } = Astro.props;
       </ul>
 
       <div class="project-preview-actions">
-        {
-          project.personal && project.href ? (
-            <a
-              class="button-pill button-primary"
-              href={project.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View project
-            </a>
-          ) : (
-            <button
-              class="button-pill button-primary"
-              type="button"
-              data-project-detail
-              data-project-name={project.name}
-              data-project-description={project.detail ?? ''}
-            >
-              Project detail
-            </button>
-          )
-        }
+        <button
+          class="button-pill button-primary"
+          type="button"
+          data-project-detail
+          data-project-href={project.href ?? ''}
+          data-project-name={project.name}
+          data-project-summary={project.summary}
+        >
+          Project detail
+        </button>
       </div>
     </div>
   </div>

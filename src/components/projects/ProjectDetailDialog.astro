@@ -12,6 +12,17 @@
     </div>
     <h3 class="dialog-title" data-project-dialog-title>Project detail</h3>
     <p class="dialog-copy" data-project-dialog-copy></p>
+    <div class="dialog-actions" data-project-dialog-actions hidden>
+      <a
+        class="button-pill button-primary"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-project-dialog-link
+      >
+        View project
+      </a>
+    </div>
   </form>
 </dialog>
 
@@ -19,10 +30,14 @@
   const dialog = document.querySelector('[data-project-dialog]');
   const title = document.querySelector('[data-project-dialog-title]');
   const copy = document.querySelector('[data-project-dialog-copy]');
+  const actions = document.querySelector('[data-project-dialog-actions]');
+  const link = document.querySelector('[data-project-dialog-link]');
   if (
     dialog instanceof HTMLDialogElement &&
     title instanceof HTMLElement &&
-    copy instanceof HTMLElement
+    copy instanceof HTMLElement &&
+    actions instanceof HTMLElement &&
+    link instanceof HTMLAnchorElement
   ) {
     const projectsRoot = document.querySelector('#projects');
     const triggers =
@@ -36,10 +51,12 @@
       if (!(trigger instanceof HTMLElement)) return;
 
       trigger.addEventListener('click', () => {
+        const href = trigger.getAttribute('data-project-href') || '';
         title.textContent =
           trigger.getAttribute('data-project-name') || 'Project detail';
-        copy.textContent =
-          trigger.getAttribute('data-project-description') || '';
+        copy.textContent = trigger.getAttribute('data-project-summary') || '';
+        actions.hidden = !href;
+        link.href = href || '#';
         setScrollLock(true);
         dialog.showModal();
       });
@@ -126,6 +143,10 @@
     line-height: 1.8;
   }
 
+  .dialog-actions {
+    margin-top: 1.25rem;
+  }
+
   .project-dialog {
     opacity: 0;
     transform: translateY(20px) scale(0.986);
@@ -163,7 +184,8 @@
 
   .dialog-header,
   .dialog-title,
-  .dialog-copy {
+  .dialog-copy,
+  .dialog-actions {
     opacity: 0;
     transform: translateY(6px);
     will-change: transform, opacity;
@@ -184,6 +206,11 @@
     animation-delay: 180ms;
   }
 
+  .project-dialog[open] .dialog-actions {
+    animation: content-fade 320ms ease both;
+    animation-delay: 220ms;
+  }
+
   @keyframes content-fade {
     from {
       opacity: 0;
@@ -201,7 +228,8 @@
     .project-dialog[open],
     .dialog-header,
     .dialog-title,
-    .dialog-copy {
+    .dialog-copy,
+    .dialog-actions {
       animation: none !important;
       transition: none !important;
       transform: none !important;

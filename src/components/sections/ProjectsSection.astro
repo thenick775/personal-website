@@ -18,16 +18,11 @@ const { projects } = Astro.props;
 const getProjectImage = (project: Project, width = 1440, height = 900) =>
   `https://picsum.photos/seed/${encodeURIComponent(project.name.toLowerCase().replace(/\s+/g, '-'))}/${width}/${height}`;
 
-const getSummary = (project: Project) => {
-  if (project.detail) {
-    return project.detail.split('\n\n')[0];
-  }
-
-  return `${project.name} is a ${project.labels.join(', ').toLowerCase()} project that reflects the kind of hands-on software work highlighted throughout this site.`;
-};
-
 const getMeta = (project: Project) =>
   project.personal ? 'Personal project' : 'Professional work';
+
+const getShortMeta = (project: Project) =>
+  project.personal ? 'Personal' : 'Professional';
 
 const getProjectPanelId = (index: number) => `project-preview-panel-${index}`;
 
@@ -103,8 +98,8 @@ const initialProject = projects[0];
                     project={project}
                     panelId={getProjectPanelId(index)}
                     image={getProjectImage(project)}
-                    summary={getSummary(project)}
-                    meta={getMeta(project)}
+                    meta={getShortMeta(project)}
+                    summary={project.summary}
                     active={index === 0}
                   />
                 );
@@ -124,8 +119,8 @@ const initialProject = projects[0];
                     <ProjectRailCard
                       project={project}
                       image={getProjectImage(project, 720, 900)}
-                      summary={getSummary(project)}
                       meta={getMeta(project)}
+                      summary={project.shortSummary}
                     />
                   </div>
                 );
@@ -164,6 +159,8 @@ const initialProject = projects[0];
       longSwipesMs: 180,
       longSwipesRatio: 0.2,
       speed: 400,
+      observer: true,
+      observeParents: true,
     });
   }
 
