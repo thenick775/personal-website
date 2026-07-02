@@ -1,0 +1,14 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-html/astro"],
+  "referenceFiles": ["src/styles/media.css"],
+  "rules": {
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ],
+    "no-unknown-custom-media": true
+  },
+  "ignoreFiles": ["dist/**", "node_modules/**"]
+}

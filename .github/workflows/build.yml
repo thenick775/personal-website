@@ -51,6 +51,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Lint styles
+        run: npm run stylelint
+
       - name: Dead code
         run: npm run knip
 
