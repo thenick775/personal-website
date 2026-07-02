@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: ['**']
+    branches: ["**"]
   pull_request:
-    branches: ['**']
+    branches: ["**"]
 
 permissions:
   contents: read
@@ -22,8 +22,8 @@ jobs:
       - id: skip_check
         uses: fkirc/skip-duplicate-actions@v5
         with:
-          cancel_others: 'true'
-          concurrent_skipping: 'always'
+          cancel_others: "true"
+          concurrent_skipping: "always"
           do_not_skip: '["pull_request", "workflow_dispatch", "schedule", "merge_group"]'
 
   build:
@@ -39,7 +39,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
           cache: npm
 
       - name: Install dependencies
@@ -56,6 +56,9 @@ jobs:
 
       - name: Dead code
         run: npm run knip
+
+      - name: Format check
+        run: npm run format
 
       - name: Build
         run: npm run build
