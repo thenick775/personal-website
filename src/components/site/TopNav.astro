@@ -217,16 +217,16 @@ const { items, title } = Astro.props;
       background-color 160ms ease;
   }
 
-  .menu-list li:last-child a {
-    border-bottom: 0;
-  }
-
   .menu-list a:hover,
   .menu-list a[data-active],
   .menu-list a[aria-current='page'],
   .menu-list a:focus-visible {
     color: var(--color-text);
     outline: none;
+  }
+
+  .menu-list li:last-child a {
+    border-bottom: 0;
   }
 
   @media (--desktop-and-up) {
@@ -317,16 +317,16 @@ const { items, title } = Astro.props;
       pointer-events: none;
     }
 
-    .top-nav[data-shrunk='true'] .menu-list a,
-    .top-nav[data-shrunk='true'] .brand {
-      box-shadow: none;
-    }
-
     .menu-list a:hover,
     .menu-list a[data-active],
     .menu-list a[aria-current='page'],
     .menu-list a:focus-visible {
       background: transparent;
+    }
+
+    .top-nav[data-shrunk='true'] .menu-list a,
+    .top-nav[data-shrunk='true'] .brand {
+      box-shadow: none;
     }
   }
 </style>
