@@ -94,6 +94,10 @@
     background: rgb(6 10 16 / 98%);
     border: 1px solid rgb(255 255 255 / 12%);
     will-change: transform, opacity;
+    opacity: 0;
+    transform: translateY(20px) scale(0.986);
+    transform-origin: center center;
+    pointer-events: none;
   }
 
   .project-dialog::backdrop {
@@ -145,13 +149,6 @@
 
   .dialog-actions {
     margin-top: 1.25rem;
-  }
-
-  .project-dialog {
-    opacity: 0;
-    transform: translateY(20px) scale(0.986);
-    transform-origin: center center;
-    pointer-events: none;
   }
 
   .project-dialog[open] {
