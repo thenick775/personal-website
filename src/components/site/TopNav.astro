@@ -102,11 +102,11 @@ const { items, title } = Astro.props;
     left: 0;
     z-index: 20;
     backdrop-filter: blur(3px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
   }
 
   .top-nav[data-shrunk='true'] {
-    background: rgba(2, 4, 7, 0.72);
+    background: rgb(2 4 7 / 72%);
     backdrop-filter: blur(16px);
   }
 
@@ -121,7 +121,7 @@ const { items, title } = Astro.props;
   }
 
   .brand {
-    font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 0.98rem;
     font-weight: 700;
     letter-spacing: 0.16em;
@@ -135,16 +135,16 @@ const { items, title } = Astro.props;
     min-height: 2.45rem;
     padding: 0.5rem 0.85rem;
     color: var(--color-text);
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    border: 1px solid rgb(255 255 255 / 16%);
     border-radius: 999px;
-    background: rgba(12, 16, 24, 0.88);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    background: rgb(12 16 24 / 88%);
+    box-shadow: 0 10px 24px rgb(0 0 0 / 22%);
   }
 
   .menu-toggle:focus-visible,
   .menu-toggle:hover {
-    border-color: rgba(66, 220, 163, 0.6);
-    background: rgba(66, 220, 163, 0.12);
+    border-color: rgb(66 220 163 / 60%);
+    background: rgb(66 220 163 / 12%);
     outline: none;
   }
 
@@ -166,10 +166,10 @@ const { items, title } = Astro.props;
     width: min(14.5rem, calc(100vw - 1.5rem));
     margin-top: 0;
     padding: 0.75rem 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgb(255 255 255 / 10%);
     border-radius: 1rem;
-    background: rgba(7, 11, 18, 0.96);
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+    background: rgb(7 11 18 / 96%);
+    box-shadow: 0 20px 48px rgb(0 0 0 / 40%);
     max-height: 0;
     opacity: 0;
     transform: translateY(-0.5rem) scale(0.98);
@@ -205,12 +205,12 @@ const { items, title } = Astro.props;
     justify-content: flex-end;
     width: 100%;
     padding: 0.8rem 0.2rem;
-    font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 0.9rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-text-muted);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgb(255 255 255 / 8%);
     transition:
       color 160ms ease,
       border-color 160ms ease,
@@ -248,8 +248,8 @@ const { items, title } = Astro.props;
     }
 
     .top-nav[data-shrunk='true'] {
-      border-bottom-color: rgba(255, 255, 255, 0.1);
-      background: rgba(8, 12, 18, 0.62);
+      border-bottom-color: rgb(255 255 255 / 10%);
+      background: rgb(8 12 18 / 62%);
       backdrop-filter: blur(16px);
     }
 

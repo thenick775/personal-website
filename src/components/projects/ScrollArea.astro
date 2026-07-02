@@ -205,10 +205,10 @@ const { class: className = '', viewportClass = '', label } = Astro.props;
     border-radius: 999px;
     background: linear-gradient(
       180deg,
-      rgba(66, 220, 163, 0.9),
-      rgba(47, 169, 129, 0.9)
+      rgb(66 220 163 / 90%),
+      rgb(47 169 129 / 90%)
     );
-    box-shadow: 0 0 0 1px rgba(66, 220, 163, 0.08);
+    box-shadow: 0 0 0 1px rgb(66 220 163 / 8%);
     cursor: pointer;
     touch-action: none;
     transition:
@@ -220,8 +220,8 @@ const { class: className = '', viewportClass = '', label } = Astro.props;
   .scroll-area-thumb:hover {
     background: linear-gradient(
       180deg,
-      rgba(82, 236, 179, 0.95),
-      rgba(52, 184, 140, 0.95)
+      rgb(82 236 179 / 95%),
+      rgb(52 184 140 / 95%)
     );
   }
 

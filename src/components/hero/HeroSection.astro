@@ -42,8 +42,8 @@ const { eyebrow, heading, introCopy } = Astro.props;
     inset: 0;
     z-index: -1;
     background:
-      linear-gradient(180deg, rgba(2, 3, 5, 0.18), rgba(2, 3, 5, 0.6)),
-      radial-gradient(circle at center, transparent 0%, rgba(2, 3, 5, 0.65) 72%);
+      linear-gradient(180deg, rgb(2 3 5 / 18%), rgb(2 3 5 / 60%)),
+      radial-gradient(circle at center, transparent 0%, rgb(2 3 5 / 65%) 72%);
   }
 
   .hero-surface-panel {
@@ -67,7 +67,7 @@ const { eyebrow, heading, introCopy } = Astro.props;
 
   h1 {
     margin: 0;
-    font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: clamp(1.35rem, 4vw, 1.8rem);
     line-height: 0.96;
     letter-spacing: 0.05em;

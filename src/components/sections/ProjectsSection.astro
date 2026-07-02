@@ -258,16 +258,16 @@ const initialProject = projects[0];
     background:
       radial-gradient(
         circle at top right,
-        rgba(66, 220, 163, 0.14),
+        rgb(66 220 163 / 14%),
         transparent 34%
       ),
-      rgba(8, 12, 18, 0.92);
+      rgb(8 12 18 / 92%);
   }
 
   .projects-list-wrap {
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgb(255 255 255 / 8%);
   }
 
   .projects-list-header {
@@ -300,9 +300,9 @@ const initialProject = projects[0];
     justify-content: center;
     width: 2rem;
     height: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgb(255 255 255 / 12%);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.04);
+    background: rgb(255 255 255 / 4%);
     color: var(--color-text-muted);
     transition:
       border-color 160ms ease,
@@ -319,8 +319,8 @@ const initialProject = projects[0];
 
   .projects-list-nav-button:hover,
   .projects-list-nav-button:focus-visible {
-    border-color: rgba(66, 220, 163, 0.4);
-    background: rgba(66, 220, 163, 0.08);
+    border-color: rgb(66 220 163 / 40%);
+    background: rgb(66 220 163 / 8%);
     color: var(--color-text);
     transform: translateY(-1px);
     outline: none;
@@ -395,7 +395,7 @@ const initialProject = projects[0];
     }
 
     .projects-list-wrap {
-      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      border-right: 1px solid rgb(255 255 255 / 8%);
       border-bottom: 0;
       height: 100%;
       min-height: 0;

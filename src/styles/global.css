@@ -1,13 +1,13 @@
 :root {
   --color-bg: #020305;
-  --color-panel: rgba(8, 12, 18, 0.82);
-  --color-panel-strong: rgba(10, 15, 23, 0.94);
-  --color-border: rgba(255, 255, 255, 0.12);
+  --color-panel: rgb(8 12 18 / 82%);
+  --color-panel-strong: rgb(10 15 23 / 94%);
+  --color-border: rgb(255 255 255 / 12%);
   --color-text: #f5f7fb;
-  --color-text-muted: rgba(245, 247, 251, 0.75);
+  --color-text-muted: rgb(245 247 251 / 75%);
   --color-accent: #42dca3;
   --color-accent-strong: #27b988;
-  --shadow-elevated: 0 24px 80px rgba(0, 0, 0, 0.42);
+  --shadow-elevated: 0 24px 80px rgb(0 0 0 / 42%);
   --site-max-width: 56rem;
   --section-padding: clamp(4.5rem, 8vw, 6.5rem);
   --nav-offset: 4rem;
@@ -21,7 +21,7 @@
 
 body {
   background:
-    radial-gradient(circle at top, rgba(66, 220, 163, 0.1), transparent 30%),
+    radial-gradient(circle at top, rgb(66 220 163 / 10%), transparent 30%),
     linear-gradient(180deg, #04070c 0%, #020305 28%, #04070c 100%);
   color: var(--color-text);
 }
@@ -68,7 +68,7 @@ canvas {
 
 .section-heading {
   margin: 0 0 1rem;
-  font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 0.98;
   letter-spacing: 0.08em;
@@ -84,7 +84,7 @@ canvas {
 
 .eyebrow {
   margin: 0 0 0.85rem;
-  font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 0.8rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -105,9 +105,9 @@ canvas {
   justify-content: center;
   min-height: 2.75rem;
   padding: 0.75rem 1.1rem;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgb(255 255 255 / 18%);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgb(255 255 255 / 6%);
   color: var(--color-text);
   transition:
     transform 160ms ease,
@@ -119,14 +119,14 @@ canvas {
 .button-pill:hover,
 .button-pill:focus-visible {
   transform: translateY(-1px);
-  border-color: rgba(66, 220, 163, 0.6);
-  background: rgba(66, 220, 163, 0.14);
+  border-color: rgb(66 220 163 / 60%);
+  background: rgb(66 220 163 / 14%);
   outline: none;
 }
 
 .button-primary {
-  border-color: rgba(66, 220, 163, 0.5);
-  background: rgba(66, 220, 163, 0.15);
+  border-color: rgb(66 220 163 / 50%);
+  background: rgb(66 220 163 / 15%);
 }
 
 .visually-hidden {

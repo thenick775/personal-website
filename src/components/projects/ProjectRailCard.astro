@@ -55,15 +55,15 @@ const { project, image, summary, meta } = Astro.props;
     will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
-    background: rgba(8, 12, 18, 0.92);
-    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.24);
+    background: rgb(8 12 18 / 92%);
+    box-shadow: 0 14px 32px rgb(0 0 0 / 24%);
   }
 
   .project-rail-media {
     min-height: 13rem;
     position: relative;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.03);
+    background: rgb(255 255 255 / 3%);
     transform: translateZ(0);
   }
 
@@ -76,11 +76,7 @@ const { project, image, summary, meta } = Astro.props;
   .project-rail-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(2, 3, 5, 0.04),
-      rgba(2, 3, 5, 0.52)
-    );
+    background: linear-gradient(180deg, rgb(2 3 5 / 4%), rgb(2 3 5 / 52%));
   }
 
   .project-rail-content {
@@ -99,7 +95,7 @@ const { project, image, summary, meta } = Astro.props;
 
   .project-rail-content h3 {
     margin: 0;
-    font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: clamp(1.45rem, 2.8vw, 2.4rem);
     line-height: 1;
     letter-spacing: 0.04em;
@@ -132,10 +128,10 @@ const { project, image, summary, meta } = Astro.props;
     display: inline-flex;
     align-items: center;
     padding: 0.38rem 0.68rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgb(255 255 255 / 10%);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.05);
-    color: rgba(245, 247, 251, 0.92);
+    background: rgb(255 255 255 / 5%);
+    color: rgb(245 247 251 / 92%);
     font-size: 0.82rem;
     letter-spacing: 0.03em;
     line-height: 1.2;
@@ -151,10 +147,10 @@ const { project, image, summary, meta } = Astro.props;
       background:
         radial-gradient(
           circle at top right,
-          rgba(66, 220, 163, 0.16),
+          rgb(66 220 163 / 16%),
           transparent 28%
         ),
-        rgba(8, 12, 18, 0.92);
+        rgb(8 12 18 / 92%);
       box-shadow: var(--shadow-elevated);
     }
 

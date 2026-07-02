@@ -28,7 +28,7 @@ const { title, paragraphs } = Astro.props;
   .about-section {
     display: flex;
     align-items: center;
-    background: url(/images/IMG_1615_min.jpg) center center / cover no-repeat
+    background: url('/images/IMG_1615_min.jpg') center center / cover no-repeat
       scroll black;
   }
 
@@ -48,8 +48,8 @@ const { title, paragraphs } = Astro.props;
 
   .about-copy {
     padding: clamp(1.4rem, 3vw, 2rem);
-    background: rgba(0, 0, 0, 0.74);
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.95);
+    background: rgb(0 0 0 / 74%);
+    text-shadow: 0 0 10px rgb(0 0 0 / 95%);
   }
 
   .about-copy p + p {
