@@ -68,7 +68,7 @@ canvas {
 
 .section-heading {
   margin: 0 0 1rem;
-  font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: Cabin, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 0.98;
   letter-spacing: 0.08em;
@@ -84,7 +84,7 @@ canvas {
 
 .eyebrow {
   margin: 0 0 0.85rem;
-  font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: Cabin, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.8rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;

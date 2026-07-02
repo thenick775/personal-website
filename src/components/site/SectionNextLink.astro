@@ -4,7 +4,7 @@ interface Props {
   label?: string;
 }
 
-const { href, label = 'Scroll to next section' } = Astro.props;
+const { href, label = "Scroll to next section" } = Astro.props;
 ---
 
 <a class="section-next-link" href={href} aria-label={label}>

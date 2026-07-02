@@ -1,18 +1,18 @@
 <canvas class="matrix-canvas" data-matrix-canvas aria-hidden="true"></canvas>
 
 <script is:inline>
-  const canvas = document.querySelector('[data-matrix-canvas]');
+  const canvas = document.querySelector("[data-matrix-canvas]");
 
   if (canvas instanceof HTMLCanvasElement) {
     const reduceMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
+      "(prefers-reduced-motion: reduce)",
     ).matches;
-    const context = canvas.getContext('2d');
+    const context = canvas.getContext("2d");
 
     if (context && !reduceMotion) {
       const glyphs =
-        'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789诶比西迪伊艾弗吉艾尺艾杰开艾勒艾马艾娜哦屁吉吾艾儿艾一，@#$%^&*()*&^%+-/~{[|`]}'.split(
-          '',
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789诶比西迪伊艾弗吉艾尺艾杰开艾勒艾马艾娜哦屁吉吾艾儿艾一，@#$%^&*()*&^%+-/~{[|`]}".split(
+          "",
         );
       const fontSize = 12;
       let columns = 0;
@@ -85,7 +85,7 @@
 
         if (timestamp - lastFrame >= 75) {
           lastFrame = timestamp;
-          context.fillStyle = 'rgba(0, 0, 0, 0.06)';
+          context.fillStyle = "rgba(0, 0, 0, 0.06)";
           context.fillRect(0, 0, width, height);
 
           context.fillStyle = `hsl(${Math.random() * 360}, 90%, 50%)`;
@@ -121,7 +121,7 @@
       }, 1500);
 
       window.addEventListener(
-        'pagehide',
+        "pagehide",
         () => {
           observer.disconnect();
           window.clearInterval(widthPollId);

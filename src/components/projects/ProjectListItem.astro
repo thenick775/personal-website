@@ -11,17 +11,17 @@ const { projectName, projectMeta, panelId, index, active } = Astro.props;
 ---
 
 <button
-  class:list={['project-list-item', active && 'is-active']}
+  class:list={["project-list-item", active && "is-active"]}
   type="button"
   role="tab"
-  aria-selected={active ? 'true' : 'false'}
+  aria-selected={active ? "true" : "false"}
   aria-controls={panelId}
-  tabindex={active ? '0' : '-1'}
+  tabindex={active ? "0" : "-1"}
   data-project-preview-trigger
   data-project-preview-target={panelId}
 >
   <span class="project-list-item-index">
-    {String(index + 1).padStart(2, '0')}
+    {String(index + 1).padStart(2, "0")}
   </span>
   <span class="project-list-item-body">
     <span class="project-list-item-meta">{projectMeta}</span>
@@ -57,7 +57,7 @@ const { projectName, projectMeta, panelId, index, active } = Astro.props;
   }
 
   .project-list-item-index {
-    font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: Cabin, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 0.84rem;
     letter-spacing: 0.14em;
     color: var(--color-accent);

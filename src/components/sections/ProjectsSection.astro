@@ -1,13 +1,13 @@
 ---
-import type { Project } from '../../data/projects';
-import 'swiper/css';
-import 'swiper/css/effect-cards';
-import ProjectDetailDialog from '../projects/ProjectDetailDialog.astro';
-import ProjectListItem from '../projects/ProjectListItem.astro';
-import ProjectPreviewPanel from '../projects/ProjectPreviewPanel.astro';
-import ProjectRailCard from '../projects/ProjectRailCard.astro';
-import ScrollArea from '../projects/ScrollArea.astro';
-import SectionNextLink from '../site/SectionNextLink.astro';
+import type { Project } from "../../data/projects";
+import "swiper/css";
+import "swiper/css/effect-cards";
+import ProjectDetailDialog from "../projects/ProjectDetailDialog.astro";
+import ProjectListItem from "../projects/ProjectListItem.astro";
+import ProjectPreviewPanel from "../projects/ProjectPreviewPanel.astro";
+import ProjectRailCard from "../projects/ProjectRailCard.astro";
+import ScrollArea from "../projects/ScrollArea.astro";
+import SectionNextLink from "../site/SectionNextLink.astro";
 
 interface Props {
   projects: Project[];
@@ -16,10 +16,10 @@ interface Props {
 const { projects } = Astro.props;
 
 const getMeta = (project: Project) =>
-  project.personal ? 'Personal project' : 'Professional work';
+  project.personal ? "Personal project" : "Professional work";
 
 const getShortMeta = (project: Project) =>
-  project.personal ? 'Personal' : 'Professional';
+  project.personal ? "Personal" : "Professional";
 
 const getProjectPanelId = (index: number) => `project-preview-panel-${index}`;
 
@@ -137,14 +137,14 @@ const initialProject = projects[0];
 </section>
 
 <script>
-  import Swiper from 'swiper';
-  import { EffectCards } from 'swiper/modules';
+  import Swiper from "swiper";
+  import { EffectCards } from "swiper/modules";
 
-  const rail = document.querySelector('[data-project-rail]');
+  const rail = document.querySelector("[data-project-rail]");
   if (rail instanceof HTMLElement) {
     new Swiper(rail, {
       modules: [EffectCards],
-      effect: 'cards',
+      effect: "cards",
       grabCursor: true,
       autoHeight: true,
       slidesPerView: 1,
@@ -162,13 +162,13 @@ const initialProject = projects[0];
     });
   }
 
-  const previewRoot = document.querySelector('.projects-spotlight');
+  const previewRoot = document.querySelector(".projects-spotlight");
   if (previewRoot instanceof HTMLElement) {
     const triggers = Array.from(
-      previewRoot.querySelectorAll('[data-project-preview-trigger]'),
+      previewRoot.querySelectorAll("[data-project-preview-trigger]"),
     );
     const panels = Array.from(
-      previewRoot.querySelectorAll('[data-project-preview-panel]'),
+      previewRoot.querySelectorAll("[data-project-preview-panel]"),
     );
     const prevButton = previewRoot.querySelector('[data-project-nav="prev"]');
     const nextButton = previewRoot.querySelector('[data-project-nav="next"]');
@@ -183,18 +183,18 @@ const initialProject = projects[0];
         if (!(item instanceof HTMLButtonElement)) return;
 
         const active = item === trigger;
-        item.classList.toggle('is-active', active);
-        item.setAttribute('aria-selected', active ? 'true' : 'false');
-        item.setAttribute('tabindex', active ? '0' : '-1');
+        item.classList.toggle("is-active", active);
+        item.setAttribute("aria-selected", active ? "true" : "false");
+        item.setAttribute("tabindex", active ? "0" : "-1");
       });
 
       panels.forEach((panel) => {
         if (!(panel instanceof HTMLElement)) return;
 
         const active = panel.id === targetId;
-        panel.classList.toggle('is-active', active);
-        panel.classList.toggle('is-hidden', !active);
-        panel.setAttribute('aria-hidden', active ? 'false' : 'true');
+        panel.classList.toggle("is-active", active);
+        panel.classList.toggle("is-hidden", !active);
+        panel.setAttribute("aria-hidden", active ? "false" : "true");
       });
     };
 
@@ -202,7 +202,7 @@ const initialProject = projects[0];
       triggers.findIndex(
         (item) =>
           item instanceof HTMLButtonElement &&
-          item.classList.contains('is-active'),
+          item.classList.contains("is-active"),
       );
 
     const selectByOffset = (offset: number) => {
@@ -217,21 +217,21 @@ const initialProject = projects[0];
 
       syncPreview(nextTrigger);
       nextTrigger.focus();
-      nextTrigger.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      nextTrigger.scrollIntoView({ block: "nearest", behavior: "smooth" });
     };
 
     triggers.forEach((trigger) => {
       if (!(trigger instanceof HTMLButtonElement)) return;
-      trigger.addEventListener('focus', () => syncPreview(trigger));
-      trigger.addEventListener('click', () => syncPreview(trigger));
+      trigger.addEventListener("focus", () => syncPreview(trigger));
+      trigger.addEventListener("click", () => syncPreview(trigger));
     });
 
     if (prevButton instanceof HTMLButtonElement) {
-      prevButton.addEventListener('click', () => selectByOffset(-1));
+      prevButton.addEventListener("click", () => selectByOffset(-1));
     }
 
     if (nextButton instanceof HTMLButtonElement) {
-      nextButton.addEventListener('click', () => selectByOffset(1));
+      nextButton.addEventListener("click", () => selectByOffset(1));
     }
   }
 </script>

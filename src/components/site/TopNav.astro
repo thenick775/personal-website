@@ -49,10 +49,10 @@ const { items, title } = Astro.props;
 </nav>
 
 <script is:inline>
-  const toggle = document.querySelector('[data-menu-toggle]');
-  const panel = document.querySelector('[data-menu-panel]');
-  const links = document.querySelectorAll('[data-menu-link]');
-  const navRoot = document.querySelector('[data-nav-root]');
+  const toggle = document.querySelector("[data-menu-toggle]");
+  const panel = document.querySelector("[data-menu-panel]");
+  const links = document.querySelectorAll("[data-menu-link]");
+  const navRoot = document.querySelector("[data-nav-root]");
 
   if (toggle instanceof HTMLButtonElement && panel instanceof HTMLElement) {
     const setOpen = (open) => {
@@ -60,24 +60,24 @@ const { items, title } = Astro.props;
         toggle.focus();
       }
 
-      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute("aria-expanded", String(open));
       panel.dataset.open = String(open);
-      panel.setAttribute('aria-hidden', String(!open));
-      document.body.classList.toggle('menu-open', open);
+      panel.setAttribute("aria-hidden", String(!open));
+      document.body.classList.toggle("menu-open", open);
     };
 
     setOpen(false);
 
-    toggle.addEventListener('click', () => {
-      const open = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.addEventListener("click", () => {
+      const open = toggle.getAttribute("aria-expanded") !== "true";
       setOpen(open);
     });
 
     links.forEach((link) => {
-      link.addEventListener('click', () => setOpen(false));
+      link.addEventListener("click", () => setOpen(false));
     });
 
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       if (window.innerWidth >= 960) {
         setOpen(false);
       }
@@ -90,7 +90,7 @@ const { items, title } = Astro.props;
     };
 
     setShrunk();
-    window.addEventListener('scroll', setShrunk, { passive: true });
+    window.addEventListener("scroll", setShrunk, { passive: true });
   }
 </script>
 
@@ -105,7 +105,7 @@ const { items, title } = Astro.props;
     border-bottom: 1px solid rgb(255 255 255 / 10%);
   }
 
-  .top-nav[data-shrunk='true'] {
+  .top-nav[data-shrunk="true"] {
     background: rgb(2 4 7 / 72%);
     backdrop-filter: blur(16px);
   }
@@ -121,7 +121,7 @@ const { items, title } = Astro.props;
   }
 
   .brand {
-    font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: Cabin, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 0.98rem;
     font-weight: 700;
     letter-spacing: 0.16em;
@@ -154,7 +154,7 @@ const { items, title } = Astro.props;
     transition: transform 220ms ease;
   }
 
-  .menu-toggle[aria-expanded='true'] .menu-icon {
+  .menu-toggle[aria-expanded="true"] .menu-icon {
     transform: rotate(45deg);
   }
 
@@ -183,7 +183,7 @@ const { items, title } = Astro.props;
       transform 180ms ease;
   }
 
-  .menu-panel[data-open='true'] {
+  .menu-panel[data-open="true"] {
     margin-top: 0.5rem;
     max-height: 18rem;
     opacity: 1;
@@ -205,7 +205,7 @@ const { items, title } = Astro.props;
     justify-content: flex-end;
     width: 100%;
     padding: 0.8rem 0.2rem;
-    font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: Cabin, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 0.9rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -219,7 +219,7 @@ const { items, title } = Astro.props;
 
   .menu-list a:hover,
   .menu-list a[data-active],
-  .menu-list a[aria-current='page'],
+  .menu-list a[aria-current="page"],
   .menu-list a:focus-visible {
     color: var(--color-text);
     outline: none;
@@ -247,13 +247,13 @@ const { items, title } = Astro.props;
       transition: min-height 260ms ease;
     }
 
-    .top-nav[data-shrunk='true'] {
+    .top-nav[data-shrunk="true"] {
       border-bottom-color: rgb(255 255 255 / 10%);
       background: rgb(8 12 18 / 62%);
       backdrop-filter: blur(16px);
     }
 
-    .top-nav[data-shrunk='true'] .nav-shell {
+    .top-nav[data-shrunk="true"] .nav-shell {
       min-height: 4rem;
     }
 
@@ -304,9 +304,9 @@ const { items, title } = Astro.props;
       color: var(--color-text);
     }
 
-    .top-nav:not([data-shrunk='true']) .menu-list a::before,
-    .top-nav:not([data-shrunk='true']) .brand::before {
-      content: '';
+    .top-nav:not([data-shrunk="true"]) .menu-list a::before,
+    .top-nav:not([data-shrunk="true"]) .brand::before {
+      content: "";
       position: absolute;
       inset: 0;
       z-index: -1;
@@ -319,13 +319,13 @@ const { items, title } = Astro.props;
 
     .menu-list a:hover,
     .menu-list a[data-active],
-    .menu-list a[aria-current='page'],
+    .menu-list a[aria-current="page"],
     .menu-list a:focus-visible {
       background: transparent;
     }
 
-    .top-nav[data-shrunk='true'] .menu-list a,
-    .top-nav[data-shrunk='true'] .brand {
+    .top-nav[data-shrunk="true"] .menu-list a,
+    .top-nav[data-shrunk="true"] .brand {
       box-shadow: none;
     }
   }

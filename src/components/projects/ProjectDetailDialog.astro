@@ -27,11 +27,11 @@
 </dialog>
 
 <script is:inline>
-  const dialog = document.querySelector('[data-project-dialog]');
-  const title = document.querySelector('[data-project-dialog-title]');
-  const copy = document.querySelector('[data-project-dialog-copy]');
-  const actions = document.querySelector('[data-project-dialog-actions]');
-  const link = document.querySelector('[data-project-dialog-link]');
+  const dialog = document.querySelector("[data-project-dialog]");
+  const title = document.querySelector("[data-project-dialog-title]");
+  const copy = document.querySelector("[data-project-dialog-copy]");
+  const actions = document.querySelector("[data-project-dialog-actions]");
+  const link = document.querySelector("[data-project-dialog-link]");
   if (
     dialog instanceof HTMLDialogElement &&
     title instanceof HTMLElement &&
@@ -39,38 +39,38 @@
     actions instanceof HTMLElement &&
     link instanceof HTMLAnchorElement
   ) {
-    const projectsRoot = document.querySelector('#projects');
+    const projectsRoot = document.querySelector("#projects");
     const triggers =
-      projectsRoot?.querySelectorAll('[data-project-detail]') ?? [];
+      projectsRoot?.querySelectorAll("[data-project-detail]") ?? [];
 
     const setScrollLock = (locked) => {
-      document.body.classList.toggle('dialog-open', locked);
+      document.body.classList.toggle("dialog-open", locked);
     };
 
     triggers.forEach((trigger) => {
       if (!(trigger instanceof HTMLElement)) return;
 
-      trigger.addEventListener('click', () => {
-        const href = trigger.getAttribute('data-project-href') || '';
+      trigger.addEventListener("click", () => {
+        const href = trigger.getAttribute("data-project-href") || "";
         title.textContent =
-          trigger.getAttribute('data-project-name') || 'Project detail';
-        copy.textContent = trigger.getAttribute('data-project-summary') || '';
+          trigger.getAttribute("data-project-name") || "Project detail";
+        copy.textContent = trigger.getAttribute("data-project-summary") || "";
         actions.hidden = !href;
-        link.href = href || '#';
+        link.href = href || "#";
         setScrollLock(true);
         dialog.showModal();
       });
     });
 
-    dialog.addEventListener('close', () => {
+    dialog.addEventListener("close", () => {
       setScrollLock(false);
     });
 
-    dialog.addEventListener('cancel', () => {
+    dialog.addEventListener("cancel", () => {
       setScrollLock(false);
     });
 
-    dialog.addEventListener('click', (event) => {
+    dialog.addEventListener("click", (event) => {
       const bounds = dialog.getBoundingClientRect();
       const clickedOutside =
         event.clientX < bounds.left ||
@@ -134,7 +134,7 @@
 
   .dialog-title {
     margin: 0.4rem 0 1rem;
-    font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: Cabin, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: clamp(1.5rem, 3vw, 2rem);
     letter-spacing: 0.04em;
     text-transform: uppercase;

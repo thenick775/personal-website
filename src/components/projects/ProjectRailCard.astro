@@ -1,5 +1,5 @@
 ---
-import type { Project } from '../../data/projects';
+import type { Project } from "../../data/projects";
 
 interface Props {
   project: Project;
@@ -35,7 +35,7 @@ const { project, image, summary, meta } = Astro.props;
       class="button-pill button-primary"
       type="button"
       data-project-detail
-      data-project-href={project.href ?? ''}
+      data-project-href={project.href ?? ""}
       data-project-name={project.name}
       data-project-summary={project.summary}
     >
@@ -95,7 +95,7 @@ const { project, image, summary, meta } = Astro.props;
 
   .project-rail-content h3 {
     margin: 0;
-    font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: Cabin, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: clamp(1.45rem, 2.8vw, 2.4rem);
     line-height: 1;
     letter-spacing: 0.04em;

@@ -5,12 +5,12 @@ interface Props {
   label?: string;
 }
 
-const { class: className = '', viewportClass = '', label } = Astro.props;
+const { class: className = "", viewportClass = "", label } = Astro.props;
 ---
 
-<div class:list={['scroll-area-root', className]} data-scroll-area-root>
+<div class:list={["scroll-area-root", className]} data-scroll-area-root>
   <div
-    class:list={['scroll-area-viewport', viewportClass]}
+    class:list={["scroll-area-viewport", viewportClass]}
     data-scroll-area-viewport
     aria-label={label}
   >
@@ -22,14 +22,14 @@ const { class: className = '', viewportClass = '', label } = Astro.props;
 </div>
 
 <script is:inline>
-  const scrollAreaRoots = document.querySelectorAll('[data-scroll-area-root]');
+  const scrollAreaRoots = document.querySelectorAll("[data-scroll-area-root]");
 
   scrollAreaRoots.forEach((root) => {
     if (!(root instanceof HTMLElement)) return;
 
-    const viewport = root.querySelector('[data-scroll-area-viewport]');
-    const rail = root.querySelector('[data-scroll-area-rail]');
-    const thumb = root.querySelector('[data-scroll-area-thumb]');
+    const viewport = root.querySelector("[data-scroll-area-viewport]");
+    const rail = root.querySelector("[data-scroll-area-rail]");
+    const thumb = root.querySelector("[data-scroll-area-thumb]");
 
     if (
       !(viewport instanceof HTMLElement) ||
@@ -57,15 +57,15 @@ const { class: className = '', viewportClass = '', label } = Astro.props;
     };
 
     const syncThumb = () => {
-      if (!root.hasAttribute('data-overflowing')) return;
+      if (!root.hasAttribute("data-overflowing")) return;
 
       const scrollHeight = viewport.scrollHeight;
       const clientHeight = viewport.clientHeight;
       const maxScrollTop = scrollHeight - clientHeight;
 
       if (maxScrollTop <= 1) {
-        thumb.style.height = '';
-        thumb.style.transform = '';
+        thumb.style.height = "";
+        thumb.style.transform = "";
         return;
       }
 
@@ -85,15 +85,15 @@ const { class: className = '', viewportClass = '', label } = Astro.props;
       const scrollHeight = viewport.scrollHeight;
       const clientHeight = viewport.clientHeight;
       const maxScrollTop = scrollHeight - clientHeight;
-      const overflowing = root.hasAttribute('data-overflowing')
+      const overflowing = root.hasAttribute("data-overflowing")
         ? maxScrollTop > overflowThresholds.hide
         : maxScrollTop > overflowThresholds.show;
 
-      root.toggleAttribute('data-overflowing', overflowing);
+      root.toggleAttribute("data-overflowing", overflowing);
 
       if (!overflowing) {
-        thumb.style.height = '';
-        thumb.style.transform = '';
+        thumb.style.height = "";
+        thumb.style.transform = "";
         return;
       }
 
@@ -130,23 +130,23 @@ const { class: className = '', viewportClass = '', label } = Astro.props;
       };
 
       thumb.setPointerCapture(pointerEvent.pointerId);
-      thumb.classList.add('is-dragging');
+      thumb.classList.add("is-dragging");
       event.preventDefault();
     };
 
     const stopDrag = () => {
       dragState = null;
-      thumb.classList.remove('is-dragging');
+      thumb.classList.remove("is-dragging");
     };
 
-    viewport.addEventListener('scroll', syncThumb, { passive: true });
-    window.addEventListener('resize', () => {
+    viewport.addEventListener("scroll", syncThumb, { passive: true });
+    window.addEventListener("resize", () => {
       window.clearTimeout(resizeTimer);
       resizeTimer = window.setTimeout(() => {
         syncOverflow();
       }, 120);
     });
-    window.addEventListener('load', syncOverflow, { once: true });
+    window.addEventListener("load", syncOverflow, { once: true });
 
     if (document.fonts?.ready) {
       document.fonts.ready.then(() => {
@@ -154,7 +154,7 @@ const { class: className = '', viewportClass = '', label } = Astro.props;
       });
     }
 
-    if ('ResizeObserver' in window) {
+    if ("ResizeObserver" in window) {
       const resizeObserver = new ResizeObserver(() => {
         scheduleOverflowSync();
       });
@@ -162,15 +162,15 @@ const { class: className = '', viewportClass = '', label } = Astro.props;
       resizeObserver.observe(root);
     }
 
-    thumb.addEventListener('pointerdown', startDrag);
-    thumb.addEventListener('pointermove', (event) => {
+    thumb.addEventListener("pointerdown", startDrag);
+    thumb.addEventListener("pointermove", (event) => {
       if (!dragState || event.pointerId !== dragState.pointerId) return;
       updateScrollFromPointer(event.clientY);
     });
-    thumb.addEventListener('pointerup', stopDrag);
-    thumb.addEventListener('pointercancel', stopDrag);
+    thumb.addEventListener("pointerup", stopDrag);
+    thumb.addEventListener("pointercancel", stopDrag);
 
-    rail.addEventListener('pointerdown', (event) => {
+    rail.addEventListener("pointerdown", (event) => {
       if (event.target === thumb) return;
       updateScrollFromPointer(event.clientY, true);
     });

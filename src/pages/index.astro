@@ -1,23 +1,23 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro';
-import TopNav from '../components/site/TopNav.astro';
-import HeroSection from '../components/hero/HeroSection.astro';
-import AboutSection from '../components/sections/AboutSection.astro';
-import SkillsSection from '../components/sections/SkillsSection.astro';
-import ProjectsSection from '../components/sections/ProjectsSection.astro';
-import ContactSection from '../components/sections/ContactSection.astro';
-import Footer from '../components/site/Footer.astro';
-import { site } from '../data/site';
-import { skills } from '../data/skills';
-import { projects } from '../data/projects';
-import { contactLinks } from '../data/contact';
+import SiteLayout from "../layouts/SiteLayout.astro";
+import TopNav from "../components/site/TopNav.astro";
+import HeroSection from "../components/hero/HeroSection.astro";
+import AboutSection from "../components/sections/AboutSection.astro";
+import SkillsSection from "../components/sections/SkillsSection.astro";
+import ProjectsSection from "../components/sections/ProjectsSection.astro";
+import ContactSection from "../components/sections/ContactSection.astro";
+import Footer from "../components/site/Footer.astro";
+import { site } from "../data/site";
+import { skills } from "../data/skills";
+import { projects } from "../data/projects";
+import { contactLinks } from "../data/contact";
 
 const navItems = [
-  { id: '#', label: 'Intro' },
-  { id: '#about', label: 'About' },
-  { id: '#skills', label: 'Skills' },
-  { id: '#projects', label: 'Projects' },
-  { id: '#contact', label: 'Contact' },
+  { id: "#", label: "Intro" },
+  { id: "#about", label: "About" },
+  { id: "#skills", label: "Skills" },
+  { id: "#projects", label: "Projects" },
+  { id: "#contact", label: "Contact" },
 ];
 ---
 
@@ -43,16 +43,16 @@ const navItems = [
   <script is:inline>
     const scrollAnimation = { frame: 0 };
     const reducedMotionQuery = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
+      "(prefers-reduced-motion: reduce)",
     );
 
     const syncNavOffset = () => {
-      const nav = document.querySelector('[data-nav-root]');
+      const nav = document.querySelector("[data-nav-root]");
       if (!(nav instanceof HTMLElement)) return 65;
 
       const navHeight = nav.offsetHeight;
       document.documentElement.style.setProperty(
-        '--nav-offset',
+        "--nav-offset",
         `${navHeight}px`,
       );
       return navHeight;
@@ -65,7 +65,7 @@ const navItems = [
       }
 
       if (reducedMotionQuery.matches) {
-        window.scrollTo({ top, behavior: 'auto' });
+        window.scrollTo({ top, behavior: "auto" });
         return;
       }
 
@@ -73,7 +73,7 @@ const navItems = [
       const distance = top - startTop;
 
       if (Math.abs(distance) < 1) {
-        window.scrollTo({ top, behavior: 'auto' });
+        window.scrollTo({ top, behavior: "auto" });
         return;
       }
 
@@ -90,7 +90,7 @@ const navItems = [
 
         window.scrollTo({
           top: startTop + distance * easedProgress,
-          behavior: 'auto',
+          behavior: "auto",
         });
 
         if (progress < 1) {
@@ -105,7 +105,7 @@ const navItems = [
     };
 
     const scrollToHash = (hash) => {
-      if (hash === '#') {
+      if (hash === "#") {
         animateWindowScroll(0);
         return;
       }
@@ -118,25 +118,25 @@ const navItems = [
     };
 
     const setActiveNavLink = (hash) => {
-      document.querySelectorAll('[data-nav-link]').forEach((link) => {
+      document.querySelectorAll("[data-nav-link]").forEach((link) => {
         if (!(link instanceof HTMLAnchorElement)) return;
 
-        const active = link.getAttribute('href') === hash;
-        link.toggleAttribute('data-active', active);
+        const active = link.getAttribute("href") === hash;
+        link.toggleAttribute("data-active", active);
 
         if (active) {
-          link.setAttribute('aria-current', 'page');
+          link.setAttribute("aria-current", "page");
         } else {
-          link.removeAttribute('aria-current');
+          link.removeAttribute("aria-current");
         }
       });
     };
 
     const initActiveNavTracking = () => {
-      const nav = document.querySelector('[data-nav-root]');
+      const nav = document.querySelector("[data-nav-root]");
       if (!(nav instanceof HTMLElement)) return;
 
-      const sections = ['#about', '#skills', '#projects', '#contact']
+      const sections = ["#about", "#skills", "#projects", "#contact"]
         .map((hash) => {
           const element = document.querySelector(hash);
           return element instanceof HTMLElement ? { hash, element } : null;
@@ -151,7 +151,7 @@ const navItems = [
           (section) => section.element.offsetTop <= scrollMarker,
         );
 
-        setActiveNavLink(currentSection?.hash ?? '#');
+        setActiveNavLink(currentSection?.hash ?? "#");
       };
 
       const scheduleUpdate = () => {
@@ -164,10 +164,10 @@ const navItems = [
       };
 
       updateActiveNav();
-      window.addEventListener('scroll', scheduleUpdate, { passive: true });
-      window.addEventListener('resize', scheduleUpdate);
+      window.addEventListener("scroll", scheduleUpdate, { passive: true });
+      window.addEventListener("resize", scheduleUpdate);
       window.addEventListener(
-        'pagehide',
+        "pagehide",
         () => {
           if (activeNavFrame.id) {
             window.cancelAnimationFrame(activeNavFrame.id);
@@ -181,27 +181,27 @@ const navItems = [
       );
     };
 
-    document.addEventListener('click', (event) => {
+    document.addEventListener("click", (event) => {
       const link =
         event.target instanceof Element
           ? event.target.closest('a[href^="#"]')
           : null;
       if (!(link instanceof HTMLAnchorElement)) return;
 
-      const hash = link.getAttribute('href');
+      const hash = link.getAttribute("href");
       if (!hash) return;
 
       event.preventDefault();
-      history.replaceState(null, '', hash);
+      history.replaceState(null, "", hash);
       setActiveNavLink(hash);
       scrollToHash(hash);
     });
 
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       syncNavOffset();
     });
 
-    window.addEventListener('load', () => {
+    window.addEventListener("load", () => {
       syncNavOffset();
       initActiveNavTracking();
       if (window.location.hash) {

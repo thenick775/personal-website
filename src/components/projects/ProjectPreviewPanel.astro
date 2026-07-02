@@ -1,5 +1,5 @@
 ---
-import type { Project } from '../../data/projects';
+import type { Project } from "../../data/projects";
 
 interface Props {
   project: Project;
@@ -17,18 +17,18 @@ const { project, panelId, image, summary, detail, meta, active } = Astro.props;
 <article
   id={panelId}
   class:list={[
-    'project-preview-panel',
-    active && 'is-active',
-    !active && 'is-hidden',
+    "project-preview-panel",
+    active && "is-active",
+    !active && "is-hidden",
   ]}
-  aria-hidden={active ? 'false' : 'true'}
+  aria-hidden={active ? "false" : "true"}
   data-project-preview-panel
 >
   <div class="project-preview-media">
     <img
       src={image}
       alt={`${project.name} preview image`}
-      loading={active ? 'eager' : 'lazy'}
+      loading={active ? "eager" : "lazy"}
       decoding="async"
     />
     <div class="project-preview-overlay"></div>
@@ -105,21 +105,21 @@ const { project, panelId, image, summary, detail, meta, active } = Astro.props;
 
 <script>
   const previewPanels = Array.from(
-    document.querySelectorAll('[data-project-preview-panel]'),
+    document.querySelectorAll("[data-project-preview-panel]"),
   );
 
   previewPanels.forEach((panel) => {
     if (!(panel instanceof HTMLElement)) return;
 
-    const detail = panel.querySelector('[data-project-inline-detail]');
+    const detail = panel.querySelector("[data-project-inline-detail]");
     const detailShell = panel.querySelector(
-      '[data-project-inline-detail-shell]',
+      "[data-project-inline-detail-shell]",
     );
     const detailTrigger = panel.querySelector(
-      '[data-project-inline-detail-trigger]',
+      "[data-project-inline-detail-trigger]",
     );
     const detailClose = panel.querySelector(
-      '[data-project-inline-detail-close]',
+      "[data-project-inline-detail-close]",
     );
 
     if (
@@ -133,22 +133,22 @@ const { project, panelId, image, summary, detail, meta, active } = Astro.props;
 
     const setExpanded = (expanded: boolean) => {
       detail.style.setProperty(
-        '--project-detail-height',
+        "--project-detail-height",
         `${detailShell.scrollHeight + 2}px`,
       );
-      detail.classList.toggle('is-collapsed', !expanded);
-      detail.setAttribute('aria-hidden', expanded ? 'false' : 'true');
-      panel.classList.toggle('is-detail-open', expanded);
-      detailTrigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      detail.classList.toggle("is-collapsed", !expanded);
+      detail.setAttribute("aria-hidden", expanded ? "false" : "true");
+      panel.classList.toggle("is-detail-open", expanded);
+      detailTrigger.setAttribute("aria-expanded", expanded ? "true" : "false");
     };
 
-    detailTrigger.addEventListener('click', () => setExpanded(true));
-    detailClose.addEventListener('click', () => setExpanded(false));
+    detailTrigger.addEventListener("click", () => setExpanded(true));
+    detailClose.addEventListener("click", () => setExpanded(false));
 
     const collapseIfInactive = () => {
       const hidden =
-        panel.classList.contains('is-hidden') ||
-        panel.getAttribute('aria-hidden') === 'true';
+        panel.classList.contains("is-hidden") ||
+        panel.getAttribute("aria-hidden") === "true";
 
       if (hidden) {
         setExpanded(false);
@@ -158,7 +158,7 @@ const { project, panelId, image, summary, detail, meta, active } = Astro.props;
     const observer = new MutationObserver(collapseIfInactive);
     observer.observe(panel, {
       attributes: true,
-      attributeFilter: ['class', 'aria-hidden'],
+      attributeFilter: ["class", "aria-hidden"],
     });
 
     setExpanded(false);
@@ -225,7 +225,7 @@ const { project, panelId, image, summary, detail, meta, active } = Astro.props;
 
   .project-preview-title {
     margin: 0;
-    font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: Cabin, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: clamp(1.45rem, 2.8vw, 1.75rem);
     line-height: 1;
     letter-spacing: 0.04em;
