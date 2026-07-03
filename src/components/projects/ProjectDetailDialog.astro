@@ -15,7 +15,6 @@
     <div class="dialog-actions" data-project-dialog-actions hidden>
       <a
         class="button-pill button-primary"
-        href="#"
         target="_blank"
         rel="noopener noreferrer"
         data-project-dialog-link
@@ -56,7 +55,7 @@
           trigger.getAttribute("data-project-name") || "Project detail";
         copy.textContent = trigger.getAttribute("data-project-summary") || "";
         actions.hidden = !href;
-        link.href = href || "#";
+        link.href = href;
         setScrollLock(true);
         dialog.showModal();
       });

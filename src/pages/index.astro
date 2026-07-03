@@ -13,7 +13,7 @@ import { projects } from "../data/projects";
 import { contactLinks } from "../data/contact";
 
 const navItems = [
-  { id: "#", label: "Intro" },
+  { id: "#intro", label: "Intro" },
   { id: "#about", label: "About" },
   { id: "#skills", label: "Skills" },
   { id: "#projects", label: "Projects" },
@@ -105,11 +105,6 @@ const navItems = [
     };
 
     const scrollToHash = (hash) => {
-      if (hash === "#") {
-        animateWindowScroll(0);
-        return;
-      }
-
       const target = document.querySelector(hash);
       if (!(target instanceof HTMLElement)) return;
 
@@ -151,7 +146,7 @@ const navItems = [
           (section) => section.element.offsetTop <= scrollMarker,
         );
 
-        setActiveNavLink(currentSection?.hash ?? "#");
+        setActiveNavLink(currentSection?.hash ?? "#intro");
       };
 
       const scheduleUpdate = () => {

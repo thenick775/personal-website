@@ -1,7 +1,21 @@
+---
+import { Image } from "astro:assets";
+import vLogo from "../../assets/v.png";
+---
+
 <footer class="site-footer">
   <div class="section-shell footer-shell">
-    <a class="footer-mark" href="#" aria-label="Back to top">
-      <img class="logo" src="./images/v.png" alt="Logo" loading="lazy" />
+    <a class="footer-mark" href="#intro" aria-label="Back to top">
+      <Image
+        class="logo"
+        src={vLogo}
+        alt="Logo"
+        width={38}
+        height={35}
+        quality="high"
+        format="png"
+        loading="lazy"
+      />
     </a>
     <p>Copyright © Nicholas VanCise</p>
   </div>
@@ -31,9 +45,8 @@
     color: var(--color-text);
   }
 
-  .footer-mark > img {
+  .logo {
     margin-top: 9px;
-    max-width: 80%;
   }
 
   p {

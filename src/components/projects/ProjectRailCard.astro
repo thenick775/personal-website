@@ -1,21 +1,26 @@
 ---
+import { Image } from "astro:assets";
 import type { Project } from "../../data/projects";
 
 interface Props {
   project: Project;
   image: string;
+  imageWidth: number;
+  imageHeight: number;
   summary: string;
   meta: string;
 }
 
-const { project, image, summary, meta } = Astro.props;
+const { project, image, imageWidth, imageHeight, summary, meta } = Astro.props;
 ---
 
 <article class="project-rail-card surface-panel">
   <div class="project-rail-media">
-    <img
+    <Image
       src={image}
-      alt={`${project.name} preview image`}
+      alt={`${project.name} preview`}
+      width={imageWidth}
+      height={imageHeight}
       loading="lazy"
       decoding="async"
     />

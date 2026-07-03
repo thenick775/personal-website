@@ -12,9 +12,9 @@ interface Props {
 const { items, title } = Astro.props;
 ---
 
-<nav class="top-nav" aria-label="Primary" data-nav-root>
+<nav id="intro" class="top-nav" aria-label="Primary" data-nav-root>
   <div class="section-shell nav-shell">
-    <a class="brand" href="#">{title}</a>
+    <a class="brand" href="#intro">{title}</a>
     <button
       class="menu-toggle"
       type="button"

@@ -1,17 +1,30 @@
 ---
+import { Image } from "astro:assets";
 import type { Project } from "../../data/projects";
 
 interface Props {
   project: Project;
   panelId: string;
   image: string;
+  imageWidth: number;
+  imageHeight: number;
   summary: string;
   detail: string;
   meta: string;
   active: boolean;
 }
 
-const { project, panelId, image, summary, detail, meta, active } = Astro.props;
+const {
+  project,
+  panelId,
+  image,
+  imageWidth,
+  imageHeight,
+  summary,
+  detail,
+  meta,
+  active,
+} = Astro.props;
 ---
 
 <article
@@ -25,10 +38,12 @@ const { project, panelId, image, summary, detail, meta, active } = Astro.props;
   data-project-preview-panel
 >
   <div class="project-preview-media">
-    <img
+    <Image
       src={image}
-      alt={`${project.name} preview image`}
-      loading={active ? "eager" : "lazy"}
+      alt={`${project.name} preview`}
+      width={imageWidth}
+      height={imageHeight}
+      loading="lazy"
       decoding="async"
     />
     <div class="project-preview-overlay"></div>

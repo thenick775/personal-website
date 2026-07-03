@@ -13,7 +13,7 @@
 
 This is the home of my personal website, desktop and mobile friendly.
 
-I thought after a few years and a few more new jobs, that my website needed a new look!
+I thought after a few years and a few more new jobs, that my website needed a refresh!
 
 I chose to make this project with Astro, as an exercise in learning something new.
 

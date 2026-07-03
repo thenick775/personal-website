@@ -95,6 +95,8 @@ const initialProject = projects[0];
                     project={project}
                     panelId={getProjectPanelId(index)}
                     image={project.previewImage}
+                    imageWidth={1440}
+                    imageHeight={900}
                     meta={getShortMeta(project)}
                     summary={project.shortSummary}
                     detail={project.summary}
@@ -117,6 +119,8 @@ const initialProject = projects[0];
                     <ProjectRailCard
                       project={project}
                       image={project.railImage}
+                      imageWidth={720}
+                      imageHeight={900}
                       meta={getMeta(project)}
                       summary={project.shortSummary}
                     />
