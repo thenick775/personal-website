@@ -53,7 +53,7 @@
         context.setTransform(dpr, 0, 0, dpr, 0, 0);
         context.clearRect(0, 0, width, height);
 
-        const nextColumns = Math.max(1, Math.floor(width / fontSize));
+        const nextColumns = Math.max(1, Math.ceil(width / fontSize));
         const nextRows = Math.max(1, Math.floor(height / fontSize));
 
         drops = Array.from({ length: nextColumns }, (_, index) => {
@@ -85,7 +85,7 @@
 
         if (timestamp - lastFrame >= 75) {
           lastFrame = timestamp;
-          context.fillStyle = "rgba(0, 0, 0, 0.06)";
+          context.fillStyle = "rgba(0, 0, 0, 0.04)";
           context.fillRect(0, 0, width, height);
 
           context.fillStyle = `hsl(${Math.random() * 360}, 90%, 50%)`;
@@ -140,6 +140,5 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    opacity: 0.9;
   }
 </style>
