@@ -13,21 +13,13 @@
 
 This is the home of my personal website, desktop and mobile friendly.
 
-I thought after a few years and a few more new jobs, that my website needed a refresh!
+I thought after a few years and a few more new jobs, that my website needed a refresh to match!
 
 I chose to make this project with Astro, as an exercise in learning something new.
-
-This project is powered by Docker and NGINX, and is served from a cloud hosting provider.
-
-Fail2ban was added as, on most cloud providers, bots started mining for exploits.
 
 # Link
 
 https://nicholas-vancise.dev
-
-# Getting started
-
-# Technical details
 
 ## Commands
 
@@ -41,8 +33,10 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm run format`          | Run Prettier in check mode                       |
+| `npm run format:fix`      | Run Prettier and write formatting changes        |
 | `npm run lint`            | Run eslint                                       |
 | `npm run lint:fix`        | Run eslint with auto fix                         |
+| `npm run stylelint`       | Run stylelint on Astro and CSS files             |
+| `npm run stylelint:fix`   | Run stylelint with auto fix                      |
 | `npm run knip`            | Find unused code                                 |
-
-# Credits
