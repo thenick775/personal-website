@@ -19,7 +19,7 @@ I chose to make this project with Astro, as an exercise in learning something ne
 
 # Link
 
-https://nicholas-vancise.dev
+Coming soon once fully deployed 😈
 
 ## Commands
 
@@ -40,3 +40,4 @@ All commands are run from the root of the project, from a terminal:
 | `npm run stylelint`       | Run stylelint on Astro and CSS files             |
 | `npm run stylelint:fix`   | Run stylelint with auto fix                      |
 | `npm run knip`            | Find unused code                                 |
+| `npm run validate`        | Runs all validation related commands             |

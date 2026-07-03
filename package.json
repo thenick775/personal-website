@@ -16,7 +16,8 @@
     "lint:fix": "eslint . --fix",
     "knip": "knip",
     "stylelint": "stylelint \"src/**/*.{astro,css}\"",
-    "stylelint:fix": "stylelint \"src/**/*.{astro,css}\" --fix"
+    "stylelint:fix": "stylelint \"src/**/*.{astro,css}\" --fix",
+    "validate": "npm run format && npm run lint && npm run stylelint && npm run knip && npm run build"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
