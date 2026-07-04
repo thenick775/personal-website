@@ -31,8 +31,8 @@ const initialProject = projects[0];
     <div class="projects-heading-row">
       <div>
         <p class="eyebrow">Projects</p>
-        <h2 class="section-heading">Selected projects.</h2>
-        <p class="section-copy projects-copy">
+        <h2 class="section-heading">Selected work.</h2>
+        <p class="section-copy">
           A mix of projects I've built for work, fun, and for the sake of
           figuring things out.
         </p>
@@ -252,10 +252,6 @@ const initialProject = projects[0];
     gap: 1rem;
   }
 
-  .projects-copy {
-    max-width: 32rem;
-  }
-
   .projects-spotlight {
     display: none;
     overflow: hidden;
@@ -376,10 +372,6 @@ const initialProject = projects[0];
   @media (--tablet-and-up) {
     .projects-heading-row {
       grid-template-columns: minmax(0, 1fr);
-    }
-
-    .projects-copy {
-      max-width: 100%;
     }
   }
 
