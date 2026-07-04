@@ -7,7 +7,9 @@ import playformCompress from "@playform/compress";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://nicholas-vancise.dev",
+  // TODO: set to real domain
+  site: "https://thenick775.github.io",
+  base: "/personal-website-v3/",
   image: {
     domains: ["picsum.photos", "fastly.picsum.photos"],
   },
