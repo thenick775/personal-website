@@ -28,9 +28,9 @@ export const projects: Project[] = [
     previewImage: "https://picsum.photos/seed/metroidvania-fangame/1440/900",
     railImage: "https://picsum.photos/seed/metroidvania-fangame/720/900",
     summary:
-      "A native iOS metroidvania-style platformer built entirely from scratch using Objective-C and the MVC architectural pattern.\n\nI implemented the animation system, collision detection, character physics, scene management, and gameplay logic while adapting and integrating custom-edited game assets for modern iPhone devices.",
+      "A native iOS metroidvania-style platformer built entirely from scratch using Objective-C and the MVC architectural pattern.\n\nI implemented the animation system, collision detection, character physics, scene management, boss mechanics, and gameplay logic while adapting and integrating custom-edited game assets for modern iPhone devices.",
     shortSummary:
-      "A native iOS metroidvania-style platformer featuring a custom engine, physics, and gameplay systems.",
+      "A native iOS metroidvania-style platformer featuring a custom engine, physics, boss mechanics, and gameplay systems.",
     href: "https://github.com/thenick775/metroidvaniafangame",
     personal: true,
   },
