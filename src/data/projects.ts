@@ -13,8 +13,8 @@ export const projects: Project[] = [
   {
     name: "Gbajs3",
     labels: ["C/C++", "React", "PWA"],
-    previewImage: "https://picsum.photos/seed/gbajs3/1440/900",
-    railImage: "https://picsum.photos/seed/gbajs3/720/900",
+    previewImage: "/projects/gbajs3.png",
+    railImage: "/projects/gbajs3.png",
     summary:
       "Gbajs3 is a full Game Boy Advance emulator available online and offline supporting the mGBA WASM core, it is freely licensed and works in any modern browser.\n\nThe wasm contract and glue code were integrated into my custom core by leveraging the Emscripten toolchain, along with building the entire UI from scratch.",
     shortSummary:
@@ -25,8 +25,8 @@ export const projects: Project[] = [
   {
     name: "Metroidvania Fangame",
     labels: ["Objective-C", "iOS", "Native"],
-    previewImage: "https://picsum.photos/seed/metroidvania-fangame/1440/900",
-    railImage: "https://picsum.photos/seed/metroidvania-fangame/720/900",
+    previewImage: "/projects/metroidvania.png",
+    railImage: "/projects/metroidvania.png",
     summary:
       "A native iOS metroidvania-style platformer built entirely from scratch using Objective-C and the MVC architectural pattern.\n\nI implemented the animation system, collision detection, character physics, scene management, boss mechanics, and gameplay logic while adapting and integrating custom-edited game assets for modern iPhone devices.",
     shortSummary:
@@ -37,8 +37,8 @@ export const projects: Project[] = [
   {
     name: "TheList",
     labels: ["Go", "Cross Platform", "Fyne"],
-    previewImage: "https://picsum.photos/seed/thelist/1440/900",
-    railImage: "https://picsum.photos/seed/thelist/720/900",
+    previewImage: "/projects/thelist.png",
+    railImage: "/projects/thelist.png",
     summary:
       "TheList is a cross-platform desktop application for organizing and searching multiple collections of user-defined lists.\n\nBuilt with the Fyne toolkit, it emphasizes fast in-memory performance and powerful regular-expression based searching to efficiently filter large collections of entries.",
     shortSummary:
@@ -72,9 +72,8 @@ export const projects: Project[] = [
   {
     name: "Quorum iOS Transpilation",
     labels: ["RoboVM", "iOS", "Transpilation"],
-    previewImage:
-      "https://picsum.photos/seed/quorum-ios-transpilation/1440/900",
-    railImage: "https://picsum.photos/seed/quorum-ios-transpilation/720/900",
+    previewImage: "/projects/quorum-ios-transpilation.png",
+    railImage: "/projects/quorum-ios-transpilation.png",
     summary:
       "Re-integrated RoboVM into the Quorum programming language toolchain after the original compiler became unavailable.\n\nThe project enables Quorum applications to be transpiled into native iOS binaries using the open-source MobiVM implementation and was ultimately incorporated into official Quorum Studio releases.",
     shortSummary:
@@ -85,8 +84,8 @@ export const projects: Project[] = [
   {
     name: "IoT Data Visualizations",
     labels: ["Javascript", "Python", "Kepler"],
-    previewImage: "https://picsum.photos/seed/iot-data-visualizations/1440/900",
-    railImage: "https://picsum.photos/seed/iot-data-visualizations/720/900",
+    previewImage: "/projects/iot-data-visualizations.png",
+    railImage: "/projects/iot-data-visualizations.png",
     summary:
       "Developed interactive geospatial visualizations for large-scale IoT datasets using Python, JavaScript, and Kepler.gl.\n\nThe project focuses on transforming raw sensor and telemetry data into intuitive, map-based visualizations for exploratory analysis and presentation.",
     shortSummary:
@@ -97,8 +96,8 @@ export const projects: Project[] = [
   {
     name: "Terbine World Map",
     labels: ["Python", "Selenium", "R"],
-    previewImage: "https://picsum.photos/seed/terbine-world-map/1440/900",
-    railImage: "https://picsum.photos/seed/terbine-world-map/720/900",
+    previewImage: "/projects/terbine-world-map.png",
+    railImage: "/projects/terbine-world-map.png",
     summary:
       "Built an automated geospatial mapping pipeline that collected, processed, and visualized publicly available datasets using Python, Selenium, and R.\n\nThe project automated data acquisition and generated interactive world maps for exploring environmental and IoT-related information.",
     shortSummary:

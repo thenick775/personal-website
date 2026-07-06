@@ -46,7 +46,6 @@ const {
       loading="lazy"
       decoding="async"
     />
-    <div class="project-preview-overlay"></div>
     <div class="project-preview-badge">{meta}</div>
   </div>
 
@@ -200,14 +199,6 @@ const {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  .project-preview-overlay {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg, rgb(2 3 5 / 5%), rgb(2 3 5 / 68%)),
-      linear-gradient(120deg, rgb(2 3 5 / 20%), transparent 45%);
   }
 
   .project-preview-badge {

@@ -24,7 +24,6 @@ const { project, image, imageWidth, imageHeight, summary, meta } = Astro.props;
       loading="lazy"
       decoding="async"
     />
-    <div class="project-rail-overlay"></div>
   </div>
 
   <div class="project-rail-content">
@@ -76,12 +75,6 @@ const { project, image, imageWidth, imageHeight, summary, meta } = Astro.props;
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  .project-rail-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgb(2 3 5 / 4%), rgb(2 3 5 / 52%));
   }
 
   .project-rail-content {
