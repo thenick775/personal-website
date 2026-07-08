@@ -1,11 +1,13 @@
 ---
 import { Image } from "astro:assets";
-import type { Project } from "../../data/projects";
+import type { ImageMetadata } from "astro";
 
 interface Props {
-  project: Project;
   panelId: string;
-  image: string;
+  name: string;
+  href?: string;
+  labels: [string, string, string];
+  image: ImageMetadata;
   imageWidth: number;
   imageHeight: number;
   summary: string;
@@ -15,8 +17,10 @@ interface Props {
 }
 
 const {
-  project,
   panelId,
+  name,
+  href,
+  labels,
   image,
   imageWidth,
   imageHeight,
@@ -40,7 +44,7 @@ const {
   <div class="project-preview-media">
     <Image
       src={image}
-      alt={`${project.name} preview`}
+      alt={`${name} preview`}
       width={imageWidth}
       height={imageHeight}
       loading="lazy"
@@ -51,18 +55,15 @@ const {
 
   <div class="project-preview-content">
     <div class="project-preview-head">
-      <h3 class="project-preview-title">{project.name}</h3>
+      <h3 class="project-preview-title">{name}</h3>
       <div class="project-preview-summary-wrap">
         <p class="project-preview-summary">{summary}</p>
       </div>
     </div>
 
     <div class="project-preview-footer">
-      <ul
-        class="project-preview-tags"
-        aria-label={`${project.name} technologies`}
-      >
-        {project.labels.map((label) => <li>{label}</li>)}
+      <ul class="project-preview-tags" aria-label={`${name} technologies`}>
+        {labels.map((label) => <li>{label}</li>)}
       </ul>
 
       <div class="project-preview-actions">
@@ -77,10 +78,10 @@ const {
 
         <div class="project-preview-detail-actions">
           {
-            project.href && (
+            href && (
               <a
                 class="button-pill button-primary"
-                href={project.href}
+                href={href}
                 target="_blank"
                 rel="noopener noreferrer"
               >

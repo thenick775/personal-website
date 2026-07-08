@@ -1,24 +1,37 @@
 ---
 import { Image } from "astro:assets";
-import type { Project } from "../../data/projects";
+import type { ImageMetadata } from "astro";
 
 interface Props {
-  project: Project;
-  image: string;
+  name: string;
+  href?: string;
+  labels: [string, string, string];
+  detail: string;
+  image: ImageMetadata;
   imageWidth: number;
   imageHeight: number;
   summary: string;
   meta: string;
 }
 
-const { project, image, imageWidth, imageHeight, summary, meta } = Astro.props;
+const {
+  name,
+  href,
+  labels,
+  detail,
+  image,
+  imageWidth,
+  imageHeight,
+  summary,
+  meta,
+} = Astro.props;
 ---
 
 <article class="project-rail-card surface-panel">
   <div class="project-rail-media">
     <Image
       src={image}
-      alt={`${project.name} preview`}
+      alt={`${name} preview`}
       width={imageWidth}
       height={imageHeight}
       loading="lazy"
@@ -28,20 +41,20 @@ const { project, image, imageWidth, imageHeight, summary, meta } = Astro.props;
 
   <div class="project-rail-content">
     <p class="project-rail-meta">{meta}</p>
-    <h3>{project.name}</h3>
+    <h3>{name}</h3>
     <p>{summary}</p>
 
-    <ul class="project-rail-tags" aria-label={`${project.name} technologies`}>
-      {project.labels.map((label) => <li>{label}</li>)}
+    <ul class="project-rail-tags" aria-label={`${name} technologies`}>
+      {labels.map((label) => <li>{label}</li>)}
     </ul>
 
     <button
       class="button-pill button-primary"
       type="button"
       data-project-detail
-      data-project-href={project.href ?? ""}
-      data-project-name={project.name}
-      data-project-summary={project.summary}
+      data-project-href={href ?? ""}
+      data-project-name={name}
+      data-project-summary={detail}
     >
       More detail
     </button>
