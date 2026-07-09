@@ -53,9 +53,9 @@ export const projects: Project[] = [
       "https://picsum.photos/seed/airflow-ingestion-cluster/1440/900",
     railImage: "https://picsum.photos/seed/airflow-ingestion-cluster/720/900",
     summary:
-      "This environment consists of a distributed Apache Airflow Cluster, backed by Celery, that utilizes an array of custom docker containers to fetch and process data from public webpages and data buckets, and send this processed data to the Ingestion API.\n\nDocker was used to isolate browser reliant code, and build reusable, language agnostic, one-time use containers. The containers are designed to allow for fast and reliable setup, deployment, testing, tear down, cloning, and failure recovery.",
+      "This environment consists of a distributed Apache Airflow Cluster backed by Celery, that utilizes an array of custom docker containers to fetch and process public IoT data from webpages, third party systems, and data buckets. This data is processed and sent to the Ingestion API.\n\nThis system was designed around fast and reliable setup, deployment, testing, tear down, and failure recovery. It fetched and standardized high throughput data ranging from broad spectrum satellite and ocean data, all the way to traffic counters, solar meters, and vehicle speed sensors.",
     shortSummary:
-      "A distributed Apache Airflow platform orchestrating scalable, containerized data ingestion pipelines.",
+      "A distributed Apache Airflow platform orchestrating scalable, containerized IoT data ingestion pipelines.",
     personal: false,
   },
   {
@@ -64,7 +64,7 @@ export const projects: Project[] = [
     previewImage: "https://picsum.photos/seed/real-time-ingestion-api/1440/900",
     railImage: "https://picsum.photos/seed/real-time-ingestion-api/720/900",
     summary:
-      "The Ingestion API is designed to function as the middle man between independent user programs orchestrated by Apache Airflow that collect data, and multiple postgres database connections.\n\nThis API was built with golang, and utilizes GORM and Gorilla Mux for database operations and routing, and can concurrently process multipart forms in bulk for data ingestion through http requests.",
+      "The Ingestion API is designed to function as the middle man between independent user programs orchestrated by Apache Airflow that collect IoT data, and multiple postgres database connections.\n\nThis API was built with golang, and utilizes GORM and Gorilla Mux for database operations and routing, and can concurrently process multipart forms in bulk for data ingestion through http requests.",
     shortSummary:
       "A horizontally scalable Go REST API for high-throughput real-time data ingestion.",
     personal: false,
