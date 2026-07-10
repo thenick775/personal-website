@@ -100,8 +100,8 @@ const initialProject = projects[0];
                     imageWidth={1440}
                     imageHeight={900}
                     meta={getShortMeta(project)}
-                    summary={project.shortSummary}
-                    detail={project.summary}
+                    summary={project.summary}
+                    shortSummary={project.shortSummary}
                     active={index === 0}
                   />
                 );
@@ -122,12 +122,12 @@ const initialProject = projects[0];
                       name={project.name}
                       href={project.href}
                       labels={project.labels}
-                      detail={project.summary}
                       image={project.railImage}
                       imageWidth={project.railImageWidth}
                       imageHeight={project.railImageHeight}
                       meta={getMeta(project)}
-                      summary={project.shortSummary}
+                      summary={project.summary}
+                      shortSummary={project.shortSummary}
                     />
                   </div>
                 );

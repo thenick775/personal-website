@@ -6,23 +6,23 @@ interface Props {
   name: string;
   href?: string;
   labels: [string, string, string];
-  detail: string;
   image: ImageMetadata;
   imageWidth: number;
   imageHeight: number;
-  summary: string;
   meta: string;
+  summary: string;
+  shortSummary: string;
 }
 
 const {
   name,
   href,
   labels,
-  detail,
+  summary,
   image,
   imageWidth,
   imageHeight,
-  summary,
+  shortSummary,
   meta,
 } = Astro.props;
 ---
@@ -42,7 +42,7 @@ const {
   <div class="project-rail-content">
     <p class="project-rail-meta">{meta}</p>
     <h3>{name}</h3>
-    <p>{summary}</p>
+    <p>{shortSummary}</p>
 
     <ul class="project-rail-tags" aria-label={`${name} technologies`}>
       {labels.map((label) => <li>{label}</li>)}
@@ -54,7 +54,7 @@ const {
       data-project-detail
       data-project-href={href ?? ""}
       data-project-name={name}
-      data-project-summary={detail}
+      data-project-summary={summary}
     >
       More detail
     </button>

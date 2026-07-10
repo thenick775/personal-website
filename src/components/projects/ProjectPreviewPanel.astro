@@ -11,7 +11,7 @@ interface Props {
   imageWidth: number;
   imageHeight: number;
   summary: string;
-  detail: string;
+  shortSummary: string;
   meta: string;
   active: boolean;
 }
@@ -25,7 +25,7 @@ const {
   imageWidth,
   imageHeight,
   summary,
-  detail,
+  shortSummary,
   meta,
   active,
 } = Astro.props;
@@ -57,7 +57,7 @@ const {
     <div class="project-preview-head">
       <h3 class="project-preview-title">{name}</h3>
       <div class="project-preview-summary-wrap">
-        <p class="project-preview-summary">{summary}</p>
+        <p class="project-preview-summary">{shortSummary}</p>
       </div>
     </div>
 
@@ -112,7 +112,7 @@ const {
         class="project-preview-detail-shell"
         data-project-inline-detail-shell
       >
-        <p class="project-preview-detail-copy">{detail}</p>
+        <p class="project-preview-detail-copy">{summary}</p>
       </div>
     </div>
   </div>
