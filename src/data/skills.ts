@@ -6,11 +6,13 @@ export interface Skill {
 
 export const skills: Skill[] = [
   { label: "Golang", href: "https://golang.org", icon: "./skills/golang.svg" },
+  { label: "Java", href: "https://www.java.com/", icon: "./skills/java.svg" },
   {
     label: "Elixir",
     href: "https://elixir-lang.org/",
     icon: "./skills/elixir.svg",
   },
+  { label: "React", href: "https://react.dev/", icon: "./skills/react.svg" },
   {
     label: "PostgreSQL",
     href: "https://www.postgresql.org",
@@ -38,7 +40,6 @@ export const skills: Skill[] = [
     icon: "./skills/bash.svg",
   },
   { label: "Git", href: "https://git-scm.com", icon: "./skills/git.svg" },
-  { label: "Java", href: "https://www.java.com/", icon: "./skills/java.svg" },
   {
     label: "Objective-C",
     href: "https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html",
@@ -54,7 +55,6 @@ export const skills: Skill[] = [
     href: "https://aws.amazon.com",
     icon: "./skills/aws.svg",
   },
-  { label: "React", href: "https://react.dev/", icon: "./skills/react.svg" },
   {
     label: "Javascript",
     href: "https://www.javascript.com",
