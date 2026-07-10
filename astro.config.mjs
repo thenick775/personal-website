@@ -10,9 +10,6 @@ export default defineConfig({
   // TODO: set to real domain
   site: "https://thenick775.github.io",
   base: "/personal-website-v3/",
-  image: {
-    domains: ["picsum.photos", "fastly.picsum.photos"],
-  },
   vite: {
     plugins: [visualizer({ gzipSize: true })],
   },

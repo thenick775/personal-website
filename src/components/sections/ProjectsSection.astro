@@ -92,14 +92,16 @@ const initialProject = projects[0];
               {projects.map((project, index) => {
                 return (
                   <ProjectPreviewPanel
-                    project={project}
                     panelId={getProjectPanelId(index)}
+                    name={project.name}
+                    href={project.href}
+                    labels={project.labels}
                     image={project.previewImage}
                     imageWidth={1440}
                     imageHeight={900}
                     meta={getShortMeta(project)}
-                    summary={project.shortSummary}
-                    detail={project.summary}
+                    summary={project.summary}
+                    shortSummary={project.shortSummary}
                     active={index === 0}
                   />
                 );
@@ -117,12 +119,15 @@ const initialProject = projects[0];
                 return (
                   <div class="swiper-slide">
                     <ProjectRailCard
-                      project={project}
+                      name={project.name}
+                      href={project.href}
+                      labels={project.labels}
                       image={project.railImage}
-                      imageWidth={720}
-                      imageHeight={900}
+                      imageWidth={project.railImageWidth}
+                      imageHeight={project.railImageHeight}
                       meta={getMeta(project)}
-                      summary={project.shortSummary}
+                      summary={project.summary}
+                      shortSummary={project.shortSummary}
                     />
                   </div>
                 );
