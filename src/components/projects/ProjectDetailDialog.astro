@@ -12,16 +12,7 @@
     </div>
     <h3 class="dialog-title" data-project-dialog-title>Project detail</h3>
     <p class="dialog-copy" data-project-dialog-copy></p>
-    <div class="dialog-actions" data-project-dialog-actions hidden>
-      <a
-        class="button-pill button-primary"
-        target="_blank"
-        rel="noopener noreferrer"
-        data-project-dialog-link
-      >
-        View project
-      </a>
-    </div>
+    <div class="dialog-actions" data-project-dialog-actions hidden></div>
   </form>
 </dialog>
 
@@ -30,13 +21,11 @@
   const title = document.querySelector("[data-project-dialog-title]");
   const copy = document.querySelector("[data-project-dialog-copy]");
   const actions = document.querySelector("[data-project-dialog-actions]");
-  const link = document.querySelector("[data-project-dialog-link]");
   if (
     dialog instanceof HTMLDialogElement &&
     title instanceof HTMLElement &&
     copy instanceof HTMLElement &&
-    actions instanceof HTMLElement &&
-    link instanceof HTMLAnchorElement
+    actions instanceof HTMLElement
   ) {
     const projectsRoot = document.querySelector("#projects");
     const triggers =
@@ -54,8 +43,21 @@
         title.textContent =
           trigger.getAttribute("data-project-name") || "Project detail";
         copy.textContent = trigger.getAttribute("data-project-summary") || "";
+        actions.replaceChildren();
         actions.hidden = !href;
-        link.href = href;
+
+        if (href) {
+          actions.append(
+            Object.assign(document.createElement("a"), {
+              className: "button-pill button-primary",
+              href,
+              target: "_blank",
+              rel: "noopener noreferrer",
+              textContent: "View project",
+            }),
+          );
+        }
+
         setScrollLock(true);
         dialog.showModal();
       });
