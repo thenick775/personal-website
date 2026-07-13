@@ -19,7 +19,7 @@ I chose to make this project with Astro, as an exercise in learning something ne
 
 # Link
 
-Coming soon once fully deployed 😈
+https://nicholas-vancise.dev
 
 ## Commands
 
