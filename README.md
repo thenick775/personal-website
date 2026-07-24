@@ -21,6 +21,18 @@ I chose to make this project with Astro, as an exercise in learning something ne
 
 https://nicholas-vancise.dev
 
+<details open>
+  <summary><b>Desktop</b></summary>
+  <img width="100%" src="./readme-images/website-desktop.gif" alt="Desktop" />
+</details>
+
+<details>
+  <summary><b>Mobile</b></summary>
+  <p align="center">
+    <img width="360px" src="./readme-images/website-mobile.gif" alt="Mobile" />
+  </p>
+</details>
+
 ## Commands
 
 All commands are run from the root of the project, from a terminal:
