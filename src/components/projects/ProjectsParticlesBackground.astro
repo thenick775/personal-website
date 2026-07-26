@@ -73,7 +73,10 @@ const options = JSON.stringify({
   };
 
   particleRoots.forEach((root) => {
-    if (!(root instanceof HTMLElement) || root.dataset.particlesInitialized === "true") {
+    if (
+      !(root instanceof HTMLElement) ||
+      root.dataset.particlesInitialized === "true"
+    ) {
       return;
     }
 
@@ -206,7 +209,9 @@ const options = JSON.stringify({
             circle.y + circle.translateY - circle.size,
             canvasSize.h - circle.y - circle.translateY - circle.size,
           ];
-          const closestEdge = edge.reduce((current, next) => Math.min(current, next));
+          const closestEdge = edge.reduce((current, next) =>
+            Math.min(current, next),
+          );
           const remapClosestEdge = Number.parseFloat(
             remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
           );
@@ -223,9 +228,11 @@ const options = JSON.stringify({
           circle.x += circle.dx + vx;
           circle.y += circle.dy + vy;
           circle.translateX +=
-            (mouse.x / (staticity / circle.magnetism) - circle.translateX) / ease;
+            (mouse.x / (staticity / circle.magnetism) - circle.translateX) /
+            ease;
           circle.translateY +=
-            (mouse.y / (staticity / circle.magnetism) - circle.translateY) / ease;
+            (mouse.y / (staticity / circle.magnetism) - circle.translateY) /
+            ease;
 
           drawCircle(circle, true);
 
@@ -277,7 +284,9 @@ const options = JSON.stringify({
       initCanvas();
       visibilityObserver.observe(root);
       window.addEventListener("resize", initCanvas, { passive: true });
-      window.addEventListener("mousemove", updateMousePosition, { passive: true });
+      window.addEventListener("mousemove", updateMousePosition, {
+        passive: true,
+      });
 
       cleanup = () => {
         visibilityObserver.disconnect();
