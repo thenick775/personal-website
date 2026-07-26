@@ -3,7 +3,7 @@ import type { Project } from "../../data/projects";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import ProjectDetailDialog from "../projects/ProjectDetailDialog.astro";
-import MeshGradientBackground from "../backgrounds/MeshGradientBackground.astro";
+import MeshGradientBackground from "../projects/MeshGradientBackground.astro";
 import ProjectListItem from "../projects/ProjectListItem.astro";
 import ProjectsParticlesBackground from "../projects/ProjectsParticlesBackground.astro";
 import ProjectPreviewPanel from "../projects/ProjectPreviewPanel.astro";
@@ -31,13 +31,11 @@ const initialProject = projects[0];
 <section id="projects" class="section-block viewport-section projects-section">
   <div class="projects-background-layer" aria-hidden="true">
     <MeshGradientBackground
-      className="projects-mesh-gradient"
       colors={["#0f766e", "#1d4ed8", "#06b6d4", "#7c3aed"]}
       speed={0.8}
       backgroundColor="#030712"
     />
     <ProjectsParticlesBackground
-      className="projects-particles"
       quantity={100}
       staticity={50}
       ease={50}
@@ -305,19 +303,6 @@ const initialProject = projects[0];
       rgb(8 12 18 / 92%);
     position: relative;
     z-index: 1;
-  }
-
-  :global(.projects-mesh-gradient) {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-
-  :global(.projects-particles) {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    opacity: 0.88;
   }
 
   .projects-list-wrap {
