@@ -16,7 +16,7 @@
   </form>
 </dialog>
 
-<script is:inline>
+<script>
   const dialog = document.querySelector("[data-project-dialog]");
   const title = document.querySelector("[data-project-dialog-title]");
   const copy = document.querySelector("[data-project-dialog-copy]");
@@ -31,7 +31,7 @@
     const triggers =
       projectsRoot?.querySelectorAll("[data-project-detail]") ?? [];
 
-    const setScrollLock = (locked) => {
+    const setScrollLock = (locked: boolean) => {
       document.body.classList.toggle("dialog-open", locked);
     };
 

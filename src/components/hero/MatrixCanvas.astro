@@ -1,6 +1,6 @@
 <canvas class="matrix-canvas" data-matrix-canvas aria-hidden="true"></canvas>
 
-<script is:inline>
+<script>
   const canvas = document.querySelector("[data-matrix-canvas]");
 
   if (canvas instanceof HTMLCanvasElement) {
@@ -17,7 +17,7 @@
       const fontSize = 12;
       let columns = 0;
       let rows = 0;
-      let drops = [];
+      let drops: number[] = [];
       let rafId = 0;
       let lastFrame = 0;
       let visible = true;
@@ -77,7 +77,7 @@
         rows = nextRows;
       };
 
-      const draw = (timestamp) => {
+      const draw = (timestamp: number) => {
         if (!visible) {
           rafId = window.requestAnimationFrame(draw);
           return;

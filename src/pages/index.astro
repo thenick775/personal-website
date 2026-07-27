@@ -40,7 +40,7 @@ const navItems = [
   </main>
   <Footer />
 
-  <script is:inline>
+  <script>
     const scrollAnimation = { frame: 0 };
     const reducedMotionQuery = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
@@ -58,7 +58,7 @@ const navItems = [
       return navHeight;
     };
 
-    const animateWindowScroll = (top) => {
+    const animateWindowScroll = (top: number) => {
       if (scrollAnimation.frame) {
         window.cancelAnimationFrame(scrollAnimation.frame);
         scrollAnimation.frame = 0;
@@ -80,7 +80,7 @@ const navItems = [
       const duration = Math.min(720, Math.max(360, Math.abs(distance) * 0.55));
       const startTime = window.performance.now();
 
-      const step = (currentTime) => {
+      const step = (currentTime: number) => {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
         const easedProgress =
@@ -104,7 +104,7 @@ const navItems = [
       scrollAnimation.frame = window.requestAnimationFrame(step);
     };
 
-    const scrollToHash = (hash) => {
+    const scrollToHash = (hash: string) => {
       const target = document.querySelector(hash);
       if (!(target instanceof HTMLElement)) return;
 
@@ -112,7 +112,7 @@ const navItems = [
       animateWindowScroll(top);
     };
 
-    const setActiveNavLink = (hash) => {
+    const setActiveNavLink = (hash: string) => {
       document.querySelectorAll("[data-nav-link]").forEach((link) => {
         if (!(link instanceof HTMLAnchorElement)) return;
 
@@ -136,7 +136,10 @@ const navItems = [
           const element = document.querySelector(hash);
           return element instanceof HTMLElement ? { hash, element } : null;
         })
-        .filter(Boolean);
+        .filter(
+          (section): section is { hash: string; element: HTMLElement } =>
+            section !== null,
+        );
 
       const activeNavFrame = { id: 0 };
 
