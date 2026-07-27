@@ -48,14 +48,14 @@ const { items, title } = Astro.props;
   </div>
 </nav>
 
-<script is:inline>
+<script>
   const toggle = document.querySelector("[data-menu-toggle]");
   const panel = document.querySelector("[data-menu-panel]");
   const links = document.querySelectorAll("[data-menu-link]");
   const navRoot = document.querySelector("[data-nav-root]");
 
   if (toggle instanceof HTMLButtonElement && panel instanceof HTMLElement) {
-    const setOpen = (open) => {
+    const setOpen = (open: boolean) => {
       if (!open && panel.contains(document.activeElement)) {
         toggle.focus();
       }

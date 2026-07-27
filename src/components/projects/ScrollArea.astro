@@ -21,7 +21,7 @@ const { class: className = "", viewportClass = "", label } = Astro.props;
   </div>
 </div>
 
-<script is:inline>
+<script>
   const scrollAreaRoots = document.querySelectorAll("[data-scroll-area-root]");
 
   scrollAreaRoots.forEach((root) => {
@@ -39,7 +39,7 @@ const { class: className = "", viewportClass = "", label } = Astro.props;
       return;
     }
 
-    let dragState = null;
+    let dragState: { pointerId: number; offsetY: number } | null = null;
     let resizeTimer = 0;
     let resizeFrame = 0;
     const overflowThresholds = {
@@ -100,7 +100,7 @@ const { class: className = "", viewportClass = "", label } = Astro.props;
       syncThumb();
     };
 
-    const updateScrollFromPointer = (clientY, centerThumb = false) => {
+    const updateScrollFromPointer = (clientY: number, centerThumb = false) => {
       const railRect = rail.getBoundingClientRect();
       const thumbRect = thumb.getBoundingClientRect();
       const thumbHeight = thumbRect.height;
@@ -121,7 +121,7 @@ const { class: className = "", viewportClass = "", label } = Astro.props;
       viewport.scrollTop = progress * maxScrollTop;
     };
 
-    const startDrag = (event) => {
+    const startDrag = (event: PointerEvent) => {
       const pointerEvent = event;
       const thumbRect = thumb.getBoundingClientRect();
       dragState = {
