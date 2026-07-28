@@ -314,16 +314,25 @@ const options = JSON.stringify({
         { threshold: 0 },
       );
 
+      const syncCanvasSize = () => {
+        const nextWidth = root.offsetWidth;
+        const nextDpr = Math.min(window.devicePixelRatio || 1, 2);
+
+        if (nextWidth === canvasSize.w && nextDpr === dpr) return;
+
+        initCanvas();
+      };
+
       initCanvas();
       visibilityObserver.observe(root);
-      window.addEventListener("resize", initCanvas, { passive: true });
+      window.addEventListener("resize", syncCanvasSize, { passive: true });
       window.addEventListener("mousemove", updateMousePosition, {
         passive: true,
       });
 
       cleanup = () => {
         visibilityObserver.disconnect();
-        window.removeEventListener("resize", initCanvas);
+        window.removeEventListener("resize", syncCanvasSize);
         window.removeEventListener("mousemove", updateMousePosition);
         stopAnimation();
       };
