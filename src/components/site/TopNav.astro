@@ -14,7 +14,9 @@ const { items, title } = Astro.props;
 
 <nav id="intro" class="top-nav" aria-label="Primary" data-nav-root>
   <div class="section-shell nav-shell">
-    <a class="brand" href="#intro">{title}</a>
+    <a class="brand" href="#intro">
+      {title}
+    </a>
     <button
       class="menu-toggle"
       type="button"
@@ -23,7 +25,9 @@ const { items, title } = Astro.props;
       data-menu-toggle
     >
       <span>Menu</span>
-      <span class="menu-icon" aria-hidden="true">+</span>
+      <span class="menu-icon" aria-hidden="true">
+        +
+      </span>
     </button>
 
     <div
@@ -34,15 +38,13 @@ const { items, title } = Astro.props;
       data-open="false"
     >
       <ul class="menu-list">
-        {
-          items.map((item) => (
-            <li>
-              <a href={item.id} data-menu-link data-nav-link>
-                {item.label}
-              </a>
-            </li>
-          ))
-        }
+        {items.map((item) => (
+          <li>
+            <a href={item.id} data-menu-link data-nav-link>
+              {item.label}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   </div>

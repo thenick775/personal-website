@@ -63,7 +63,9 @@ const {
 
     <div class="project-preview-footer">
       <ul class="project-preview-tags" aria-label={`${name} technologies`}>
-        {labels.map((label) => <li>{label}</li>)}
+        {labels.map((label) => (
+          <li>{label}</li>
+        ))}
       </ul>
 
       <div class="project-preview-actions">
@@ -77,18 +79,16 @@ const {
         </button>
 
         <div class="project-preview-detail-actions">
-          {
-            href && (
-              <a
-                class="button-pill button-primary"
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View project
-              </a>
-            )
-          }
+          {href && (
+            <a
+              class="button-pill button-primary"
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View project
+            </a>
+          )}
 
           <button
             class="button-pill"

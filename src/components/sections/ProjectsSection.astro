@@ -58,104 +58,102 @@ const initialProject = projects[0];
       </div>
     </div>
 
-    {
-      initialProject && (
-        <>
-          <div class="projects-spotlight surface-panel">
-            <div class="projects-list-wrap" data-projects-list-wrap>
-              <div class="projects-list-header">
-                <p class="projects-list-label">Project index</p>
-                <div class="projects-list-nav" aria-label="Project navigation">
-                  <button
-                    class="projects-list-nav-button"
-                    type="button"
-                    aria-label="Previous project"
-                    data-project-nav="prev"
-                  >
-                    <svg viewBox="0 0 12 12" aria-hidden="true">
-                      <path d="M6 2 10 8H2Z" fill="currentColor" />
-                    </svg>
-                  </button>
-                  <button
-                    class="projects-list-nav-button"
-                    type="button"
-                    aria-label="Next project"
-                    data-project-nav="next"
-                  >
-                    <svg viewBox="0 0 12 12" aria-hidden="true">
-                      <path d="M2 4h8L6 10Z" fill="currentColor" />
-                    </svg>
-                  </button>
-                </div>
+    {initialProject && (
+      <>
+        <div class="projects-spotlight surface-panel">
+          <div class="projects-list-wrap" data-projects-list-wrap>
+            <div class="projects-list-header">
+              <p class="projects-list-label">Project index</p>
+              <div class="projects-list-nav" aria-label="Project navigation">
+                <button
+                  class="projects-list-nav-button"
+                  type="button"
+                  aria-label="Previous project"
+                  data-project-nav="prev"
+                >
+                  <svg viewBox="0 0 12 12" aria-hidden="true">
+                    <path d="M6 2 10 8H2Z" fill="currentColor" />
+                  </svg>
+                </button>
+                <button
+                  class="projects-list-nav-button"
+                  type="button"
+                  aria-label="Next project"
+                  data-project-nav="next"
+                >
+                  <svg viewBox="0 0 12 12" aria-hidden="true">
+                    <path d="M2 4h8L6 10Z" fill="currentColor" />
+                  </svg>
+                </button>
               </div>
-              <ScrollArea
-                class="projects-list-shell"
-                viewportClass="projects-list"
-                label="Projects"
-              >
-                <div role="tablist" aria-label="Projects" data-projects-list>
-                  {projects.map((project, index) => (
-                    <ProjectListItem
-                      projectName={project.name}
-                      projectMeta={getMeta(project)}
-                      panelId={getProjectPanelId(index)}
-                      index={index}
-                      active={index === 0}
-                    />
-                  ))}
-                </div>
-              </ScrollArea>
             </div>
-
-            <div class="project-preview-stack" aria-live="polite">
-              {projects.map((project, index) => {
-                return (
-                  <ProjectPreviewPanel
+            <ScrollArea
+              class="projects-list-shell"
+              viewportClass="projects-list"
+              label="Projects"
+            >
+              <div role="tablist" aria-label="Projects" data-projects-list>
+                {projects.map((project, index) => (
+                  <ProjectListItem
+                    projectName={project.name}
+                    projectMeta={getMeta(project)}
                     panelId={getProjectPanelId(index)}
+                    index={index}
+                    active={index === 0}
+                  />
+                ))}
+              </div>
+            </ScrollArea>
+          </div>
+
+          <div class="project-preview-stack" aria-live="polite">
+            {projects.map((project, index) => {
+              return (
+                <ProjectPreviewPanel
+                  panelId={getProjectPanelId(index)}
+                  name={project.name}
+                  href={project.href}
+                  labels={project.labels}
+                  image={project.previewImage}
+                  imageWidth={1440}
+                  imageHeight={900}
+                  meta={getShortMeta(project)}
+                  summary={project.summary}
+                  shortSummary={project.shortSummary}
+                  active={index === 0}
+                />
+              );
+            })}
+          </div>
+        </div>
+
+        <div
+          class="project-rail swiper"
+          aria-label="Project gallery"
+          data-project-rail
+        >
+          <div class="swiper-wrapper">
+            {projects.map((project) => {
+              return (
+                <div class="swiper-slide">
+                  <ProjectRailCard
                     name={project.name}
                     href={project.href}
                     labels={project.labels}
-                    image={project.previewImage}
-                    imageWidth={1440}
-                    imageHeight={900}
-                    meta={getShortMeta(project)}
+                    image={project.railImage}
+                    imageWidth={project.railImageWidth}
+                    imageHeight={project.railImageHeight}
+                    meta={getMeta(project)}
                     summary={project.summary}
                     shortSummary={project.shortSummary}
-                    active={index === 0}
                   />
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
-
-          <div
-            class="project-rail swiper"
-            aria-label="Project gallery"
-            data-project-rail
-          >
-            <div class="swiper-wrapper">
-              {projects.map((project) => {
-                return (
-                  <div class="swiper-slide">
-                    <ProjectRailCard
-                      name={project.name}
-                      href={project.href}
-                      labels={project.labels}
-                      image={project.railImage}
-                      imageWidth={project.railImageWidth}
-                      imageHeight={project.railImageHeight}
-                      meta={getMeta(project)}
-                      summary={project.summary}
-                      shortSummary={project.shortSummary}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </>
-      )
-    }
+        </div>
+      </>
+    )}
 
     <div class="section-next-wrap">
       <SectionNextLink href="#contact" label="Scroll to contact section" />
