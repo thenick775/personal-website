@@ -45,7 +45,9 @@ const {
     <p>{shortSummary}</p>
 
     <ul class="project-rail-tags" aria-label={`${name} technologies`}>
-      {labels.map((label) => <li>{label}</li>)}
+      {labels.map((label) => (
+        <li>{label}</li>
+      ))}
     </ul>
 
     <button

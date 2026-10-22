@@ -26,21 +26,19 @@ const contactIcons: Record<ContactLink["icon"], string> = {
     </div>
 
     <ul class="contact-links">
-      {
-        links.map((link) => (
-          <li>
-            <a
-              class="button-pill contact-pill"
-              href={link.href}
-              target={link.external ? "_blank" : undefined}
-              rel={link.external ? "noopener noreferrer" : undefined}
-            >
-              <span class="contact-icon" set:html={contactIcons[link.icon]} />
-              <span class="contact-label">{link.label}</span>
-            </a>
-          </li>
-        ))
-      }
+      {links.map((link) => (
+        <li>
+          <a
+            class="button-pill contact-pill"
+            href={link.href}
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noopener noreferrer" : undefined}
+          >
+            <span class="contact-icon" set:html={contactIcons[link.icon]} />
+            <span class="contact-label">{link.label}</span>
+          </a>
+        </li>
+      ))}
     </ul>
   </div>
 </section>
